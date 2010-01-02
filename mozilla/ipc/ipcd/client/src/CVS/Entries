@@ -1,0 +1,11 @@
+/.cvsignore/1.2/Fri Nov  7 13:50:16 2003//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.7/Thu Dec  9 19:28:19 2004//TMOZILLA_1_8_BRANCH
+/ipcConnection.h/1.4/Sun May  9 19:08:54 2004//TMOZILLA_1_8_BRANCH
+/ipcConnectionStub.cpp/1.3/Mon May 10 23:21:22 2004//TMOZILLA_1_8_BRANCH
+/ipcConnectionUnix.cpp/1.5/Tue May 11 21:27:27 2004//TMOZILLA_1_8_BRANCH
+/ipcConnectionWin.cpp/1.3/Sun May  9 19:08:54 2004//TMOZILLA_1_8_BRANCH
+/ipcModuleFactory.cpp/1.5/Mon May 17 19:49:42 2004//TMOZILLA_1_8_BRANCH
+/ipcService.cpp/1.7/Tue May 11 21:27:27 2004//TMOZILLA_1_8_BRANCH
+/ipcService.h/1.5/Sun May  9 19:08:54 2004//TMOZILLA_1_8_BRANCH
+/ipcdclient.cpp/1.3/Tue May 11 21:27:27 2004//TMOZILLA_1_8_BRANCH
+D

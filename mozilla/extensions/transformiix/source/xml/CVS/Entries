@@ -1,0 +1,6 @@
+/.cvsignore/1.1/Fri Jul  6 02:35:51 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.25/Mon Apr  4 18:38:11 2005//TMOZILLA_1_8_BRANCH
+/XMLUtils.cpp/1.26/Wed Dec 15 15:37:20 2004//TMOZILLA_1_8_BRANCH
+/XMLUtils.h/1.28/Wed Dec 15 15:37:20 2004//TMOZILLA_1_8_BRANCH
+D/dom////
+D/parser////

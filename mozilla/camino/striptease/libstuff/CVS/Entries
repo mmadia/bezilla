@@ -1,0 +1,22 @@
+/allocate.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/arch.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/arch_usage.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/breakout.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/bytesex.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/checkout.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/crc32.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/errors.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/fatal_arch.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/fatals.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/get_arch_from_host.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/ofile.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/ofile_error.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/print.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/reloc.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/round.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/set_arch_flag_name.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/swap_headers.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/symbol_list.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/unix_standard_mode.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+/writeout.c/1.1.2.1/Tue Jan 22 20:16:34 2008//TMOZILLA_1_8_BRANCH
+D

@@ -1,0 +1,17 @@
+/.cvsignore/1.1/Sat Dec 29 03:42:47 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.12.8.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/autoconfig.pkg/1.2/Wed Jan  7 01:21:28 2004//TMOZILLA_1_8_BRANCH
+/nsAutoConfig.cpp/1.18.4.2/Tue Nov 28 18:04:22 2006//TMOZILLA_1_8_BRANCH
+/nsAutoConfig.h/1.4.46.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/nsConfigFactory.cpp/1.4.62.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/nsJSConfigTriggers.cpp/1.7.44.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/nsLDAPSyncQuery.cpp/1.13.18.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/nsLDAPSyncQuery.h/1.4.2.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/nsReadConfig.cpp/1.16.2.2/Wed Jan 31 00:58:48 2007//TMOZILLA_1_8_BRANCH
+/nsReadConfig.h/1.2.46.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+/prefcalls.js/1.8.4.1/Fri Feb  3 14:41:09 2006//TMOZILLA_1_8_BRANCH
+D/beos////
+D/mac////
+D/os2////
+D/unix////
+D/win////

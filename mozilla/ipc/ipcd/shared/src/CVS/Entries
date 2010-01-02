@@ -1,0 +1,20 @@
+/.cvsignore/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcConfig.cpp/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcConfig.h/1.4/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcIDList.cpp/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcIDList.h/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcList.h/1.4/Sun May  9 19:08:56 2004//TMOZILLA_1_8_BRANCH
+/ipcLog.cpp/1.4/Tue May 11 21:27:28 2004//TMOZILLA_1_8_BRANCH
+/ipcLog.h/1.4/Tue May 11 21:27:28 2004//TMOZILLA_1_8_BRANCH
+/ipcMessage.cpp/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcMessage.h/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcMessagePrimitives.cpp/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcMessagePrimitives.h/1.4/Mon May  3 18:50:36 2004//TMOZILLA_1_8_BRANCH
+/ipcMessageQ.h/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcMessageUtils.h/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcStringList.cpp/1.2/Fri Nov  7 13:50:27 2003//TMOZILLA_1_8_BRANCH
+/ipcStringList.h/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcm.cpp/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+/ipcm.h/1.3/Mon May  3 18:40:33 2004//TMOZILLA_1_8_BRANCH
+D

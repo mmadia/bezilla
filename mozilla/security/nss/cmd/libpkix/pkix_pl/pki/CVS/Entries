@@ -1,0 +1,12 @@
+/Makefile/1.5/Tue Sep 18 16:37:46 2007//TNSS_3_12_3_1_RTM
+/manifest.mn/1.5/Tue Sep 18 16:37:46 2007//TNSS_3_12_3_1_RTM
+/test_authorityinfoaccess.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_cert.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_crl.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_crlentry.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_date.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_generalname.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_nameconstraints.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_subjectinfoaccess.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+/test_x500name.c/1.4/Thu Sep 20 19:03:52 2007//TNSS_3_12_3_1_RTM
+D

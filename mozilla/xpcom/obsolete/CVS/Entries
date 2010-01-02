@@ -1,0 +1,24 @@
+/Makefile.in/1.17/Sun Jan 30 21:33:45 2005//TMOZILLA_1_8_BRANCH
+/dlldeps-obs.cpp/1.4/Mon Dec  6 22:39:53 2004//TMOZILLA_1_8_BRANCH
+/nsFileSpec.cpp/1.12/Mon Jul  4 16:46:50 2005//TMOZILLA_1_8_BRANCH
+/nsFileSpec.h/1.11.4.1/Fri Oct 17 18:45:28 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecBeOS.cpp/1.3.28.1/Fri Oct 17 18:45:28 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecImpl.cpp/1.7.4.2/Fri Oct 17 19:16:38 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecImpl.h/1.6/Sun Apr 18 14:18:15 2004//TMOZILLA_1_8_BRANCH
+/nsFileSpecMac.cpp/1.3.28.1/Fri Oct 17 18:45:28 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecOS2.cpp/1.3.28.2/Fri Oct 17 18:45:29 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecUnix.cpp/1.9.8.2/Fri Oct 17 18:45:29 2008//TMOZILLA_1_8_BRANCH
+/nsFileSpecWin.cpp/1.10.12.3/Fri Oct 17 18:45:29 2008//TMOZILLA_1_8_BRANCH
+/nsFileStream.cpp/1.5.28.2/Tue Oct 21 01:12:20 2008//TMOZILLA_1_8_BRANCH
+/nsFileStream.h/1.9/Tue Nov 23 19:33:53 2004//TMOZILLA_1_8_BRANCH
+/nsIFileSpec.idl/1.7.4.2/Fri Oct 17 19:16:38 2008//TMOZILLA_1_8_BRANCH
+/nsIFileStream.cpp/1.6.28.1/Tue Oct 21 01:21:42 2008//TMOZILLA_1_8_BRANCH
+/nsIFileStream.h/1.4/Sun Apr 18 14:18:15 2004//TMOZILLA_1_8_BRANCH
+/nsIRegistry.idl/1.2/Sun Apr 18 14:18:15 2004//TMOZILLA_1_8_BRANCH
+/nsIRegistryUtils.h/1.2/Sun Apr 18 14:18:15 2004//TMOZILLA_1_8_BRANCH
+/nsSpecialSystemDirectory.cpp/1.9/Wed Jul  6 01:23:20 2005//TMOZILLA_1_8_BRANCH
+/nsSpecialSystemDirectory.h/1.5/Tue Dec  7 00:21:36 2004//TMOZILLA_1_8_BRANCH
+/nsXPCOMObsolete.cpp/1.2/Sun Apr 18 14:18:15 2004//TMOZILLA_1_8_BRANCH
+/xpcomobsolete.h/1.2/Thu Feb 19 03:04:25 2004//TMOZILLA_1_8_BRANCH
+/xpcomobsolete.pkg/1.2/Wed Jan  7 01:22:24 2004//TMOZILLA_1_8_BRANCH
+D/component////

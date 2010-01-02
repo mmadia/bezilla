@@ -1,0 +1,15 @@
+/.cvsignore/1.2/Thu Feb 22 03:01:14 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.32/Sat Feb 19 10:31:25 2005//TMOZILLA_1_8_BRANCH
+/nsElementMap.cpp/1.25/Tue Jun 22 09:37:53 2004//TMOZILLA_1_8_BRANCH
+/nsElementMap.h/1.13/Sat Apr 17 21:52:28 2004//TMOZILLA_1_8_BRANCH
+/nsForwardReference.h/1.9/Sun Apr 18 13:54:16 2004//TMOZILLA_1_8_BRANCH
+/nsXULCommandDispatcher.cpp/1.82.6.2/Thu Apr 19 04:00:31 2007//TMOZILLA_1_8_BRANCH
+/nsXULCommandDispatcher.h/1.15.28.1/Thu Apr 19 04:00:31 2007//TMOZILLA_1_8_BRANCH
+/nsXULContentSink.cpp/1.151.4.5/Fri Jul  7 02:12:00 2006//TMOZILLA_1_8_BRANCH
+/nsXULControllers.cpp/1.28.28.1/Fri Feb 24 04:51:56 2006//TMOZILLA_1_8_BRANCH
+/nsXULControllers.h/1.8.28.1/Fri Feb 24 04:51:56 2006//TMOZILLA_1_8_BRANCH
+/nsXULDocument.cpp/1.664.2.32/Tue Feb 24 14:01:49 2009//TMOZILLA_1_8_BRANCH
+/nsXULDocument.h/1.171.8.6/Tue Feb 24 14:01:50 2009//TMOZILLA_1_8_BRANCH
+/nsXULPrototypeCache.cpp/1.57.20.1/Wed Sep  6 04:18:24 2006//TMOZILLA_1_8_BRANCH
+/nsXULPrototypeDocument.cpp/1.64.2.5/Wed Sep  6 04:18:24 2006//TMOZILLA_1_8_BRANCH
+D

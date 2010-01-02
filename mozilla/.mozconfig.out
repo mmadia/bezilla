@@ -1,0 +1,8 @@
+Adding client.mk options from /home/mmadia/.mozconfig:
+    MOZ_CO_PROJECT=suite
+    MOZ_CO_TAG=MOZILLA_1_8_BRANCH
+    GLIB_CONFIG=/boot/common/bin/glib-config
+    LIBIDL_CONFIG=/boot/common/bin/libIDL-config
+    CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
+    MOZ_OBJDIR=/moz_obj/suite
+    BUILD_OPT=1

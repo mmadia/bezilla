@@ -1,0 +1,26 @@
+/.cvsignore/1.1/Tue Jun  8 19:19:57 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.16/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgFilter.idl/1.25/Wed Jun  1 18:13:12 2005//TMOZILLA_1_8_BRANCH
+/nsIMsgFilterHitNotify.idl/1.6/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgFilterList.idl/1.22.24.1/Fri Mar 31 16:01:16 2006//TMOZILLA_1_8_BRANCH
+/nsIMsgFilterPlugin.idl/1.14/Thu Jan 13 20:41:55 2005//TMOZILLA_1_8_BRANCH
+/nsIMsgFilterService.h/1.8/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgFilterService.idl/1.7/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchAdapter.idl/1.14/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchNotify.idl/1.7/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchScopeTerm.idl/1.7/Thu Apr 22 15:32:54 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchSession.idl/1.28/Wed Apr 28 12:48:57 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchTerm.idl/1.13.24.2/Sun Jun 18 15:12:44 2006//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchValidityManager.idl/1.5/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchValidityTable.idl/1.7/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgSearchValue.idl/1.8/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsMsgBodyHandler.h/1.9/Thu Apr 22 15:32:54 2004//TMOZILLA_1_8_BRANCH
+/nsMsgFilterCore.idl/1.13.8.2/Mon Sep 11 19:46:03 2006//TMOZILLA_1_8_BRANCH
+/nsMsgResultElement.h/1.7/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsMsgSearchAdapter.h/1.34/Tue Dec 14 23:12:31 2004//TMOZILLA_1_8_BRANCH
+/nsMsgSearchArray.h/1.8/Sat Apr 17 18:32:17 2004//TMOZILLA_1_8_BRANCH
+/nsMsgSearchBoolExpression.h/1.10.28.1/Fri Mar 17 19:53:20 2006//TMOZILLA_1_8_BRANCH
+/nsMsgSearchCore.idl/1.28.28.1/Sun Jun 18 15:12:44 2006//TMOZILLA_1_8_BRANCH
+/nsMsgSearchScopeTerm.h/1.15.28.1/Fri Mar 31 16:01:16 2006//TMOZILLA_1_8_BRANCH
+/nsMsgSearchTerm.h/1.21.28.2/Tue Jan  9 21:05:08 2007//TMOZILLA_1_8_BRANCH
+D

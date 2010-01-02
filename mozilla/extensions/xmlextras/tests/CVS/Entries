@@ -1,0 +1,24 @@
+/.cvsignore/1.1/Sat Feb 24 06:22:49 2001//TMOZILLA_1_8_BRANCH
+/404post.html/1.3/Tue Aug  6 00:52:14 2002//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.14/Mon Apr  4 18:38:19 2005//TMOZILLA_1_8_BRANCH
+/TestXMLExtras.cpp/1.23.4.2/Sun Sep 18 22:24:41 2005//TMOZILLA_1_8_BRANCH
+/badhostsyncget.html/1.2/Sun Apr 18 22:14:14 2004//TMOZILLA_1_8_BRANCH
+/data.xml/1.1/Fri Aug 10 01:12:28 2001//TMOZILLA_1_8_BRANCH
+/display.css/1.1/Fri Sep 14 21:13:33 2001//TMOZILLA_1_8_BRANCH
+/display.html/1.1/Fri Sep 14 21:13:33 2001//TMOZILLA_1_8_BRANCH
+/display.xml/1.1/Fri Sep 14 21:13:33 2001//TMOZILLA_1_8_BRANCH
+/echo.cgi/1.3/Sun Feb 27 19:34:10 2005//TMOZILLA_1_8_BRANCH
+/get.html/1.5/Tue Mar 16 22:00:41 2004//TMOZILLA_1_8_BRANCH
+/getdisplay.html/1.2/Tue Mar 16 22:00:41 2004//TMOZILLA_1_8_BRANCH
+/gethtml.html/1.2/Tue Mar 16 22:00:41 2004//TMOZILLA_1_8_BRANCH
+/invalid.xml/1.1/Mon Sep 17 20:22:16 2001//TMOZILLA_1_8_BRANCH
+/parseserialize.html/1.2/Sun Feb 27 19:34:10 2005//TMOZILLA_1_8_BRANCH
+/parseserializedisplay.html/1.2/Sun Feb 27 19:34:10 2005//TMOZILLA_1_8_BRANCH
+/post.html/1.10/Tue Aug  6 00:52:14 2002//TMOZILLA_1_8_BRANCH
+/post.xhtml/1.2/Tue Aug  6 00:52:14 2002//TMOZILLA_1_8_BRANCH
+/posttext.html/1.1/Tue Nov 27 23:44:12 2001//TMOZILLA_1_8_BRANCH
+/syncget.html/1.4/Tue Mar 16 22:00:41 2004//TMOZILLA_1_8_BRANCH
+/syncpost.html/1.9/Sun Jan 19 18:47:47 2003//TMOZILLA_1_8_BRANCH
+/xgetinvalid.html/1.2/Sun Apr 18 22:14:14 2004//TMOZILLA_1_8_BRANCH
+/xpost.html/1.3/Tue Aug  6 00:52:14 2002//TMOZILLA_1_8_BRANCH
+D

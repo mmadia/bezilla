@@ -1,0 +1,16 @@
+/.cvsignore/1.1/Mon Feb 19 11:56:39 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.36.8.2/Wed Aug  2 01:38:46 2006//TMOZILLA_1_8_BRANCH
+/nsHTMLContentSink.cpp/3.719.4.11/Sat Mar  8 13:21:25 2008//TMOZILLA_1_8_BRANCH
+/nsHTMLDocument.cpp/3.615.2.43/Fri Dec 21 22:08:47 2007//TMOZILLA_1_8_BRANCH
+/nsHTMLDocument.h/3.182.4.6/Fri Dec 21 22:08:47 2007//TMOZILLA_1_8_BRANCH
+/nsHTMLFragmentContentSink.cpp/1.102.4.6/Wed Jan 10 19:55:47 2007//TMOZILLA_1_8_BRANCH
+/nsIHTMLDocument.h/3.54/Tue May 10 02:06:29 2005//TMOZILLA_1_8_BRANCH
+/nsImageDocument.cpp/1.138.4.5/Fri Aug 11 18:22:02 2006//TMOZILLA_1_8_BRANCH
+/nsMediaDocument.cpp/1.29.8.1/Thu Nov  6 19:45:37 2008//TMOZILLA_1_8_BRANCH
+/nsMediaDocument.h/1.12/Wed Feb 23 16:53:28 2005//TMOZILLA_1_8_BRANCH
+/nsWyciwygChannel.cpp/1.19.12.1/Sat Aug 13 19:33:51 2005//TMOZILLA_1_8_BRANCH
+/nsWyciwygChannel.h/1.8/Thu Jan 13 03:25:16 2005//TMOZILLA_1_8_BRANCH
+/nsWyciwygProtocolHandler.cpp/1.7.28.1/Wed Feb 15 09:17:49 2006//TMOZILLA_1_8_BRANCH
+/nsWyciwygProtocolHandler.h/1.2/Sat Apr 17 21:52:17 2004//TMOZILLA_1_8_BRANCH
+/nsPluginDocument.cpp/1.20.6.3/Mon Dec 21 17:19:17 2009//TMOZILLA_1_8_BRANCH
+D

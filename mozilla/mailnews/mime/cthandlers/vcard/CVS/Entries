@@ -1,0 +1,11 @@
+/.cvsignore/1.1/Fri Mar 19 20:19:50 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.40/Thu Jun  2 04:00:35 2005//TMOZILLA_1_8_BRANCH
+/mimect-vcard.def/1.4/Sat Apr 17 18:33:11 2004//TMOZILLA_1_8_BRANCH
+/mimevcrd.cpp/1.94/Thu Jul 14 19:01:38 2005//TMOZILLA_1_8_BRANCH
+/mimevcrd.h/1.7/Sat Apr 17 18:33:11 2004//TMOZILLA_1_8_BRANCH
+/nsVCardFactory.cpp/1.14/Sat Apr 17 18:33:11 2004//TMOZILLA_1_8_BRANCH
+/nsVCardStringResources.h/1.4/Sat Apr 17 18:33:11 2004//TMOZILLA_1_8_BRANCH
+/vcard.def/1.4/Sat Apr 17 18:33:11 2004//TMOZILLA_1_8_BRANCH
+/vcard.pkg/1.2/Wed Jan  7 01:22:01 2004//TMOZILLA_1_8_BRANCH
+/win32.order/1.4/Thu Apr  5 05:59:06 2001//TMOZILLA_1_8_BRANCH
+D

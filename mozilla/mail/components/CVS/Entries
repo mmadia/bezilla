@@ -1,0 +1,11 @@
+/.cvsignore/1.1/Sun Aug 18 19:27:53 2002//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.9.2.4/Tue Mar  6 18:30:55 2007//TMOZILLA_1_8_BRANCH
+/nsMailDefaultHandler.js/1.4.4.7/Sat Apr  4 15:43:31 2009//TMOZILLA_1_8_BRANCH
+D/addrbook////
+D/build////
+D/compose////
+D/migration////
+D/phishing////
+D/preferences////
+D/search////
+D/shell////

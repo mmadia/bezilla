@@ -1,0 +1,20 @@
+/.cvsignore/1.1/Mon Dec 21 22:16:01 1998//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.41/Sat Apr 17 18:32:11 2004//TMOZILLA_1_8_BRANCH
+/jar.mn/1.99.2.15/Wed Nov 29 00:18:16 2006//TMOZILLA_1_8_BRANCH
+/mailnews.js/3.249.2.39/Sat Jan 19 03:02:36 2008//TMOZILLA_1_8_BRANCH
+/mailnews.pkg/1.2/Wed Jan  7 01:21:47 2004//TMOZILLA_1_8_BRANCH
+/makefiles/1.79/Tue Apr 13 18:16:33 2004//TMOZILLA_1_8_BRANCH
+D/addrbook////
+D/base////
+D/build////
+D/compose////
+D/db////
+D/extensions////
+D/imap////
+D/import////
+D/local////
+D/mapi////
+D/mime////
+D/movemail////
+D/news////
+D/public////

@@ -1,0 +1,11 @@
+/.cvsignore/1.2/Sat May 22 19:33:11 2004//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.9.26.2/Thu Aug 31 23:22:40 2006//TMOZILLA_1_8_BRANCH
+/jar.mn/1.29.4.4/Tue Mar 14 20:36:01 2006//TMOZILLA_1_8_BRANCH
+D/downloads////
+D/extensions////
+D/installer////
+D/plugins////
+D/preferences////
+D/shared////
+D/update////
+D/xpinstall////

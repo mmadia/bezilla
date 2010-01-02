@@ -1,0 +1,12 @@
+/.cvsignore/5.0/Tue Mar 26 21:52:11 2002//TMOZILLA_1_8_BRANCH
+/Makefile.client/5.0.136.1/Fri Feb  3 14:44:30 2006//TMOZILLA_1_8_BRANCH
+/Makefile.in/5.0.2.1.134.1/Fri Feb  3 14:44:30 2006//TMOZILLA_1_8_BRANCH
+/autoconf.mk.in/5.0.138.1/Fri Feb  3 14:41:10 2006//TMOZILLA_1_8_BRANCH
+/compver.sh/5.0/Tue Mar 26 21:52:14 2002//TMOZILLA_1_8_BRANCH
+/dirver.c/5.0.136.1/Fri Feb  3 14:44:30 2006//TMOZILLA_1_8_BRANCH
+/genexports.pl/5.0.2.2/Wed Sep 17 03:17:04 2003//TMOZILLA_1_8_BRANCH
+/my_overrides.mk/5.0.138.1/Fri Feb  3 14:41:10 2006//TMOZILLA_1_8_BRANCH
+/nsftp.sh/5.0/Tue Mar 26 21:52:14 2002//TMOZILLA_1_8_BRANCH
+/replace.pl/5.0.2.1/Thu Mar 28 20:26:01 2002//TMOZILLA_1_8_BRANCH
+/replace.pm/1.1.2.1/Thu Mar 28 20:26:02 2002//TMOZILLA_1_8_BRANCH
+D

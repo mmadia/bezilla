@@ -1,0 +1,9 @@
+/.cvsignore/1.1/Tue Dec  7 09:31:05 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.13/Tue Apr  5 17:40:19 2005//TMOZILLA_1_8_BRANCH
+/nsICache.idl/1.9/Sun Apr 18 21:59:10 2004//TMOZILLA_1_8_BRANCH
+/nsICacheEntryDescriptor.idl/1.15/Sun Apr 18 21:59:10 2004//TMOZILLA_1_8_BRANCH
+/nsICacheListener.idl/1.5/Sun Apr 18 21:59:10 2004//TMOZILLA_1_8_BRANCH
+/nsICacheService.idl/1.7.20.1/Fri Sep 30 02:14:22 2005//TMOZILLA_1_8_BRANCH
+/nsICacheSession.idl/1.11/Thu Jan 13 03:25:17 2005//TMOZILLA_1_8_BRANCH
+/nsICacheVisitor.idl/1.11/Thu Jan 13 03:25:17 2005//TMOZILLA_1_8_BRANCH
+D

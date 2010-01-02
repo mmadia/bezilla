@@ -1,0 +1,14 @@
+/.cvsignore/1.1/Mon Mar  8 21:27:02 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.26/Fri Apr  1 18:22:54 2005//TMOZILLA_1_8_BRANCH
+/TODO/1.5/Thu Jan 10 23:49:46 2002//TMOZILLA_1_8_BRANCH
+/xptiFile.cpp/1.7/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiInterfaceInfo.cpp/1.19/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiInterfaceInfoManager.cpp/1.54/Fri May  7 00:50:53 2004//TMOZILLA_1_8_BRANCH
+/xptiManifest.cpp/1.31/Sat May 22 20:02:42 2004//TMOZILLA_1_8_BRANCH
+/xptiMisc.cpp/1.12/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiTypelibGuts.cpp/1.6/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiWorkingSet.cpp/1.16/Sat May 22 20:02:42 2004//TMOZILLA_1_8_BRANCH
+/xptiZipItem.cpp/1.6/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiZipLoader.cpp/1.12/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+/xptiprivate.h/1.30/Sun Apr 18 14:18:20 2004//TMOZILLA_1_8_BRANCH
+D

@@ -1,0 +1,16 @@
+/Makefile.in/1.4/Fri Nov 19 22:52:13 2004//TMOZILLA_1_8_BRANCH
+/nsISVGGeometrySource.idl/1.9/Thu Aug  4 20:32:00 2005//TMOZILLA_1_8_BRANCH
+/nsISVGGlyphGeometrySource.idl/1.4.32.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGGlyphMetricsSource.idl/1.3.40.1/Thu Mar 16 17:09:13 2006//TMOZILLA_1_8_BRANCH
+/nsISVGGradient.idl/1.3.14.1/Wed Sep 28 05:45:40 2005//TMOZILLA_1_8_BRANCH
+/nsISVGPathGeometrySource.idl/1.3.40.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRectangleSink.idl/1.3.40.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRenderer.idl/1.6.28.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererCanvas.idl/1.7.18.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererGlyphGeometry.idl/1.3.40.2/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererGlyphMetrics.idl/1.4.32.2/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererPathBuilder.idl/1.3.40.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererPathGeometry.idl/1.4.26.2/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererRegion.idl/1.3.40.1/Mon Jun 12 19:47:27 2006//TMOZILLA_1_8_BRANCH
+/nsISVGRendererSurface.idl/1.2/Sat Jan  1 16:45:33 2005//TMOZILLA_1_8_BRANCH
+D

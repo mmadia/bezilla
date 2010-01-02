@@ -1,0 +1,20 @@
+/Makefile.in/1.3/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXMLContentBuilder.idl/1.3/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFAttributeHandler.idl/1.3/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFBindableElement.idl/1.1/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFBindableElementWrapper.idl/1.1/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFElement.idl/1.8/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFElementFactory.idl/1.3/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFElementWrapper.idl/1.5/Sat Jun 11 11:19:08 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFGenericElement.idl/1.4/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFGenericElementWrapper.idl/1.3/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFPrivate.idl/1.3/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFSVGVisual.idl/1.4/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFSVGVisualWrapper.idl/1.4/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFStyledElementWrapper.idl/1.1/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFVisual.idl/1.7/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFXMLVisual.idl/1.4/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFXMLVisualWrapper.idl/1.4/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+/nsIXTFXULVisual.idl/1.4/Wed Dec  1 22:26:49 2004//TMOZILLA_1_8_BRANCH
+/nsIXTFXULVisualWrapper.idl/1.4/Wed Jun  1 19:19:31 2005//TMOZILLA_1_8_BRANCH
+D

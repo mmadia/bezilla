@@ -1,0 +1,14 @@
+/.cvsignore/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/Makefile.am/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/Makefile.in/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkderivedcomponents.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkderivedparameters.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkderivedproperties.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkderivedvalues.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkinclude.sh/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkneticali.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkparameterrestrictions.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkrestrictionrecords.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/mkrestrictiontable.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+/readvaluesfile.pl/1.1.1.1/Wed Jan  5 20:09:24 2005/-ko/TMOZILLA_1_8_BRANCH
+D

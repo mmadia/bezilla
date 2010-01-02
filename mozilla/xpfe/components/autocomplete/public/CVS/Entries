@@ -1,0 +1,8 @@
+/.cvsignore/1.1/Mon Apr 10 23:58:57 2000//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.5.28.1/Fri May 19 12:13:58 2006//TMOZILLA_1_8_BRANCH
+/nsIAutoCompleteListener.idl/1.6/Sat Apr 17 16:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsIAutoCompleteResults.idl/1.6/Sat Apr 17 16:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsIAutoCompleteSession.idl/1.5/Sat Apr 17 16:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsILDAPAutoCompFormatter.idl/1.5/Sat Apr 17 16:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsILDAPAutoCompleteSession.idl/1.13/Tue Jul 26 15:27:16 2005//TMOZILLA_1_8_BRANCH
+D

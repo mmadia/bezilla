@@ -1,0 +1,17 @@
+/.cvsignore/1.1/Tue Nov  2 19:21:01 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.39/Mon May  2 16:30:03 2005//TMOZILLA_1_8_BRANCH
+/nsCURILoader.idl/1.9.18.1/Thu Feb  2 18:37:28 2006//TMOZILLA_1_8_BRANCH
+/nsDocLoader.cpp/3.288.2.1/Mon Feb  6 19:52:11 2006//TMOZILLA_1_8_BRANCH
+/nsDocLoader.h/1.35.2.1/Mon Feb  6 19:52:11 2006//TMOZILLA_1_8_BRANCH
+/nsIContentHandler.idl/1.13/Sat Apr 17 16:52:02 2004//TMOZILLA_1_8_BRANCH
+/nsIDocumentLoader.idl/1.12/Wed Dec  8 23:50:21 2004//TMOZILLA_1_8_BRANCH
+/nsIDownload.idl/1.15.4.1/Wed Mar  8 11:05:08 2006//TMOZILLA_1_8_BRANCH
+/nsITransfer.idl/1.5/Wed Jul  6 23:12:21 2005//TMOZILLA_1_8_BRANCH
+/nsIURIContentListener.idl/1.30/Wed Feb 23 06:14:44 2005//TMOZILLA_1_8_BRANCH
+/nsIURILoader.idl/1.33.18.1/Thu Feb  2 18:37:37 2006//TMOZILLA_1_8_BRANCH
+/nsIWebProgress.idl/1.13/Sun Oct 31 01:16:51 2004//TMOZILLA_1_8_BRANCH
+/nsIWebProgressListener.idl/1.17/Wed Jun 15 23:52:44 2005//TMOZILLA_1_8_BRANCH
+/nsIWebProgressListener2.idl/1.1/Tue Apr  5 23:24:22 2005//TMOZILLA_1_8_BRANCH
+/nsURILoader.cpp/1.137.2.1/Mon May  1 18:37:08 2006//TMOZILLA_1_8_BRANCH
+/nsURILoader.h/1.25/Wed Dec  8 23:50:21 2004//TMOZILLA_1_8_BRANCH
+D

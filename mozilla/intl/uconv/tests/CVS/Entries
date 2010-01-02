@@ -1,0 +1,9 @@
+/.cvsignore/1.2/Sat Jan 23 00:09:34 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.23/Tue Apr  5 12:31:41 2005//TMOZILLA_1_8_BRANCH
+/TestUConv.cpp/1.23/Thu Jun 17 00:12:51 2004//TMOZILLA_1_8_BRANCH
+/convperf.cpp/1.13/Sun Nov  7 23:59:25 2004//TMOZILLA_1_8_BRANCH
+/nsTestUConv.cpp/1.50/Sun Nov  7 23:59:26 2004//TMOZILLA_1_8_BRANCH
+/nsconv.cpp/1.18/Sun Nov  7 23:59:26 2004//TMOZILLA_1_8_BRANCH
+/plattest.cpp/1.15/Thu Jun 17 00:12:51 2004//TMOZILLA_1_8_BRANCH
+/stressgb.pl/1.1/Wed Feb 13 01:32:54 2002//TMOZILLA_1_8_BRANCH
+D

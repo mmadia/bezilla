@@ -1,0 +1,30 @@
+/CertificateDialogs.strings.in/1.1.2.2/Tue Jan 22 19:38:46 2008//TMOZILLA_1_8_BRANCH
+/InfoPlist.strings.in/1.1.2.1/Tue Aug 28 23:52:28 2007//TMOZILLA_1_8_BRANCH
+/Localizable.strings.in/1.1.2.23/Wed May  7 06:08:04 2008//TMOZILLA_1_8_BRANCH
+/WebSearchEngines.plist/1.1.2.1/Wed Jan  9 23:18:06 2008//TMOZILLA_1_8_BRANCH
+D/AccessoryViews.nib////
+D/AddBookmark.nib////
+D/BookmarkImportDlg.nib////
+D/BookmarkInfoPanel.nib////
+D/BookmarksEditing.nib////
+D/BrowserWindow.nib////
+D/CertificatesWindow.nib////
+D/ChooseCertificateDialog.nib////
+D/CreatePasswordDialog.nib////
+D/DownloadCACertDialog.nib////
+D/ExpiredCertDialog.nib////
+D/FindBar.nib////
+D/FindBarTextured.nib////
+D/GenerateKeyPairDialog.nib////
+D/Keychain.nib////
+D/MVPreferences.nib////
+D/MainMenu.nib////
+D/MismatchedCertDomainDialog.nib////
+D/OpenFeed.nib////
+D/PageInfo.nib////
+D/PopupBlockView.nib////
+D/ProgressDialog.nib////
+D/ProgressView.nib////
+D/SearchEngineEditor.nib////
+D/UnknownCertIssuerDialog.nib////
+D/ViewCertificateDialog.nib////

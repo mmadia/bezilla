@@ -1,0 +1,41 @@
+/BrAirWaysBadSig.cert/1.1/Sat Jan 31 00:28:41 2009/-kb/TNSS_3_12_3_1_RTM
+/CertificatePoliciesCritical.crt/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/GoodCACert.crt/1.1/Thu Jun  7 17:48:29 2007/-kb/TNSS_3_12_3_1_RTM
+/OCSPCA1.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPCA1.p12/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPCA2.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPCA3.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE11.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE12.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE13.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE14.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE15.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE21.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPEE31.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/OCSPRoot.cert/1.1/Mon Mar  2 10:17:25 2009/-kb/TNSS_3_12_3_1_RTM
+/PayPalEE.cert/1.2/Fri Jan 30 13:26:33 2009/-kb/TNSS_3_12_3_1_RTM
+/PayPalICA.cert/1.1/Thu Jun 19 03:05:12 2008/-kb/TNSS_3_12_3_1_RTM
+/PayPalRootCA.cert/1.1/Thu Jun 19 03:05:12 2008/-kb/TNSS_3_12_3_1_RTM
+/TestCA.ca.cert/1.1/Tue Mar 25 22:14:22 2008/-kb/TNSS_3_12_3_1_RTM
+/TestUser50.cert/1.1/Tue Mar 25 22:14:22 2008/-kb/TNSS_3_12_3_1_RTM
+/TestUser51.cert/1.1/Tue Mar 25 22:14:22 2008/-kb/TNSS_3_12_3_1_RTM
+/TrustAnchorRootCertificate.crt/1.1/Thu Jun  7 17:48:29 2007/-kb/TNSS_3_12_3_1_RTM
+/ValidCertificatePathTest1EE.crt/1.1/Thu Jun  7 17:48:29 2007/-kb/TNSS_3_12_3_1_RTM
+/anchor2dsa/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/crldiff.crl/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/crlgood.crl/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/hanfeiyu2hanfeiyu/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/hy2hc-bc/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/hy2hy-bc0/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/issuer-hanfei.crl/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/issuer-none.crl/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/noExtensionsCert/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/nss2alice/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/sun2sun/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/yassir2bcn/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+/yassir2yassir/1.2/Tue Mar 13 01:27:03 2007/-kb/TNSS_3_12_3_1_RTM
+D/extKeyUsage////
+D/generalName////
+D/keyIdentifier////
+D/keyUsage////
+D/publicKey////

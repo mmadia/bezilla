@@ -1,0 +1,19 @@
+/aia.cfg/1.1/Wed Oct 29 11:33:49 2008//TNSS_3_12_3_1_RTM
+/anypolicy.cfg/1.1/Wed Oct 29 11:33:49 2008//TNSS_3_12_3_1_RTM
+/anypolicywithlevel.cfg/1.1/Wed Oct 29 11:33:49 2008//TNSS_3_12_3_1_RTM
+/bridge.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/bridgewithaia.cfg/1.2/Fri Nov  7 19:51:46 2008//TNSS_3_12_3_1_RTM
+/bridgewithhalfaia.cfg/1.2/Fri Nov  7 19:51:46 2008//TNSS_3_12_3_1_RTM
+/bridgewithpolicyextensionandmapping.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/dsa.cfg/1.1/Thu Dec 11 12:26:46 2008//TNSS_3_12_3_1_RTM
+/extension.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/extension2.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/mapping.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/mapping2.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/megabridge_3_2.cfg/1.1/Wed Oct 29 11:33:50 2008//TNSS_3_12_3_1_RTM
+/ocsp.cfg/1.4/Thu Mar 19 09:55:31 2009//TNSS_3_12_3_1_RTM
+/ocspd.cfg/1.1/Mon Mar  2 10:13:05 2009//TNSS_3_12_3_1_RTM
+/realcerts.cfg/1.2/Sat Jan 31 00:28:40 2009//TNSS_3_12_3_1_RTM
+/revoc.cfg/1.1/Thu Feb  5 13:31:52 2009//TNSS_3_12_3_1_RTM
+/scenarios/1.4/Mon Mar  2 10:19:48 2009//TNSS_3_12_3_1_RTM
+D

@@ -1,0 +1,17 @@
+/.cvsignore/1.1/Tue May 18 21:50:29 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.11/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsCharsetDetectionAdaptorCID.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsDetectionConfident.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsDocumentCharsetInfoCID.h/1.1/Thu Nov 16 21:33:29 2000//TMOZILLA_1_8_BRANCH
+/nsICharsetDetectionAdaptor.h/1.10/Mon Jan  3 22:51:10 2005//TMOZILLA_1_8_BRANCH
+/nsICharsetDetectionObserver.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsICharsetDetector.h/1.10/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsICharsetResolver.idl/1.2/Sat Mar  5 03:35:53 2005//TMOZILLA_1_8_BRANCH
+/nsIDocCharset.idl/1.6/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsIDocumentCharsetInfo.idl/1.2/Wed Dec 26 03:17:18 2001//TMOZILLA_1_8_BRANCH
+/nsIMetaCharsetService.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsIStringCharsetDetector.h/1.10/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsIXMLEncodingService.h/1.6/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsMetaCharsetCID.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+/nsXMLEncodingCID.h/1.7/Sun Apr 18 14:20:43 2004//TMOZILLA_1_8_BRANCH
+D

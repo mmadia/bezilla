@@ -1,0 +1,13 @@
+/.cvsignore/1.1/Sun Jan 30 00:51:47 2000//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.2/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportABDescriptor.idl/1.4/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportAddressBooks.idl/1.9/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportFieldMap.idl/1.5/Wed Jul 13 17:19:23 2005//TMOZILLA_1_8_BRANCH
+/nsIImportGeneric.idl/1.10/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportMail.idl/1.9/Wed May  4 20:11:15 2005//TMOZILLA_1_8_BRANCH
+/nsIImportMailboxDescriptor.idl/1.4/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportMimeEncode.idl/1.5/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportModule.idl/1.5/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportService.idl/1.8/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+/nsIImportSettings.idl/1.4/Sat Apr 17 18:32:55 2004//TMOZILLA_1_8_BRANCH
+D

@@ -1,0 +1,10 @@
+/.cvsignore/1.1/Wed Jan 27 05:09:34 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.13/Wed Apr  6 08:33:21 2005//TMOZILLA_1_8_BRANCH
+/nsHankakuToZenkakuCID.h/1.7/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsICaseConversion.h/1.13/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsIOrderIdFormater.h/1.8/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsITextTransform.h/1.8/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsIUGenCategory.h/1.9/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsIUGenDetailCategory.h/1.7/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsUnicharUtilCIID.h/1.8/Sun Apr 18 14:21:16 2004//TMOZILLA_1_8_BRANCH
+D

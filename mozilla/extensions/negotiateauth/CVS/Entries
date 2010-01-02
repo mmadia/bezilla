@@ -1,0 +1,10 @@
+/Makefile.in/1.8/Fri Jul  1 05:01:28 2005//TMOZILLA_1_8_BRANCH
+/nsHttpNegotiateAuth.cpp/1.6/Fri Mar 25 04:26:04 2005//TMOZILLA_1_8_BRANCH
+/nsHttpNegotiateAuth.h/1.3/Tue Nov 23 07:05:27 2004//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuth.h/1.1/Wed Apr 28 02:12:51 2004//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuthFactory.cpp/1.3/Tue Aug 24 21:18:13 2004//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuthGSSAPI.cpp/1.9/Thu Jul 21 22:34:41 2005//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuthGSSAPI.h/1.2/Fri Jul  9 21:59:09 2004//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuthSSPI.cpp/1.4/Mon Mar 21 22:42:07 2005//TMOZILLA_1_8_BRANCH
+/nsNegotiateAuthSSPI.h/1.3/Mon Mar 21 22:42:07 2005//TMOZILLA_1_8_BRANCH
+D

@@ -1,0 +1,17 @@
+/Makefile.in/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/glyphstring.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/modules.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/modules.h/1.4/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-coverage.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-coverage.h/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-engine.h/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-glyph.h/1.4/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-modules.h/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-types.h/1.4/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-utils.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango-utils.h/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango.h/1.4/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/pango.modules/1.3/Wed Mar  5 08:37:00 2003//TMOZILLA_1_8_BRANCH
+/querymodules.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+/shape.c/1.3/Sun Apr 18 14:20:56 2004//TMOZILLA_1_8_BRANCH
+D

@@ -1,0 +1,11 @@
+/.cvsignore/1.2/Wed Nov 21 22:07:04 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.15/Wed Jun  1 17:40:08 2005//TMOZILLA_1_8_BRANCH
+/nsEncryptedSMIMEURIsService.cpp/1.2/Wed Jan  8 21:54:02 2003//TMOZILLA_1_8_BRANCH
+/nsEncryptedSMIMEURIsService.h/1.2/Wed Jun 19 13:46:10 2002//TMOZILLA_1_8_BRANCH
+/nsMsgComposeSecure.cpp/1.35/Wed Jun  1 17:40:08 2005//TMOZILLA_1_8_BRANCH
+/nsMsgComposeSecure.h/1.12/Wed Jun  1 17:40:08 2005//TMOZILLA_1_8_BRANCH
+/nsMsgSMIMECID.h/1.2/Sat Apr 17 18:32:41 2004//TMOZILLA_1_8_BRANCH
+/nsSMimeJSHelper.cpp/1.13/Wed Jul 20 11:49:43 2005//TMOZILLA_1_8_BRANCH
+/nsSMimeJSHelper.h/1.2/Fri Jun 14 02:09:44 2002//TMOZILLA_1_8_BRANCH
+/smime-service.js/1.8/Fri Apr 23 03:17:49 2004//TMOZILLA_1_8_BRANCH
+D

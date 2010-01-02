@@ -1,0 +1,10 @@
+/.cvsignore/1.1/Sat Dec  5 09:00:59 1998//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.64/Tue Mar  8 17:21:32 2005//TMOZILLA_1_8_BRANCH
+/caps.pkg/1.2/Wed Jan  7 01:21:16 2004//TMOZILLA_1_8_BRANCH
+/nsJSPrincipals.cpp/1.24/Fri Jul  8 23:26:35 2005//TMOZILLA_1_8_BRANCH
+/nsPrincipal.cpp/1.37.2.9/Tue Jun 10 00:05:05 2008//TMOZILLA_1_8_BRANCH
+/nsScriptSecurityManager.cpp/1.266.2.28/Sun Mar  1 23:37:38 2009//TMOZILLA_1_8_BRANCH
+/nsSecurityManagerFactory.cpp/1.41/Fri Jul 22 19:05:40 2005//TMOZILLA_1_8_BRANCH
+/nsSystemPrincipal.cpp/1.31/Fri Jul 22 19:05:40 2005//TMOZILLA_1_8_BRANCH
+/win32.order/1.4/Thu Apr  5 05:57:26 2001//TMOZILLA_1_8_BRANCH
+D

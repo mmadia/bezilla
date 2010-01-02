@@ -1,0 +1,55 @@
+/.cvsignore/1.5/Sat Feb 22 07:10:08 2003//TMOZILLA_1_8_BRANCH
+/JSConsole.cpp/3.20/Fri Jun 11 17:14:43 2004//TMOZILLA_1_8_BRANCH
+/JSConsole.h/3.5/Tue May 18 04:00:47 2004//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.184.2.1/Sat Jun 17 16:27:10 2006//TMOZILLA_1_8_BRANCH
+/dump2html.pl/1.1/Thu Jan 10 02:25:08 2002//TMOZILLA_1_8_BRANCH
+/jsconsres.h/3.4/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/mozilla-viewer.sh/1.8.28.1/Tue Sep 20 21:13:05 2005//TMOZILLA_1_8_BRANCH
+/nsBaseDialog.cpp/3.8/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsBaseDialog.h/3.6/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsBeOSMain.cpp/1.10/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsBrowserWindow.cpp/3.442/Sun Jan  9 20:43:34 2005//TMOZILLA_1_8_BRANCH
+/nsBrowserWindow.h/1.133/Mon Jan  3 22:51:13 2005//TMOZILLA_1_8_BRANCH
+/nsEditorInterfaces.h/3.6/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsEditorMode.cpp/3.50/Mon Nov  1 18:50:30 2004//TMOZILLA_1_8_BRANCH
+/nsEditorMode.h/3.8/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsFindDialog.cpp/3.7/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsFindDialog.h/3.4/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsImageInspectorDialog.cpp/3.9/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsImageInspectorDialog.h/3.4/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsMacMain.cpp/1.56/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsMacResources.r/1.4/Thu Mar 11 21:23:26 1999//TMOZILLA_1_8_BRANCH
+/nsOS2Main.cpp/1.4/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsPhMain.cpp/1.20/Wed Sep  8 22:56:02 2004//TMOZILLA_1_8_BRANCH
+/nsPhMenu.cpp/1.12/Sat Apr 17 16:50:31 2004//TMOZILLA_1_8_BRANCH
+/nsPrintSetupDialog.cpp/3.8/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsPrintSetupDialog.h/3.5/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsTableInspectorDialog.cpp/3.9/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsTableInspectorDialog.h/3.4/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsThrobber.cpp/1.26/Mon Nov  1 18:50:30 2004//TMOZILLA_1_8_BRANCH
+/nsThrobber.h/1.9/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsViewerApp.cpp/1.204/Thu Jul 21 13:33:41 2005//TMOZILLA_1_8_BRANCH
+/nsViewerApp.h/1.36/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsWebBrowserChrome.cpp/1.56/Tue Jan 11 19:36:40 2005//TMOZILLA_1_8_BRANCH
+/nsWebBrowserChrome.h/1.20/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsWebCrawler.cpp/1.133/Mon Jan  3 22:51:13 2005//TMOZILLA_1_8_BRANCH
+/nsWebCrawler.h/1.39/Mon Jan  3 22:51:13 2005//TMOZILLA_1_8_BRANCH
+/nsWidgetSupport.cpp/3.5/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsWidgetSupport.h/3.6/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsWinMain.cpp/1.38/Tue Jan  4 02:35:13 2005//TMOZILLA_1_8_BRANCH
+/nsWindowCreator.cpp/3.4/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsWindowCreator.h/3.2/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/nsXPBaseWindow.cpp/3.79/Mon Jan  3 22:51:13 2005//TMOZILLA_1_8_BRANCH
+/nsXPBaseWindow.h/3.32/Mon Jan  3 22:51:13 2005//TMOZILLA_1_8_BRANCH
+/resources.h/3.55/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/viewer-beos.rsrc/1.1/Fri Jun 25 11:04:43 1999/-kb/TMOZILLA_1_8_BRANCH
+/viewer.rc/3.63/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+/vieweros2.rc/1.12/Sat Apr 17 16:50:35 2004//TMOZILLA_1_8_BRANCH
+D/mac////
+D/os2////
+D/public////
+D/resources////
+D/samples////
+D/throbber////
+D/unix////
+D/windows////

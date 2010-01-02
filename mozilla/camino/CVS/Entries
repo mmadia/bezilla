@@ -1,0 +1,26 @@
+D/config////
+/.cvsignore/1.1.8.2/Mon Dec 17 16:20:59 2007//TMOZILLA_1_8_BRANCH
+/Info-AppearancePrefPane.plist/1.1.4.4/Thu Jan  3 19:34:07 2008//TMOZILLA_1_8_BRANCH
+/Info-Camino.plist.in/1.1.2.6/Wed Jan 23 19:44:08 2008//TMOZILLA_1_8_BRANCH
+/Info-DownloadsPrefPane.plist/1.2.4.1/Sat Sep 10 05:44:10 2005//TMOZILLA_1_8_BRANCH
+/Info-GeneralPrefPane.plist/1.1.2.1/Fri Dec 14 21:50:13 2007//TMOZILLA_1_8_BRANCH
+/Info-HistoryPrefPane.plist/1.1.4.1/Sat Sep 10 05:44:10 2005//TMOZILLA_1_8_BRANCH
+/Info-PrivacyPrefPane.plist/1.1.4.4/Thu Jan  3 19:12:38 2008//TMOZILLA_1_8_BRANCH
+/Info-SecurityPrefPane.plist/1.1.4.3/Mon Jan 16 05:53:16 2006//TMOZILLA_1_8_BRANCH
+/Info-TabsPrefPane.plist/1.2.4.2/Sat Jan 19 00:10:22 2008//TMOZILLA_1_8_BRANCH
+/Info-WebFeaturesPrefPane.plist/1.1.4.4/Mon Jan 21 04:09:36 2008//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.13.2.30/Mon Jun  1 19:23:00 2009//TMOZILLA_1_8_BRANCH
+D/Camino.xcodeproj////
+D/IBPalette////
+D/PreferencePanes////
+D/docs////
+D/embed-replacements////
+D/feedhandlers////
+D/flashblock////
+D/idl////
+D/installer////
+D/resources////
+D/sharedmenuscocoa////
+D/sparkle////
+D/src////
+D/striptease////

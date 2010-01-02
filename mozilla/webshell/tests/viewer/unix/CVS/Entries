@@ -1,0 +1,6 @@
+/.cvsignore/1.1/Sun Aug 22 14:03:23 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.9/Mon Oct 11 04:01:47 2004//TMOZILLA_1_8_BRANCH
+D/gtk////
+D/gtk2////
+D/qt////
+D/xlib////

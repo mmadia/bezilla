@@ -1,0 +1,78 @@
+/.cvsignore/1.1.2.1/Mon Dec 17 16:21:00 2007//TMOZILLA_1_8_BRANCH
+/Documentation.zip/1.1.2.1/Fri Oct 26 20:40:41 2007/-kb/TMOZILLA_1_8_BRANCH
+/Info.plist/1.1.2.1/Fri Oct 26 20:40:43 2007//TMOZILLA_1_8_BRANCH
+/License.txt/1.1.2.1/Fri Oct 26 20:40:44 2007//TMOZILLA_1_8_BRANCH
+/NSApplication+AppCopies.h/1.1.2.1/Fri Oct 26 20:40:47 2007//TMOZILLA_1_8_BRANCH
+/NSApplication+AppCopies.m/1.1.2.1/Fri Oct 26 20:40:48 2007//TMOZILLA_1_8_BRANCH
+/NSFileManager+Authentication.h/1.1.2.1/Fri Oct 26 20:40:51 2007//TMOZILLA_1_8_BRANCH
+/NSFileManager+Authentication.m/1.1.2.3/Wed Jan 23 02:15:57 2008//TMOZILLA_1_8_BRANCH
+/NSFileManager+ExtendedAttributes.h/1.1.2.1/Wed Jan 23 02:15:57 2008//TMOZILLA_1_8_BRANCH
+/NSFileManager+ExtendedAttributes.m/1.1.2.2/Wed Jan 23 03:06:46 2008//TMOZILLA_1_8_BRANCH
+/NSFileManager+Verification.h/1.1.2.1/Fri Oct 26 20:40:55 2007//TMOZILLA_1_8_BRANCH
+/NSFileManager+Verification.m/1.1.2.1/Fri Oct 26 20:40:57 2007//TMOZILLA_1_8_BRANCH
+/NSString+extras.h/1.1.2.1/Fri Oct 26 20:40:59 2007//TMOZILLA_1_8_BRANCH
+/NSString+extras.m/1.1.2.1/Fri Oct 26 20:41:01 2007//TMOZILLA_1_8_BRANCH
+/README/1.1.2.6/Tue Jan 29 19:37:35 2008//TMOZILLA_1_8_BRANCH
+/RSS.h/1.1.2.1/Fri Oct 26 20:41:03 2007//TMOZILLA_1_8_BRANCH
+/RSS.m/1.1.2.3/Fri Nov 30 16:37:42 2007//TMOZILLA_1_8_BRANCH
+/Release Notes.rtf/1.1.2.1/Fri Oct 26 20:41:07 2007//TMOZILLA_1_8_BRANCH
+/SUAppcast.h/1.1.2.2/Sat Nov 24 18:04:49 2007//TMOZILLA_1_8_BRANCH
+/SUAppcast.m/1.1.2.1/Fri Oct 26 20:41:11 2007//TMOZILLA_1_8_BRANCH
+/SUAppcastItem.h/1.1.2.1/Fri Oct 26 20:41:13 2007//TMOZILLA_1_8_BRANCH
+/SUAppcastItem.m/1.1.2.2/Fri Jan 18 18:40:08 2008//TMOZILLA_1_8_BRANCH
+/SUAutomaticUpdateAlert.h/1.1.2.1/Fri Oct 26 20:41:18 2007//TMOZILLA_1_8_BRANCH
+/SUAutomaticUpdateAlert.m/1.1.2.1/Fri Oct 26 20:41:20 2007//TMOZILLA_1_8_BRANCH
+/SUConstants.h/1.1.2.1/Fri Oct 26 20:41:22 2007//TMOZILLA_1_8_BRANCH
+/SUConstants.m/1.1.2.1/Fri Oct 26 20:41:24 2007//TMOZILLA_1_8_BRANCH
+/SUStatusChecker.h/1.1.2.1/Fri Oct 26 20:41:35 2007//TMOZILLA_1_8_BRANCH
+/SUStatusChecker.m/1.1.2.1/Fri Oct 26 20:41:38 2007//TMOZILLA_1_8_BRANCH
+/SUStatusController.h/1.1.2.1/Fri Oct 26 20:41:40 2007//TMOZILLA_1_8_BRANCH
+/SUStatusController.m/1.1.2.1/Fri Oct 26 20:41:42 2007//TMOZILLA_1_8_BRANCH
+/SUUnarchiver.h/1.1.2.1/Fri Oct 26 20:41:44 2007//TMOZILLA_1_8_BRANCH
+/SUUnarchiver.m/1.1.2.1/Fri Oct 26 20:41:46 2007//TMOZILLA_1_8_BRANCH
+/SUUpdateAlert.h/1.1.2.1/Fri Oct 26 20:41:48 2007//TMOZILLA_1_8_BRANCH
+/SUUpdateAlert.m/1.1.2.1/Fri Oct 26 20:41:50 2007//TMOZILLA_1_8_BRANCH
+/SUUpdater+Authentication.m/1.1.2.1/Fri Oct 26 20:41:52 2007//TMOZILLA_1_8_BRANCH
+/SUUpdater+DSA.m/1.1.2.1/Fri Oct 26 20:41:54 2007//TMOZILLA_1_8_BRANCH
+/SUUpdater.h/1.1.2.1/Fri Oct 26 20:41:56 2007//TMOZILLA_1_8_BRANCH
+/SUUpdater.m/1.1.2.3/Tue Jan 29 19:37:35 2008//TMOZILLA_1_8_BRANCH
+/SUUtilities.h/1.1.2.1/Fri Oct 26 20:42:00 2007//TMOZILLA_1_8_BRANCH
+/SUUtilities.m/1.1.2.2/Fri Jan 18 18:40:08 2008//TMOZILLA_1_8_BRANCH
+/Sparkle.h/1.1.2.1/Fri Oct 26 20:42:05 2007//TMOZILLA_1_8_BRANCH
+/Sparkle.icns/1.1.2.1/Fri Oct 26 20:42:07 2007/-kb/TMOZILLA_1_8_BRANCH
+/Sparkle_Prefix.pch/1.1.2.1/Fri Oct 26 20:42:14 2007//TMOZILLA_1_8_BRANCH
+/md5.c/1.1.2.1/Fri Oct 26 20:48:32 2007//TMOZILLA_1_8_BRANCH
+/md5.h/1.1.2.1/Fri Oct 26 20:48:34 2007//TMOZILLA_1_8_BRANCH
+D/SUStatus.nib////
+D/Sparkle.xcodeproj////
+D/Test Application////
+D/ca.lproj////
+D/cs.lproj////
+D/cy.lproj////
+D/da.lproj////
+D/de.lproj////
+D/el.lproj////
+D/en.lproj////
+D/es.lproj////
+D/fi.lproj////
+D/fr.lproj////
+D/fr_ca.lproj////
+D/he.lproj////
+D/hu.lproj////
+D/id.lproj////
+D/is.lproj////
+D/it.lproj////
+D/ja.lproj////
+D/ko.lproj////
+D/nl.lproj////
+D/no.lproj////
+D/pl.lproj////
+D/pt.lproj////
+D/ru.lproj////
+D/se.lproj////
+D/sk.lproj////
+D/sv.lproj////
+D/th.lproj////
+D/tr.lproj////
+D/zh_CN.lproj////
+D/zh_TW.lproj////

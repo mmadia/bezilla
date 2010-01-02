@@ -1,0 +1,11 @@
+/.cvsignore/1.1/Sat Mar 27 00:03:51 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.38/Fri Mar 18 21:24:03 2005//TMOZILLA_1_8_BRANCH
+D/cleanup////
+D/packager////
+D/public////
+D/res////
+D/src////
+D/standalone////
+D/stub////
+D/test////
+D/wizard////

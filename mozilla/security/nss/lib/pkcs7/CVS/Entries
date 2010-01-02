@@ -1,0 +1,15 @@
+/Makefile/1.2/Sun Apr 25 15:03:13 2004//TNSS_3_12_3_1_RTM
+/certread.c/1.16/Tue Sep 30 04:00:47 2008//TNSS_3_12_3_1_RTM
+/config.mk/1.6/Fri Sep  2 01:24:56 2005//TNSS_3_12_3_1_RTM
+/manifest.mn/1.5/Wed Aug 15 15:30:00 2007//TNSS_3_12_3_1_RTM
+/p7common.c/1.7/Sun Feb  3 06:08:48 2008//TNSS_3_12_3_1_RTM
+/p7create.c/1.9/Sun Feb  3 06:08:48 2008//TNSS_3_12_3_1_RTM
+/p7decode.c/1.25/Mon Mar 10 00:01:26 2008//TNSS_3_12_3_1_RTM
+/p7encode.c/1.13/Mon Mar 10 00:01:26 2008//TNSS_3_12_3_1_RTM
+/p7local.c/1.13/Fri May 30 03:39:46 2008//TNSS_3_12_3_1_RTM
+/p7local.h/1.2/Sun Apr 25 15:03:13 2004//TNSS_3_12_3_1_RTM
+/pkcs7t.h/1.6/Sat Jun 14 14:20:24 2008//TNSS_3_12_3_1_RTM
+/secmime.c/1.4/Fri Jun 18 00:38:45 2004//TNSS_3_12_3_1_RTM
+/secmime.h/1.2/Sun Apr 25 15:03:13 2004//TNSS_3_12_3_1_RTM
+/secpkcs7.h/1.6/Sat Jun 14 14:20:25 2008//TNSS_3_12_3_1_RTM
+D

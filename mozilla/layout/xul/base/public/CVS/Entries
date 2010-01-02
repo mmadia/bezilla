@@ -1,0 +1,19 @@
+/.cvsignore/1.1/Fri Aug 20 00:11:29 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.21/Mon Apr 18 06:33:23 2005//TMOZILLA_1_8_BRANCH
+/nsIBoxLayoutManager.idl/1.3/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIBoxObject.idl/1.9/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIBoxPaintManager.idl/1.3/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIBrowserBoxObject.idl/1.5/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsICanvasBoxObject.idl/1.2/Wed Jan 26 02:08:34 2005//TMOZILLA_1_8_BRANCH
+/nsICanvasRenderingContext2D.idl/1.2/Wed Jan 26 02:08:34 2005//TMOZILLA_1_8_BRANCH
+/nsIEditorBoxObject.idl/1.7/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIIFrameBoxObject.idl/1.4/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIListBoxObject.idl/1.2.38.1/Tue Jan 31 02:28:32 2006//TMOZILLA_1_8_BRANCH
+/nsIMenuBoxObject.idl/1.6/Sat Jul  3 21:00:06 2004//TMOZILLA_1_8_BRANCH
+/nsIMenuFrame.h/1.14.14.1/Wed Aug 17 17:18:24 2005//TMOZILLA_1_8_BRANCH
+/nsIPopupBoxObject.idl/1.4/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIPopupSetFrame.h/1.11/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+/nsIScrollBoxObject.idl/1.5/Tue Apr 26 11:26:31 2005//TMOZILLA_1_8_BRANCH
+/nsIScrollbarMediator.h/1.4/Sat May 29 00:09:04 2004//TMOZILLA_1_8_BRANCH
+/nsPIBoxObject.h/1.6/Sun Apr 18 14:30:36 2004//TMOZILLA_1_8_BRANCH
+D

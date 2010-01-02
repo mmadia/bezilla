@@ -1,0 +1,13 @@
+/.cvsignore/1.1/Mon Dec 21 22:15:54 1998//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.30/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgNewsFolder.idl/1.15.2.1/Fri Dec 22 13:50:18 2006//TMOZILLA_1_8_BRANCH
+/nsIMsgOfflineNewsState.idl/1.10/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINNTPArticleList.idl/1.13/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINNTPNewsgroupList.idl/1.21/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINNTPNewsgroupPost.idl/1.14/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINNTPProtocol.idl/1.10/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINewsDownloadDialogArgs.idl/1.5/Wed Jul 20 11:49:44 2005//TMOZILLA_1_8_BRANCH
+/nsINntpIncomingServer.idl/1.27.2.1/Fri Jun 30 17:46:30 2006//TMOZILLA_1_8_BRANCH
+/nsINntpService.idl/1.34/Sat Apr 17 18:33:14 2004//TMOZILLA_1_8_BRANCH
+/nsINntpUrl.idl/1.17/Sat Nov  6 23:42:38 2004//TMOZILLA_1_8_BRANCH
+D

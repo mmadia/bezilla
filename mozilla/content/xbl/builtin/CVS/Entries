@@ -1,0 +1,10 @@
+/.cvsignore/1.1/Sat Feb 24 06:22:16 2001//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.17.4.1/Sun Jan 29 16:50:52 2006//TMOZILLA_1_8_BRANCH
+/browser-base.inc/1.2/Fri Dec 31 03:12:16 2004//TMOZILLA_1_8_BRANCH
+/editor-base.inc/1.2/Mon Sep 13 22:35:39 2004//TMOZILLA_1_8_BRANCH
+/input-fields-base.inc/1.2/Mon Sep 13 22:35:39 2004//TMOZILLA_1_8_BRANCH
+/textareas-base.inc/1.2/Mon Sep 13 22:35:39 2004//TMOZILLA_1_8_BRANCH
+D/gtk2////
+D/mac////
+D/unix////
+D/win////

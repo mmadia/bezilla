@@ -1,0 +1,16 @@
+/.cvsignore/1.1/Sat Mar 27 00:03:53 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.23/Wed Dec  1 05:59:03 2004//TMOZILLA_1_8_BRANCH
+/nsIDOMInstallTriggerGlobal.h/1.16/Tue Sep 14 00:56:13 2004//TMOZILLA_1_8_BRANCH
+/nsIDOMInstallVersion.h/1.9/Sat Apr 17 14:37:27 2004//TMOZILLA_1_8_BRANCH
+/nsISoftwareUpdate.h/1.38/Wed Apr  6 20:13:32 2005//TMOZILLA_1_8_BRANCH
+/nsIUpdateNotification.idl/1.2/Sat Apr 17 14:37:27 2004//TMOZILLA_1_8_BRANCH
+/nsIXPIDialogService.idl/1.2/Tue Dec 17 00:59:25 2002//TMOZILLA_1_8_BRANCH
+/nsIXPINotifier.idl/1.8/Sat Apr 17 14:37:27 2004//TMOZILLA_1_8_BRANCH
+/nsIXPIProgressDialog.idl/1.2/Sun Jan  9 20:43:35 2005//TMOZILLA_1_8_BRANCH
+/nsIXPInstallManager.idl/1.2.18.1/Fri Aug 26 06:41:51 2005//TMOZILLA_1_8_BRANCH
+/nsPICertNotification.idl/1.1/Tue Dec 17 00:59:25 2002//TMOZILLA_1_8_BRANCH
+/nsPIXPIProxy.idl/1.5/Sun Feb  6 12:05:02 2005//TMOZILLA_1_8_BRANCH
+/nsPIXPIStubHook.idl/1.7/Sat Apr 17 14:37:27 2004//TMOZILLA_1_8_BRANCH
+/nsSoftwareUpdateIIDs.h/1.8/Wed Dec  1 05:59:03 2004//TMOZILLA_1_8_BRANCH
+/xpinstall.js/1.5/Mon Jun  7 14:46:15 2004//TMOZILLA_1_8_BRANCH
+D

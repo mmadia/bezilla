@@ -1,0 +1,9 @@
+/.cvsignore/1.1/Thu Apr 15 22:56:12 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.13/Sat Apr 17 18:29:41 2004//TMOZILLA_1_8_BRANCH
+D/build////
+D/defaults////
+D/dirserviceprovider////
+D/pref-migrator////
+D/public////
+D/resources////
+D/src////

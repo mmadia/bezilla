@@ -1,0 +1,9 @@
+/.cvsignore/1.1/Thu Apr 15 22:56:15 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.19/Tue Jun 28 21:07:42 2005//TMOZILLA_1_8_BRANCH
+/nsIProfile.idl/1.32/Sun Sep  5 13:29:58 2004//TMOZILLA_1_8_BRANCH
+/nsIProfileChangeStatus.idl/1.10/Sun Sep  5 13:29:58 2004//TMOZILLA_1_8_BRANCH
+/nsIProfileInternal.idl/1.14/Sun Sep  5 13:29:58 2004//TMOZILLA_1_8_BRANCH
+/nsIProfileStartupListener.idl/1.5/Sun Sep  5 13:29:58 2004//TMOZILLA_1_8_BRANCH
+/nsIProfileUnlocker.idl/1.1/Tue Mar 15 20:01:11 2005//TMOZILLA_1_8_BRANCH
+/nsISessionRoaming.idl/1.1/Mon Nov 17 08:20:17 2003//TMOZILLA_1_8_BRANCH
+D

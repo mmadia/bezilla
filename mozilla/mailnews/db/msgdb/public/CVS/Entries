@@ -1,0 +1,16 @@
+/.cvsignore/1.1/Sat Feb  6 02:49:31 1999//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.23/Sat Apr 17 18:32:24 2004//TMOZILLA_1_8_BRANCH
+/nsDBFolderInfo.h/1.38/Sat Apr 17 18:32:24 2004//TMOZILLA_1_8_BRANCH
+/nsIDBChangeAnnouncer.idl/1.8/Tue Aug 31 20:53:02 2004//TMOZILLA_1_8_BRANCH
+/nsIDBChangeListener.idl/1.9/Tue Aug 31 20:53:02 2004//TMOZILLA_1_8_BRANCH
+/nsIDBFolderInfo.idl/1.25/Wed Sep 15 21:04:55 2004//TMOZILLA_1_8_BRANCH
+/nsIMsgDatabase.idl/1.45.4.4/Thu Dec  7 18:31:39 2006//TMOZILLA_1_8_BRANCH
+/nsIMsgOfflineImapOperation.idl/1.5.28.2/Thu Jan 11 15:03:52 2007//TMOZILLA_1_8_BRANCH
+/nsINewsDatabase.idl/1.4/Sat Apr 17 18:32:24 2004//TMOZILLA_1_8_BRANCH
+/nsImapMailDatabase.h/1.22.22.1/Sun Jun 18 15:12:46 2006//TMOZILLA_1_8_BRANCH
+/nsMailDatabase.h/1.35.12.1/Sun Jun 18 15:12:46 2006//TMOZILLA_1_8_BRANCH
+/nsMsgDatabase.h/1.118.4.1/Wed Aug  2 22:06:10 2006//TMOZILLA_1_8_BRANCH
+/nsMsgHdr.h/1.54/Fri Dec  3 20:16:56 2004//TMOZILLA_1_8_BRANCH
+/nsMsgThread.h/1.22/Sat Apr 17 18:32:24 2004//TMOZILLA_1_8_BRANCH
+/nsNewsDatabase.h/1.37.12.1/Thu Dec  7 18:31:39 2006//TMOZILLA_1_8_BRANCH
+D

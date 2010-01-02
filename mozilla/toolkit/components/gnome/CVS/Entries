@@ -1,0 +1,10 @@
+/.cvsignore/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.4.8.2/Tue Aug  8 20:23:13 2006//TMOZILLA_1_8_BRANCH
+/nsGConfService.cpp/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsGConfService.h/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsGnomeModule.cpp/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsGnomeVFSService.cpp/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsGnomeVFSService.h/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsIGConfService.idl/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+/nsIGnomeVFSService.idl/1.2/Thu Jul 15 22:51:19 2004//TMOZILLA_1_8_BRANCH
+D

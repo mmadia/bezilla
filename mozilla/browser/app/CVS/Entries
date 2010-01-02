@@ -1,0 +1,22 @@
+/.cvsignore/1.2/Sun Mar 30 23:36:45 2003//TMOZILLA_1_8_BRANCH
+/Makefile.in/1.85.2.12/Mon May 12 18:25:50 2008//TMOZILLA_1_8_BRANCH
+/README.txt/1.1/Mon Aug  9 20:01:04 2004//TMOZILLA_1_8_BRANCH
+/apprunner-beos.rsrc/1.1.4.2/Sun Nov 11 13:13:37 2007//TMOZILLA_1_8_BRANCH
+/default.xpm/1.2/Wed Mar 17 21:31:25 2004//TMOZILLA_1_8_BRANCH
+/document-os2.ico/1.1/Wed May  5 13:38:12 2004/-kb/TMOZILLA_1_8_BRANCH
+/document.ico/1.2/Tue Mar 16 19:26:55 2004/-kb/TMOZILLA_1_8_BRANCH
+/document.png/1.2/Thu Jul 15 22:51:15 2004/-kb/TMOZILLA_1_8_BRANCH
+/firefox-branding.js/1.1.2.2/Tue Sep 12 15:50:19 2006//TMOZILLA_1_8_BRANCH
+/firefox-os2.ico/1.1/Wed May  5 13:37:18 2004/-kb/TMOZILLA_1_8_BRANCH
+/firefox.exe.manifest/1.2.38.2/Thu Aug 30 00:41:18 2007//TMOZILLA_1_8_BRANCH
+/firefox.ico/1.2/Tue Mar 16 19:26:55 2004/-kb/TMOZILLA_1_8_BRANCH
+/module.ver/1.11.2.33/Tue Mar  3 00:14:22 2009//TMOZILLA_1_8_BRANCH
+/mozicon128.png/1.1/Sat Jun 18 12:32:47 2005/-kb/TMOZILLA_1_8_BRANCH
+/mozicon16.xpm/1.2/Wed Mar 17 21:31:25 2004//TMOZILLA_1_8_BRANCH
+/mozicon50.xpm/1.2/Wed Mar 17 21:31:25 2004//TMOZILLA_1_8_BRANCH
+/mozilla.in/1.12.8.2/Thu Nov  8 08:53:19 2007//TMOZILLA_1_8_BRANCH
+/nsBrowserApp.cpp/1.31.2.5/Mon Dec 31 21:14:43 2007//TMOZILLA_1_8_BRANCH
+/splash.rc/1.36.10.1/Mon May 15 17:15:56 2006//TMOZILLA_1_8_BRANCH
+/splashos2.rc/1.9/Tue Mar 15 14:33:10 2005//TMOZILLA_1_8_BRANCH
+D/macbuild////
+D/profile////
