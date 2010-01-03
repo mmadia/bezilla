@@ -1,7 +1,6 @@
 /.cvsignore/1.1/Tue Jun 20 20:43:54 2000//TMOZILLA_1_8_BRANCH
 /Makefile.in/1.60.6.1/Thu Jul  6 20:30:09 2006//TMOZILLA_1_8_BRANCH
 /nsCExternalHandlerService.idl/1.6/Fri May 21 00:28:52 2004//TMOZILLA_1_8_BRANCH
-/nsExternalHelperAppService.cpp/1.290.4.20/Sat Jun  7 08:54:50 2008//TMOZILLA_1_8_BRANCH
 /nsExternalHelperAppService.h/1.73.8.3/Tue Aug  8 18:56:35 2006//TMOZILLA_1_8_BRANCH
 /nsExternalProtocolHandler.cpp/1.30.18.1/Sat Aug 13 19:34:01 2005//TMOZILLA_1_8_BRANCH
 /nsExternalProtocolHandler.h/1.6/Fri May 21 00:28:52 2004//TMOZILLA_1_8_BRANCH
@@ -17,3 +16,4 @@ D/mac////
 D/os2////
 D/unix////
 D/win////
+/nsExternalHelperAppService.cpp/1.290.4.21/Sun Jan  3 02:50:29 2010//TMOZILLA_1_8_BRANCH
