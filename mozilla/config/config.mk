@@ -110,9 +110,6 @@ else
 LD		:= $(CC)
 endif
 endif
-ifeq ($(OS_ARCH),BeOS)
-BEOS_ADDON_WORKAROUND	= 1
-endif
 
 #
 # Strip off the excessively long version numbers on these platforms,
