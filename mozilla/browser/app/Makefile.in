@@ -152,6 +152,9 @@ endif
 endif
 
 ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
+ifeq ($(OS_ARCH),Haiku)
+BEOS_PROGRAM_RDEF = $(srcdir)/apprunner-beos.rdef
+endif
 BEOS_PROGRAM_RESOURCE = $(srcdir)/apprunner-beos.rsrc
 ifdef BUILD_STATIC_LIBS
 OS_LIBS += -ltracker -lgame

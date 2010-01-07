@@ -828,6 +828,9 @@ ifdef MOZ_POST_PROGRAM_COMMAND
 	$(MOZ_POST_PROGRAM_COMMAND) $@
 endif
 ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
+ifdef BEOS_PROGRAM_RDEF
+	rc -o $(BEOS_PROGRAM_RESOURCE) $(BEOS_PROGRAM_RDEF)
+endif
 ifdef BEOS_PROGRAM_RESOURCE
 	xres -o $@ $(BEOS_PROGRAM_RESOURCE)
 	mimeset $@
