@@ -83,6 +83,11 @@
 /* freebl headers */
 #include "shsign.h"
 
+#ifdef XP_BEOS
+#undef true 
+#undef false
+#endif
+
 #define NUM_ELEM(array) (sizeof(array)/sizeof(array[0]))
 CK_BBOOL true = CK_TRUE;
 CK_BBOOL false = CK_FALSE;
