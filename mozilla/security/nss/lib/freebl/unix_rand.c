@@ -669,7 +669,7 @@ GetHighResClock(void *buf, size_t maxbytes)
 #endif /* VMS */
 
 #ifdef BEOS
-#include <be/kernel/OS.h>
+#include <kernel/OS.h>
 
 static size_t
 GetHighResClock(void *buf, size_t maxbytes)

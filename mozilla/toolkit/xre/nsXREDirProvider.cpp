@@ -76,7 +76,7 @@
 #include "nsILocalFileMac.h"
 #endif
 #ifdef XP_BEOS
-#include <be/kernel/image.h>
+#include <kernel/image.h>
 #include <FindDirectory.h>
 #endif
 #ifdef XP_UNIX

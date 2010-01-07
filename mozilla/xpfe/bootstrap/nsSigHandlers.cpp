@@ -60,7 +60,8 @@
 #endif
 
 #ifdef XP_BEOS
-#include <be/app/Application.h>
+#include <stdlib.h>
+#include <app/Application.h>
 #include <string.h>
 #include "nsCOMPtr.h"
 #include "nsIServiceManager.h"
