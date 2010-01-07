@@ -1,0 +1,36 @@
+This directory contains some miscellaneous patches.
+Some are applied, some aren't.
+
+Changeset Applied	Patch Name:
+31:040a808adbf9		r08-misc.patch				
+32:b7a4116254a4		r11-bookmarks-v2.patch
+33:70f270c777cf		r12-releasenotes.patch
+N/A					rTTc-bezillaname.patch
+N/A					rZZ-reorder-AppName.diff
+
+
+r08-misc.patch 
+	This contains numerous bits that I do not recall.
+	
+	
+r11-bookmarks-v2.patch
+	Change the default bookmarks to be Haiku-centric.
+	
+	
+r12-releasenotes.patch
+	Remove the "firstrun" tab.  Replace releasenotes with about:buildconfig
+	
+	
+rTTc-bezillaname.patch
+	Not Applied.
+	This will rename <app>-bin to BeZilla<product>
+	However, the makefiles & related files for packaging dist/bin are not updated.
+	As a result, `make -C browser/installer` will create an archive that misses the BeZillaBrower binary.
+	
+	
+rZZ-reorder-AppName.diff
+	Not Applied.
+	This is patch includes the bezillaname.patch
+	It also includes the non-functioning re-ordering patch.
+	The re-ordering patch is responsible for installing *.so in the correct sub-folder (lib/ or add-ons/)
+

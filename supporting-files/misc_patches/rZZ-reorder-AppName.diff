@@ -1,0 +1,622 @@
+? mozilla/browser/app/apprunner-beos.rdef
+? mozilla/browser/installer/beos
+? mozilla/calendar/sunbird/app/apprunner-beos.rdef
+? mozilla/calendar/sunbird/app/apprunner-beos.rsrc
+? mozilla/mail/app/apprunner-beos.rdef
+? mozilla/xpfe/bootstrap/apprunner-beos.rdef
+Index: mozilla/configure.in
+===================================================================
+RCS file: /cvsroot/mozilla/configure.in,v
+retrieving revision 1.1503.2.112
+diff -u -8 -p -w -r1.1503.2.112 configure.in
+--- mozilla/configure.in	19 Oct 2008 16:14:06 -0000	1.1503.2.112
++++ mozilla/configure.in	8 Jul 2009 21:49:32 -0000
+@@ -4300,31 +4318,31 @@ MOZ_ARG_ENABLE_STRING(application,
+                             xulrunner
+                             macbrowser (Camino)
+                             standalone (use this for standalone
+                               xpcom/xpconnect or to manually drive a build)],
+ [ MOZ_BUILD_APP=$enableval ] )
+ 
+ case "$MOZ_BUILD_APP" in
+ suite)
+-  MOZ_APP_NAME=seamonkey
+-  MOZ_APP_DISPLAYNAME=SeaMonkey
++  MOZ_APP_NAME=BeZillaSuite
++  MOZ_APP_DISPLAYNAME=BeZillaSuite
+   MOZ_MAIL_NEWS=1
+   MOZ_LDAP_XPCOM=1
+   MOZ_COMPOSER=1
+   MOZ_SUITE=1
+   MOZ_PROFILESHARING=
+   MOZ_APP_VERSION=$SEAMONKEY_VERSION
+   MOZ_EXTENSIONS_DEFAULT=" cookie wallet content-packs xml-rpc xmlextras help p3p pref transformiix venkman inspector irc universalchardet typeaheadfind webservices spellcheck gnomevfs auth sroaming permissions reporter"
+   AC_DEFINE(MOZ_SUITE)
+   ;;
+ 
+ browser)
+-  MOZ_APP_NAME=firefox
+-  MOZ_APP_DISPLAYNAME=BonEcho
++  MOZ_APP_NAME=BeZillaBrowser
++  MOZ_APP_DISPLAYNAME=BeZillaBrowser
+   MOZ_XUL_APP=1
+   MOZ_PHOENIX=1
+   MOZ_SAFE_BROWSING=1
+   MOZ_APP_VERSION=$FIREFOX_VERSION
+   MOZ_EXTENSIONS_DEFAULT=" cookie xml-rpc xmlextras pref transformiix universalchardet webservices inspector gnomevfs auth permissions reporter spellcheck"
+   AC_DEFINE(MOZ_PHOENIX)
+   ;;
+ 
+@@ -4375,18 +4393,18 @@ minimo)
+   NECKO_SMALL_BUFFERS=1
+   NS_DISABLE_LOGGING=1
+   NS_PRINTING=
+   MOZ_WEBSERVICES=
+   JS_STATIC_BUILD=1
+   ;;
+ 
+ mail)
+-  MOZ_APP_NAME=thunderbird
+-  MOZ_APP_DISPLAYNAME=Thunderbird
++  MOZ_APP_NAME=BeZillaMailNews
++  MOZ_APP_DISPLAYNAME=BeZillaMailNews
+   MOZ_XUL_APP=1
+   MOZ_THUNDERBIRD=1
+   MOZ_MATHML=
+   MOZ_NO_ACTIVEX_SUPPORT=1
+   MOZ_ACTIVEX_SCRIPTING_SUPPORT=
+   ENABLE_TESTS=
+   MOZ_OJI=
+   MOZ_PLUGINS=
+@@ -4410,18 +4428,18 @@ composer)
+   MOZ_XUL_APP=1
+   MOZ_STANDALONE_COMPOSER=1
+   MOZ_COMPOSER=1
+   MOZ_APP_VERSION=0.17+
+   AC_DEFINE(MOZ_STANDALONE_COMPOSER)
+   ;;
+ 
+ calendar)
+-  MOZ_APP_NAME=sunbird
+-  MOZ_APP_DISPLAYNAME=Calendar
++  MOZ_APP_NAME=BeZillaCalendar
++  MOZ_APP_DISPLAYNAME=BeZillaCalendar
+   MOZ_XUL_APP=1
+   MOZ_SUNBIRD=1
+   MOZ_CALENDAR=1
+   MOZ_APP_VERSION=$SUNBIRD_VERSION
+   MOZ_PLAINTEXT_EDITOR_ONLY=1
+   NECKO_PROTOCOLS_DEFAULT="about http ftp file res viewsource"
+   MOZ_NO_ACTIVEX_SUPPORT=1
+   MOZ_ACTIVEX_SCRIPTING_SUPPORT=
+Index: mozilla/browser/app/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/browser/app/Makefile.in,v
+retrieving revision 1.85.2.12
+diff -u -8 -p -w -r1.85.2.12 Makefile.in
+--- mozilla/browser/app/Makefile.in	12 May 2008 18:25:50 -0000	1.85.2.12
++++ mozilla/browser/app/Makefile.in	8 Jul 2009 21:49:35 -0000
+@@ -59,18 +59,22 @@ endif
+ # hardcode en-US for the moment
+ AB_CD = en-US
+ 
+ DEFINES += -DAB_CD=$(AB_CD)
+ 
+ ifeq ($(USE_SHORT_LIBNAME), 1)
+ PROGRAM = firefox$(BIN_SUFFIX)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++PROGRAM = BeZillaBrowser$(BIN_SUFFIX)
++else
+ PROGRAM = firefox-bin$(BIN_SUFFIX)
+ endif
++endif
+ 
+ REQUIRES = \
+ 	xpcom \
+ 	$(NULL)
+ 
+ CPPSRCS = nsBrowserApp.cpp
+ 
+ LOCAL_INCLUDES += -I$(topsrcdir)/toolkit/xre
+@@ -224,17 +231,17 @@ $(EXE_DEF_FILE):
+ 	@echo 	WinQueryProperty		= PMMERGE.5450 >>$(EXE_DEF_FILE)
+ 	@echo 	WinRemoveProperty		= PMMERGE.5451 >>$(EXE_DEF_FILE)
+ 	@echo 	WinSetProperty			= PMMERGE.5452 >>$(EXE_DEF_FILE)
+ 
+ LDFLAGS += -Zlinker /NOE
+ endif
+ endif
+ 
+-ifneq (,$(filter-out OS2 WINNT,$(OS_ARCH)))
++ifneq (,$(filter-out OS2 WINNT BeOS Haiku,$(OS_ARCH)))
+ 
+ firefox:: mozilla.in Makefile.in Makefile $(DEPTH)/config/autoconf.mk
+ 	cat $< | sed -e "s|%MOZAPPDIR%|$(mozappdir)|" \
+                 -e "s|%MOZ_USER_DIR%|.mozilla/firefox|" \
+ 		-e "s|%MREDIR%|$(mredir)|" > $@
+ 	chmod +x $@
+ 
+ libs:: firefox
+Index: mozilla/browser/installer/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/browser/installer/Makefile.in,v
+retrieving revision 1.19.4.4
+diff -u -8 -p -w -r1.19.4.4 Makefile.in
+--- mozilla/browser/installer/Makefile.in	6 Jun 2006 15:35:00 -0000	1.19.4.4
++++ mozilla/browser/installer/Makefile.in	8 Jul 2009 21:49:39 -0000
+@@ -57,19 +57,23 @@ include $(topsrcdir)/config/rules.mk
+ 
+ MOZ_PKG_REMOVALS = $(srcdir)/removed-files.in
+ 
+ ifdef BUILD_STATIC_LIBS
+ ifeq (WINNT,$(OS_ARCH))
+ MOZ_PKG_MANIFEST_P = $(srcdir)/windows/packages-static
+ else
+ ifneq (,$(filter-out OS2 Darwin,$(OS_ARCH)))
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++MOZ_PKG_MANIFEST_P = $(srcdir)/beos/packages-static
++else
+ MOZ_PKG_MANIFEST_P = $(srcdir)/unix/packages-static
+ endif
+ endif
++endif
+ else
+ $(error you need a "--enable-static --disable-shared" build to create an installer)
+ endif
+ 
+ MOZ_NONLOCALIZED_PKG_LIST = \
+ 	xpcom \
+ 	browser \
+ 	$(NULL)
+Index: mozilla/calendar/sunbird/app/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/calendar/sunbird/app/Makefile.in,v
+retrieving revision 1.21.2.23
+diff -u -8 -p -w -r1.21.2.23 Makefile.in
+--- mozilla/calendar/sunbird/app/Makefile.in	4 May 2008 01:32:07 -0000	1.21.2.23
++++ mozilla/calendar/sunbird/app/Makefile.in	8 Jul 2009 21:50:01 -0000
+@@ -79,18 +79,22 @@ include $(topsrcdir)/config/rules.mk
+ else
+ # Build a binary bootstrapping with XRE_main
+ 
+ MOZILLA_INTERNAL_API = 1
+ 
+ ifeq ($(USE_SHORT_LIBNAME), 1)
+ PROGRAM = sunbird$(BIN_SUFFIX)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++PROGRAM = BeZillaCalendar$(BIN_SUFFIX)
++else
+ PROGRAM = sunbird-bin$(BIN_SUFFIX)
+ endif
++endif
+ 
+ REQUIRES = \
+ 	appshell \
+ 	string \
+ 	xpcom \
+ 	xulapp \
+ 	$(NULL)
+ 
+@@ -261,17 +269,17 @@ $(EXE_DEF_FILE):
+ 	@echo 	WinQueryProperty		= PMMERGE.5450 >>$(EXE_DEF_FILE)
+ 	@echo 	WinRemoveProperty		= PMMERGE.5451 >>$(EXE_DEF_FILE)
+ 	@echo 	WinSetProperty			= PMMERGE.5452 >>$(EXE_DEF_FILE)
+ 
+ LDFLAGS += -Zlinker /NOE
+ endif
+ endif
+ 
+-ifneq (,$(filter-out OS2 WINNT,$(OS_ARCH)))
++ifneq (,$(filter-out OS2 WINNT BeOS Haiku,$(OS_ARCH)))
+ 
+ sunbird:: mozilla.in Makefile.in Makefile $(DEPTH)/config/autoconf.mk
+ 	cat $< | sed -e "s|%MOZAPPDIR%|$(mozappdir)|" \
+                 -e "s|%MOZ_USER_DIR%|.mozilla/sunbird|" \
+ 		-e "s|%MREDIR%|$(mredir)|" > $@
+ 	chmod +x $@
+ 
+ libs:: sunbird
+Index: mozilla/config/rules.mk
+===================================================================
+RCS file: /cvsroot/mozilla/config/rules.mk,v
+retrieving revision 3.487.2.9
+diff -u -8 -p -w -r3.487.2.9 rules.mk
+--- mozilla/config/rules.mk	18 Dec 2007 21:33:08 -0000	3.487.2.9
++++ mozilla/config/rules.mk	8 Jul 2009 21:50:19 -0000
+@@ -672,19 +672,23 @@ ifdef BEOS_ADDON_WORKAROUND
+ 	( cd $(FINAL_TARGET)/components && $(CC) -nostart -o $(SHARED_LIBRARY).stub $(SHARED_LIBRARY) )
+ endif
+ else # ! IS_COMPONENT
+ ifneq (,$(filter OS2 WINNT WINCE,$(OS_ARCH)))
+ 	$(INSTALL) $(IFLAGS2) $(IMPORT_LIBRARY) $(DIST)/lib
+ else
+ 	$(INSTALL) $(IFLAGS2) $(SHARED_LIBRARY) $(DIST)/lib
+ endif
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) $(IFLAGS2) $(SHARED_LIBRARY) $(FINAL_TARGET)/lib
++else
+ 	$(INSTALL) $(IFLAGS2) $(SHARED_LIBRARY) $(FINAL_TARGET)
++endif
+ ifdef BEOS_ADDON_WORKAROUND
+-	( cd $(FINAL_TARGET) && $(CC) -nostart -o $(SHARED_LIBRARY).stub $(SHARED_LIBRARY) )
++	( cd $(FINAL_TARGET)/lib && $(CC) -nostart -o $(SHARED_LIBRARY).stub $(SHARED_LIBRARY) )
+ endif
+ endif # IS_COMPONENT
+ endif # SHARED_LIBRARY
+ ifdef PROGRAM
+ 	$(INSTALL) $(IFLAGS2) $(PROGRAM) $(FINAL_TARGET)
+ endif
+ ifdef SIMPLE_PROGRAMS
+ 	$(INSTALL) $(IFLAGS2) $(SIMPLE_PROGRAMS) $(FINAL_TARGET)
+Index: mozilla/directory/c-sdk/ldap/libraries/libldap/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/directory/c-sdk/ldap/libraries/libldap/Makefile.in,v
+retrieving revision 5.0.2.21.4.1
+diff -u -8 -p -w -r5.0.2.21.4.1 Makefile.in
+--- mozilla/directory/c-sdk/ldap/libraries/libldap/Makefile.in	3 Feb 2006 14:44:42 -0000	5.0.2.21.4.1
++++ mozilla/directory/c-sdk/ldap/libraries/libldap/Makefile.in	8 Jul 2009 21:50:42 -0000
+@@ -336,15 +336,19 @@ ifeq ($(LD),link)
+ EXPDEPS2 = $(DLLLDAP)
+ endif
+ endif
+ 
+ export::	$(EXPDEPS2)
+ ifdef MKSHLIB
+ 	$(INSTALL) -m 444 $(LIBLDAP) $(dist_libdir)
+ 	$(INSTALL) -m 444 $(DLLLDAP) $(dist_libdir)
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 444 $(DLLLDAP) $(dist_bindir)/lib
++else	
+ 	$(INSTALL) -m 444 $(DLLLDAP) $(dist_bindir)
+ endif
++endif
+ ifeq ($(OS_ARCH), WINNT)
+ 	$(INSTALL) -m 444 $(LIBLDAP) $(dist_libdir)
+ 	$(INSTALL) -m 444 $(DLLLDAP) $(dist_libdir)
+ endif
+ 	$(INSTALL) -m 444 $(ETCFILES) $(ETCDIR)
+Index: mozilla/directory/c-sdk/ldap/libraries/libprldap/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/directory/c-sdk/ldap/libraries/libprldap/Makefile.in,v
+retrieving revision 5.0.2.18.4.1
+diff -u -8 -p -w -r5.0.2.18.4.1 Makefile.in
+--- mozilla/directory/c-sdk/ldap/libraries/libprldap/Makefile.in	3 Feb 2006 14:44:49 -0000	5.0.2.18.4.1
++++ mozilla/directory/c-sdk/ldap/libraries/libprldap/Makefile.in	8 Jul 2009 21:50:43 -0000
+@@ -250,10 +251,14 @@ ifeq ($(OS_ARCH), WINNT)
+ 	$(INSTALL) -m 555 $(LIBPRLDAP) $(dist_libdir)
+ 	$(INSTALL) -m 555 $(DLLPRLDAP) $(dist_libdir)
+ endif
+ ifeq ($(OS_ARCH),OS2)
+ 	$(INSTALL) -m 444 $(LIBPRLDAP) $(dist_libdir)
+ endif
+ ifdef MKSHLIB
+ 	$(INSTALL) -m 555 $(DLLPRLDAP) $(dist_libdir)
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 444 $(DLLPRLDAP) $(dist_bindir)/lib
++else	
+ 	$(INSTALL) -m 444 $(DLLPRLDAP) $(dist_bindir)
+ endif
++endif
+Index: mozilla/mail/app/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/mail/app/Makefile.in,v
+retrieving revision 1.46.2.10
+diff -u -8 -p -w -r1.46.2.10 Makefile.in
+--- mozilla/mail/app/Makefile.in	22 Oct 2008 21:04:53 -0000	1.46.2.10
++++ mozilla/mail/app/Makefile.in	8 Jul 2009 21:52:18 -0000
+@@ -57,18 +57,22 @@ PREF_JS_EXPORTS = \
+ 
+ ifndef MOZ_BRANDING_DIRECTORY
+ PREF_JS_EXPORTS += $(srcdir)/thunderbird-branding.js
+ endif
+ 
+ ifeq ($(USE_SHORT_LIBNAME), 1)
+ PROGRAM = thunderbird$(BIN_SUFFIX)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++PROGRAM = BeZillaMailNews$(BIN_SUFFIX)
++else
+ PROGRAM = thunderbird-bin$(BIN_SUFFIX)
+ endif
++endif
+ 
+ REQUIRES = \
+ 	xpcom \
+ 	$(NULL)
+ 
+ LOCAL_INCLUDES = -I$(topsrcdir)/toolkit/xre
+ 
+ CPPSRCS = nsMailApp.cpp
+@@ -257,17 +264,17 @@ ifneq (,$(filter gtk gtk2,$(MOZ_WIDGET_T
+ 	cp $(srcdir)/mozicon16.xpm $(DIST)/branding/mozicon16.xpm
+ 	cp $(srcdir)/mozicon50.xpm $(DIST)/branding/mozicon50.xpm
+ endif
+ ifeq ($(MOZ_WIDGET_TOOLKIT),gtk2)
+ 	cp $(srcdir)/default.xpm   $(DIST)/branding/default.xpm	
+ endif
+ endif
+ 
+-ifneq (,$(filter-out OS2 WINNT Darwin,$(OS_ARCH)))
++ifneq (,$(filter-out OS2 WINNT Darwin BeOS Haiku,$(OS_ARCH)))
+ thunderbird:: mozilla.in Makefile.in Makefile $(DEPTH)/config/autoconf.mk
+ 	cat $< | sed -e "s|%MOZAPPDIR%|$(mozappdir)|" \
+                 -e "s|%MOZ_USER_DIR%|.thunderbird|" \
+ 		-e "s|%MREDIR%|$(mredir)|" \
+  		-e "s|%MOZ_APP_DISPLAYNAME%|$(MOZ_APP_DISPLAYNAME)|" > $@
+ 	chmod +x $@
+ 
+ libs:: thunderbird
+Index: mozilla/nsprpub/lib/ds/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/lib/ds/Makefile.in,v
+retrieving revision 1.35.2.1
+diff -u -8 -p -w -r1.35.2.1 Makefile.in
+--- mozilla/nsprpub/lib/ds/Makefile.in	19 Oct 2006 00:39:28 -0000	1.35.2.1
++++ mozilla/nsprpub/lib/ds/Makefile.in	8 Jul 2009 21:52:59 -0000
+@@ -180,18 +180,22 @@ endif
+ export:: $(TARGETS)
+ 	$(INSTALL) -m 444 $(HEADERS) $(dist_includedir)
+ 	$(INSTALL) -m 444 $(TARGETS) $(dist_libdir)
+ ifdef SHARED_LIBRARY
+ ifeq ($(OS_ARCH),HP-UX)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_libdir)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_bindir)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)/lib
++else
+ 	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)
+ endif
+ endif
++endif
+ ifeq ($(MOZ_BITS),16)
+ 	$(INSTALL) -m 444 $(HEADERS) $(MOZ_INCL)
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/lib
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/bin
+ endif
+ 
+ 
+Index: mozilla/nsprpub/lib/libc/src/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/lib/libc/src/Makefile.in,v
+retrieving revision 1.31.2.1
+diff -u -8 -p -w -r1.31.2.1 Makefile.in
+--- mozilla/nsprpub/lib/libc/src/Makefile.in	19 Oct 2006 00:39:28 -0000	1.31.2.1
++++ mozilla/nsprpub/lib/libc/src/Makefile.in	8 Jul 2009 21:52:59 -0000
+@@ -182,16 +182,20 @@ endif
+ 
+ export:: $(TARGETS)
+ 	$(INSTALL) -m 444 $(TARGETS) $(dist_libdir)
+ ifdef SHARED_LIBRARY
+ ifeq ($(OS_ARCH),HP-UX)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_libdir)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_bindir)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)/lib
++else
+ 	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)
+ endif
+ endif
++endif
+ ifeq ($(MOZ_BITS),16)
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/lib
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/bin
+ endif
+ 
+
+Index: mozilla/nsprpub/pr/src/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/nsprpub/pr/src/Makefile.in,v
+retrieving revision 1.40.2.2
+diff -u -8 -p -w -r1.40.2.2 Makefile.in
+--- mozilla/nsprpub/pr/src/Makefile.in	19 Oct 2006 00:39:28 -0000	1.40.2.2
++++ mozilla/nsprpub/pr/src/Makefile.in	8 Jul 2009 21:53:13 -0000
+@@ -397,19 +394,23 @@ endif
+ 
+ export:: $(TARGETS)
+ 	$(INSTALL) -m 444 $(TARGETS) $(dist_libdir)
+ ifdef SHARED_LIBRARY
+ ifeq ($(OS_ARCH),HP-UX)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_libdir)
+ 	$(INSTALL) -m 755 $(SHARED_LIBRARY) $(dist_bindir)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)/lib
++else 
+ 	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(dist_bindir)
+ endif
+ endif
++endif
+ ifeq ($(MOZ_BITS),16)
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/lib
+ 	$(INSTALL) -m 444 $(TARGETS) $(MOZ_DIST)/bin
+ endif
+ 
+ ifeq ($(BUILD_AIX_RTL_LIBC),1)
+ $(AIX_RTL_LIBC): /usr/ccs/lib/libc.a
+ 	rtl_enable -o $@ $<
+
+Index: mozilla/security/manager/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/security/manager/Makefile.in,v
+retrieving revision 1.57.4.6
+diff -u -8 -p -w -r1.57.4.6 Makefile.in
+--- mozilla/security/manager/Makefile.in	23 May 2008 23:45:26 -0000	1.57.4.6
++++ mozilla/security/manager/Makefile.in	8 Jul 2009 21:53:48 -0000
+@@ -257,30 +257,45 @@ ifndef MOZ_NATIVE_NSS
+ 	$(MAKE) -C $(topsrcdir)/security/nss/lib/util $(DEFAULT_GMAKE_FLAGS) clean
+ 	# In NSS 3.11.8-3.11.9, lib/ssl/derive.c includes cmd/lib/secutil.h.
+ 	$(MAKE) -C $(topsrcdir)/security/nss/cmd/lib $(DEFAULT_GMAKE_FLAGS) export
+ 	$(MAKE) -C $(topsrcdir)/security/nss/lib $(DEFAULT_GMAKE_FLAGS) DIRS="util base dev pki pki1 certdb certhigh pk11wrap cryptohi nss ssl pkcs12 pkcs7 smime crmf jar ckfw ckfw/builtins"
+ ifndef SKIP_CHK
+ 	$(MAKE) -C $(topsrcdir)/security/nss/cmd/lib $(DEFAULT_GMAKE_FLAGS)
+ 	$(MAKE) -C $(topsrcdir)/security/nss/cmd/shlibsign $(DEFAULT_GMAKE_FLAGS)
+ endif
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 755 $(DIST)/lib/$(LOADABLE_ROOT_MODULE) $(DIST)/bin/add-ons
++else
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(LOADABLE_ROOT_MODULE) $(DIST)/bin
++endif
+ ifndef SKIP_CHK
+ 	$(INSTALL) -m 644 $(DIST)/lib/$(SOFTOKEN3_CHK) $(DIST)/bin
+ endif
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 755 $(DIST)/lib/$(SOFTOKEN3_LIB) $(DIST)/bin/lib
++	$(INSTALL) -m 755 $(DIST)/lib/$(NSS3_LIB) $(DIST)/bin/lib
++	$(INSTALL) -m 755 $(DIST)/lib/$(SSL3_LIB) $(DIST)/bin/lib
++	$(INSTALL) -m 755 $(DIST)/lib/$(SMIME3_LIB) $(DIST)/bin/lib
++else
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(SOFTOKEN3_LIB) $(DIST)/bin
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(NSS3_LIB) $(DIST)/bin
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(SSL3_LIB) $(DIST)/bin
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(SMIME3_LIB) $(DIST)/bin
++endif
+ ifdef HAVE_FREEBL_LIBS
+ ifndef SKIP_CHK
+ 	$(INSTALL) -m 644 $(DIST)/lib/$(FREEBL_CHK) $(DIST)/bin
+ endif
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++	$(INSTALL) -m 755 $(DIST)/lib/$(FREEBL_LIB) $(DIST)/bin/add-ons
++else
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(FREEBL_LIB) $(DIST)/bin
+ endif
++endif
+ ifdef HAVE_FREEBL_LIBS_32
+ ifndef SKIP_CHK
+ 	$(INSTALL) -m 644 $(DIST)/lib/$(FREEBL_32INT_CHK) $(DIST)/bin
+ 	$(INSTALL) -m 644 $(DIST)/lib/$(FREEBL_32FPU_CHK) $(DIST)/bin
+ endif
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(FREEBL_32INT_LIB) $(DIST)/bin
+ 	$(INSTALL) -m 755 $(DIST)/lib/$(FREEBL_32FPU_LIB) $(DIST)/bin
+ endif
+Index: mozilla/toolkit/mozapps/installer/packager.mk
+===================================================================
+RCS file: /cvsroot/mozilla/toolkit/mozapps/installer/packager.mk,v
+retrieving revision 1.16.2.18
+diff -u -8 -p -w -r1.16.2.18 packager.mk
+--- mozilla/toolkit/mozapps/installer/packager.mk	4 Apr 2008 20:31:10 -0000	1.16.2.18
++++ mozilla/toolkit/mozapps/installer/packager.mk	8 Jul 2009 21:54:25 -0000
+@@ -43,21 +43,24 @@ include $(topsrcdir)/toolkit/mozapps/ins
+ # This is how we create the Unix binary packages we release to the public.
+ # Currently the only format is tar.gz (TGZ), but it should be fairly easy
+ # to add .rpm (RPM) and .deb (DEB) later.
+ 
+ ifndef MOZ_PKG_FORMAT
+ ifneq (,$(filter mac cocoa,$(MOZ_WIDGET_TOOLKIT)))
+ MOZ_PKG_FORMAT  = DMG
+ else
+ ifeq (,$(filter-out OS2 WINNT BeOS Haiku, $(OS_ARCH)))
+ MOZ_PKG_FORMAT  = ZIP
+ ifeq ($(OS_ARCH),OS2)
+ INSTALLER_DIR   = os2
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++INSTALLER_DIR = beos
++endif
+ ifeq ($(OS_ARCH), WINNT)
+ INSTALLER_DIR   = windows
+ endif
+ endif
+ else
+ ifeq (,$(filter-out SunOS, $(OS_ARCH)))
+ MOZ_PKG_FORMAT  = BZ2
+ else
+@@ -246,19 +249,19 @@ $(MOZ_PKG_REMOVALS_GEN): $(MOZ_PKG_REMOV
+ 	$(PERL) $(topsrcdir)/config/preprocessor.pl -Fsubstitution $(DEFINES) $(ACDEFINES) $(MOZ_PKG_REMOVALS) > $(MOZ_PKG_REMOVALS_GEN)
+ endif
+ 
+ GARBAGE		+= $(DIST)/$(PACKAGE) $(PACKAGE)
+ 
+ ifeq ($(OS_ARCH),IRIX)
+ STRIP_FLAGS	= -f
+ endif
+ ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
+ STRIP_FLAGS	= -g
+-PLATFORM_EXCLUDE_LIST = ! -name "*.stub" ! -name "$(MOZ_PKG_APPNAME)-bin"
++PLATFORM_EXCLUDE_LIST = ! -name "*.stub" ! -name "$(MOZ_PKG_APPNAME)"
+ endif
+ ifeq ($(OS_ARCH),OS2)
+ STRIP		= $(srcdir)/os2/strip.cmd
+ STRIP_FLAGS	=
+ PLATFORM_EXCLUDE_LIST = ! -name "*.ico"
+ endif
+ 
+ ifneq (,$(filter WINNT OS2,$(OS_ARCH)))
+Index: mozilla/xpfe/bootstrap/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/xpfe/bootstrap/Attic/Makefile.in,v
+retrieving revision 1.283.2.6
+diff -u -8 -p -w -r1.283.2.6 Makefile.in
+--- mozilla/xpfe/bootstrap/Makefile.in	29 Sep 2007 20:15:11 -0000	1.283.2.6
++++ mozilla/xpfe/bootstrap/Makefile.in	8 Jul 2009 21:54:55 -0000
+@@ -113,18 +113,22 @@ ifdef MOZ_ENABLE_XREMOTE
+ REQUIRES	+= xremoteservice
+ endif
+ 
+ include $(topsrcdir)/config/config.mk
+ 
+ ifeq ($(USE_SHORT_LIBNAME),1)
+ PROGRAM		= $(MOZ_APP_NAME)$(BIN_SUFFIX)
+ else
++ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
++PROGRAM = $(MOZ_APP_NAME)$(BIN_SUFFIX)
++else
+ PROGRAM		= $(MOZ_APP_NAME)-bin$(BIN_SUFFIX)
+ endif
++endif
+ 
+ # Force applications to be built non-statically
+ # when building the mozcomps meta component
+ ifneq (,$(filter mozcomps,$(MOZ_META_COMPONENTS)))
+ BUILD_STATIC_LIBS=
+ BUILD_SHARED_LIBS=1
+ ifdef MOZ_COMPONENTLIB
+ DEFINES += -D_MOZCOMPS_SHARED_LIBRARY -D_BUILD_STATIC_BIN
+@@ -406,17 +413,17 @@ ifndef GNU_CC
+ LDFLAGS += /HEAP:0x40000
+ endif
+ endif
+ 
+ CXXFLAGS	+= $(MOZ_TOOLKIT_REGISTRY_CFLAGS)
+ 
+ LOCAL_INCLUDES  += -I$(srcdir) -I.
+ 
+-ifneq (,$(filter-out OS2 WINNT,$(OS_ARCH)))
++ifneq (,$(filter-out OS2 WINNT BeOS Haiku,$(OS_ARCH)))
+ $(MOZ_APP_NAME).1: mozilla.man.in Makefile.in Makefile $(DEPTH)/config/autoconf.mk
+ 	@sed -e "s|\@bindir\@|$(bindir)|g" -e "s|\@mozappdir\@|$(mozappdir)|g" \
+ 		-e "s|\@MOZ_APP_DISPLAYNAME\@|$(MOZ_APP_DISPLAYNAME)|g" \
+ 		-e "s|\@MOZ_APP_NAME\@|$(MOZ_APP_NAME)|g" \
+ 		-e "s|\@MOZ_APP_VERSION\@|${MOZ_APP_VERSION}|g" < $< > $@
+ 
+ libs:: $(MOZ_APP_NAME).1
+ 	$(INSTALL) $< $(DIST)/man/man1
+Index: mozilla/xulrunner/app/Makefile.in
+===================================================================
+RCS file: /cvsroot/mozilla/xulrunner/app/Makefile.in,v
+retrieving revision 1.23.2.4
+diff -u -8 -p -w -r1.23.2.4 Makefile.in
+--- mozilla/xulrunner/app/Makefile.in	9 Apr 2008 06:50:54 -0000	1.23.2.4
++++ mozilla/xulrunner/app/Makefile.in	8 Jul 2009 21:55:07 -0000
+@@ -237,17 +237,17 @@ $(EXE_DEF_FILE):
+ 	@echo 	WinQueryProperty		= PMMERGE.5450 >>$(EXE_DEF_FILE)
+ 	@echo 	WinRemoveProperty		= PMMERGE.5451 >>$(EXE_DEF_FILE)
+ 	@echo 	WinSetProperty			= PMMERGE.5452 >>$(EXE_DEF_FILE)
+ 
+ LDFLAGS += -Zlinker /NOE
+ endif
+ endif
+ 
+-ifneq (,$(filter-out OS2 WINNT Darwin BeOS,$(OS_ARCH)))
++ifneq (,$(filter-out OS2 WINNT Darwin BeOS Haiku,$(OS_ARCH)))
+ 
+ xulrunner:: mozilla.in Makefile.in Makefile $(DEPTH)/config/autoconf.mk
+ 	cat $< | sed -e "s|%MOZAPPDIR%|$(mozappdir)|" \
+                 -e "s|%MOZ_USER_DIR%|.mozilla/xulrunner|" \
+ 		-e "s|%MREDIR%|$(mredir)|" > $@
+ 	chmod +x $@
+ 
+ libs:: xulrunner
