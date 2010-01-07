@@ -59,6 +59,9 @@ endif
 ifeq ($(OS_ARCH),OS2)
 MOZ_PKG_PLATFORM := os2
 endif
+ifeq ($(OS_ARCH), Haiku)
+MOZ_PKG_PLATFORM := Haiku
+endif
 ifeq ($(OS_ARCH), BeOS)
 ifeq (,$(filter-out 6.%, $(OS_RELEASE)))
 MOZ_PKG_PLATFORM := Zeta
