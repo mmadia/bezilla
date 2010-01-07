@@ -1,0 +1,112 @@
+Matt Madia's re-ordering patches no longer work properly.
+This is primarily due to additional shared objects, which are not yet handled.
+Consequently, this makes packaging BeZilla a tedious chore.
+
+These instructions assume MOZ_OBJDIR is set to a folder outside of the mozilla source tree.
+
+Packaging Instruction Summary :
+ 	* creating an initial distribution zip
+	* archiving all of the shared objects (*.so)
+	* manually re-ordering the *.so into lib/ and add-ons/
+	* renaming and deleting files from initial distribution zip
+	* adding additional files
+	* (optional) preparing as an Optional Package
+	* zipping the final distribution archive.
+
+
+== creating an initial distribution zip ==
+	cd $MOZ_OBJDIR
+	run the appropriate command:
+		BeZillaSuite : `make -C xpinstall/packager`
+		BeZillaBrowser : `make -C browser/installer`
+		BeZillaMailNews : `make -C mail/installer`
+		BeZillaCalendar : `make -C calendar/sunbird/installer`
+
+	This will create a zip archive inside $MOZ_OBJDIR/dist.
+
+
+== archiving all of the shared objects (*.so) ==
+	cd "$MOZ_OBJDIR"/dist/bin
+	zip -9 star_so.zip *.so
+	This will archive the targets of the *.so symlinks.
+
+
+== manually re-ordering the *.so into lib/ and add-ons/ ==
+	unzip the initial distribution zip into <new_directory>.
+	let <app_dir> equal <new_directory>/firefox, <new_directory>/BeZillaBrowser or whatever it is.		
+	unzip star_so.zip into <app_dir>, over-write existing targets.
+	strip *.so
+		This removes about 10%.
+	mkdir <app_dir>/lib
+	mkdir <app_dir>/add-ons
+	organize the libs in this order:
+		lib/:
+			libmozjs.so
+			libnspr4.so
+			libnss3.so
+			libnssutil3.so
+			libplc4.so
+			libplds4.so
+			libsmime3.so
+			libsoftokn3.so
+			libsqlite3.so
+			libssl3.so
+			libxpcom.so
+			libxpcom_compat.so
+			libxpcom_core.so
+		add-ons/:
+			libfreebl3.so
+			libnssckbi.so
+			libnssdbm3.so
+			libxpistub.so
+			libsoftokn3.so -> ../lib/libsoftokn3.so
+			Note: 	Create as a Relative Symbolic Link.
+					To do so, hold Shift+CTRL while you 
+					drag and drop lib/libsoftokn3.so into add-ons/
+					Alternatively :
+						cd <app_dir>/add-ons
+						ln -sf ../lib/wget-log
+
+
+== renaming and deleting files from initial distribution zip ==
+	This applies to BeZillaBrowser
+	
+	If needed, rename <app_dir> to BeZillaBrowser
+	If needed, rename firefox-bin to BeZillaBrowser
+	Delete the following:
+		firefox
+		run-mozilla.sh
+		removed-files
+		readme.txt
+
+
+== adding additional files ==
+	This applies to BeZillaBrowser
+	
+	* copy supporting-files/persdict.dat to BeZillaBrowser/defaults/profile
+		Files in defaults/profile will be migrated to ~/config/settings upon creation of new profile. 
+		For more info, See http://ports.haiku-files.org/ticket/186.
+	* copy supporting-files/haiku-widget-theme/browser/classic.jar to BeZillaBrowser/chrome
+		(this emulates Haiku's native widgets by using a png & css theme)
+
+
+== (optional) preparing as an Optional Package ==
+	If this is intended to become an Optional Package, used by Haiku's build system, 
+	then there are some additional files to insert.
+	
+	First create <temp_dir> ... anywhere.
+	mkdir <temp_dir>/apps
+	copy BeZillaBrowser/ to <temp_dir>/apps
+	copy supporting-files/create-optional-package/* to <temp_dir>/
+	Edit .OptionalPackageDescription
+		The version string can be checked in BeZillaBrowser's  Help-->About Bon Echo
+		Check http://www.haiku-os.org/node/2525 for any updates to the format of .OptionalPackageDescription
+
+
+== zipping the final distribution archive ==
+	Lastly, zip the folder -- either with ZipOMatic  or  zip -9ry, so as to preserve the symlinks. 
+	If creating an OptionalPacakge, zip the contents of <temp_dir>/ so that the path of <temp_dir> is not recorded.
+
+
+Congratulations.
+

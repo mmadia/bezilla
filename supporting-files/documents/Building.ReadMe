@@ -1,0 +1,46 @@
+
+
+Building Instruction Summary :
+	* install dependencies
+	* install .mozconfig
+	* prepare source tree
+	* build
+
+== install dependencies ==
+	Assuming your version of Haiku contains the development tools, 
+	running a single script will install the additional dependencies
+	The script is located in : 
+		supporting-files/install_dependencies_script/install_deps.sh
+	It is suggested to copy and run this script outside of the repository.
+	The script will download, compile, and install:
+		* autoconf 2.13
+		* glib 1.2.10
+		* libIDL 0.6.8	
+	Take notice of the "THIS MUST GO IN YOUR MOZCONFIG" message.
+	
+== install .mozconfig ==
+	Next, copy a mozconfig file 
+		from supporting-files/mozilla-configs/
+		to /boot/home/.mozconfig
+	Open /boot/home/.mozconfig
+		* Make sure the text from the install_deps.sh script is mentioned.
+		* edit "mk_add_options MOZ_OBJDIR=..."
+		* uncomment the desired "GCC Specific Optimiztions" string
+	
+== prepare source tree ==
+	cd to the top level of this repository
+	{{{
+	export AC213='/boot/common/bin/autoconf-2.13 -m /boot/common/autoconf-2.13/share/autoconf'
+	cd mozilla ; $AC213 	
+	cd nsprpub ; $AC213 ; cd ../
+	cd directory/c-sdk ; $AC213 ; cd ../../../
+	}}}
+	To note, anytime 'configure.in' is modified, the above commands need to be run.
+	
+== build == 
+	cd mozilla
+	make -f client.mk build
+	
+
+Congratulations.
+
