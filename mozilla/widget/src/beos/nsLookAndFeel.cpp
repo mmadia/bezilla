@@ -162,9 +162,7 @@ nsresult nsLookAndFeel::NativeGetColor(const nsColorID aID, nscolor &aColor)
     case eColor_highlight:
     case eColor__moz_menuhover:
       {
-        // B_MENU_SELECTION_BACKGROUND_COLOR  is used for text selection
-        // this blue colors seems more suitable
-        color = ui_color(B_KEYBOARD_NAVIGATION_COLOR);
+        color = ui_color(B_MENU_SELECTION_BACKGROUND_COLOR );
         aColor = NS_RGB(color.red, color.green, color.blue);
       }
       break;
