@@ -880,11 +880,17 @@ if test -n "$CROSS_COMPILE"; then
     OS_RELEASE=
     OS_TEST="${target_cpu}"
     case "${target_os}" in
-        linux*)       OS_ARCH=Linux ;;
-        solaris*)     OS_ARCH=SunOS OS_RELEASE=5 ;;
-        mingw*)       OS_ARCH=WINNT ;;
-        wince*)       OS_ARCH=WINCE ;;
-        darwin*)      OS_ARCH=Darwin OS_TARGET=Darwin ;;
+        linux*)         OS_ARCH=Linux ;;
+        solaris*)       OS_ARCH=SunOS OS_RELEASE=5 ;;
+        mingw*)         OS_ARCH=WINNT ;;
+        wince*)         OS_ARCH=WINCE ;;
+        darwin*)        OS_ARCH=Darwin OS_TARGET=Darwin ;;   
+        beos* | haiku*) OS_ARCH=BeOS OS_TARGET=BeOS ;;
+dnl -------------------------------------------------------
+dnl Cross-compiling-haiku - This should probably be 
+dnl        beos*)        OS_ARCH=BeOS OS_TARGET=BeOS ;;
+dnl        haiku*)       OS_ARCH=Haiku OS_TARGET=Haiku ;;
+dnl -------------------------------------------------------
     esac
 else
     OS_TARGET=`uname -s`
@@ -1002,6 +1008,14 @@ SINIX-N | SINIX-Y | SINIX-Z |ReliantUNIX-M)
 UnixWare)
     HOST_OS_ARCH=UNIXWARE
     ;;
+beos* | haiku*)
+    HOST_OS_ARCH=BeOS
+    ;;
+dnl -------------------------------------------------------
+dnl This should probably be 
+dnl        beos*)        HOST_OS_ARCH=BeOS ;;
+dnl        haiku*)       HOST_OS_ARCH=Haiku ;;
+dnl -------------------------------------------------------
 esac
 
 case "$OS_ARCH" in
@@ -1338,7 +1352,7 @@ dnl ========================================================
 dnl System overrides of the defaults for host
 dnl ========================================================
 case "$host" in
-*-beos*)
+*-beos*|*-haiku*)
     HOST_CFLAGS="$HOST_CFLAGS -DXP_BEOS -DBeOS -DBEOS -D_POSIX_SOURCE -DNO_X11"
     HOST_NSPR_MDCPUCFG='\"md/_beos.cfg\"'
     HOST_OPTIMIZE_FLAGS="${HOST_OPTIMIZE_FLAGS=-O3}"
@@ -1482,17 +1496,35 @@ case "$target" in
     AC_DEFINE(NSCAP_DISABLE_DEBUG_PTR_TYPES)
     ;;
 
-*-beos*)
+*-beos*|*-haiku*)
     no_x=yes
-    MKSHLIB='$(CXX) $(CXXFLAGS) $(DSO_LDOPTS) -Wl,-h,$@ -o $@'
     _PLATFORM_DEFAULT_TOOLKIT="beos"
+    TARGET_NSPR_MDCPUCFG='\"md/_beos.cfg\"'
+    TARGET_MD_ARCH=beos
+
+    DSO_PIC_CFLAGS=-fPIC
     DSO_LDOPTS='-nostart'
+    MKSHLIB='$(CXX) $(CXXFLAGS) $(DSO_PIC_CFLAGS) $(DSO_LDOPTS) -Wl,-h,$@ -o $@'
+    MKCSHLIB='$(CC) $(CFLAGS) $(DSO_PIC_CFLAGS) $(DSO_LDOPTS) -Wl,-h,$@ -o $@'
     TK_LIBS='-lbe -lroot'
     LIBS="$LIBS -lbe"
+
+    _HAIKU_BUILD=0
+
     if test "$COMPILE_ENVIRONMENT"; then
+        AC_CHECK_LIB(network,main,_HAIKU_BUILD=1)
+    fi
+    if test "$_HAIKU_BUILD" = 1; then
+      LIBS="$LIBS -lnetwork"
+      AC_DEFINE(XP_HAIKU)
+      AC_DEFINE(__BEOS__)
+      AC_DEFINE(BONE_VERSION)
+    else
         AC_CHECK_LIB(bind,main,LIBS="$LIBS -lbind")
         AC_CHECK_LIB(zeta,main,LIBS="$LIBS -lzeta")
+      AC_DEFINE(BEOS_ADDON_WORKAROUND)
     fi
+
     _WARNINGS_CFLAGS="${_WARNINGS_CFLAGS} -Wno-multichar"
     _WARNINGS_CXXFLAGS="${_WARNINGS_CXXFLAGS} -Wno-multichar"
     _MOZ_USE_RTTI=1
@@ -5242,7 +5274,7 @@ dnl ========================================================
 dnl Image decoders
 dnl ========================================================
 case "$target_os" in
-cygwin*|mingw*|msvc*|mks*|os2*|wince*|beos*)
+cygwin*|mingw*|msvc*|mks*|os2*|wince*|beos*|haiku*)
     MOZ_IMG_DECODERS_DEFAULT="$MOZ_IMG_DECODERS_DEFAULT icon"
     ;;
 darwin*)
@@ -5689,7 +5721,7 @@ MOZ_ARG_ENABLE_STRING(debug,
 
 MOZ_DEBUG_ENABLE_DEFS="-DDEBUG -D_DEBUG"
  case "${target_os}" in
-    beos*)
+    beos*|haiku*)
         MOZ_DEBUG_ENABLE_DEFS="$MOZ_DEBUG_ENABLE_DEFS -DDEBUG_${USER}"
         ;;
     msvc*|mks*|cygwin*|mingw*|os2*|wince*)
@@ -6725,7 +6757,7 @@ mk_add_options MOZ_CO_MODULE=mozilla/other-licenses/libart_lgpl])
   os2*)
       MOZ_LIBART_LIBS='-lmoz_art -lm'
       ;;
-  beos*)
+  beos*|haiku*)
       MOZ_LIBART_LIBS='-lmoz_art_lgpl -lroot -lbe'
       ;;
   *)
@@ -7377,6 +7409,9 @@ if test "$OS_ARCH" = "OS2" -a "$VACPP" = "yes"; then
 elif test "$OS_ARCH" = "BeOS"; then
   AC_DEFINE(XP_BEOS)
   MOZ_MOVEMAIL=1
+elif test "$OS_ARCH" = "Haiku"; then
+  AC_DEFINE(XP_BEOS)
+  MOZ_MOVEMAIL=1	
 elif test "$OS_ARCH" = "Darwin"; then
   AC_DEFINE(XP_UNIX)
   AC_DEFINE(UNIX_ASYNC_DNS)

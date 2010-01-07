@@ -381,7 +381,7 @@ if test -n "$MOZ_DEBUG"; then
     DEFINES="$DEFINES -UNDEBUG"
 
     case "${target_os}" in
-    beos*)
+    beos*|haiku*)
         DEFINES="$DEFINES -DDEBUG_${USER}"
         ;;
     msvc*|mks*|cygwin*|mingw*|os2*)
@@ -652,6 +652,12 @@ if test -n "$CROSS_COMPILE"; then
         solaris*)     OS_ARCH=SunOS OS_RELEASE=5 ;;
         mingw*)       OS_ARCH=WINNT ;;
         darwin*)      OS_ARCH=Darwin ;;
+        beos*|haiku*) OS_ARCH=BeOS OS_TARGET=BeOS OS_RELEASE=R5 ;;
+dnl -------------------------------------------------------
+dnl Cross-compiling-haiku - This should probably be 
+dnl        beos*)        OS_ARCH=BeOS OS_TARGET=BeOS OS_RELEASE=R5 ;;
+dnl        haiku*)       OS_ARCH=Haiku OS_TARGET=Haiku OS_RELEASE=R1 ;;
+dnl -------------------------------------------------------
     esac
 else
     OS_ARCH=`uname -s | sed -e 's|/|_|g'`
@@ -823,7 +829,7 @@ case "$host" in
         CYGWIN_WRAPPER='sh $(topsrcdir)/build/cygwin-wrapper'
     fi
     ;;
-*-beos*)
+*-beos*|*-haiku*)
     HOST_CFLAGS="$HOST_CFLAGS -DXP_BEOS -DBeOS -DBEOS -D_POSIX_SOURCE"
     ;;
 *os2*)
@@ -898,24 +904,40 @@ case "$target" in
     RESOLVE_LINK_SYMBOLS=1
     ;;
         
-*-beos*)
+*-beos*|*-haiku*)
     AC_DEFINE(XP_BEOS)
     AC_DEFINE(BeOS)
     AC_DEFINE(BEOS)
     AC_DEFINE(_POSIX_SOURCE)
-    DSO_LDOPTS=-nostart
+    DSO_CFLAGS=-fPIC
+    DSO_LDOPTS='-nostart'
+
     MDCPUCFG_H=_beos.cfg
     USE_BTHREADS=1
     PR_MD_ARCH_DIR=beos
     RESOLVE_LINK_SYMBOLS=1
+	
+	_HAIKU_BUILD=0
+	AC_CHECK_LIB(network,main,_HAIKU_BUILD=1)
+	if test "$_HAIKU_BUILD" = 1; then
+      OS_LIBS="$OS_LIBS -lnetwork"
+      AC_DEFINE(XP_HAIKU)
+      AC_DEFINE(BONE_VERSION)
+    else
+      AC_CHECK_LIB(bind, gethostbyaddr, [OS_LIBS="$OS_LIBS -lbind -lsocket"])
+    fi
+	
     case "${target_cpu}" in
     i*86)
-        _OPTIMIZE_FLAGS=-O2
-        _DEBUG_FLAGS='-gdwarf-2 -O0'
-        MKSHLIB='$(CCC) $(DSO_LDOPTS) -o $@'
-        AC_CHECK_LIB(bind, gethostbyaddr, [OS_LIBS="$OS_LIBS -lbind -lsocket"])
+        AC_DEFINE(i586)
+        CPU_ARCH=i586
+        _OPTIMIZE_FLAGS=-O3
+        _DEBUG_FLAGS='-gdwarf-2 -O0 -fno-inline'
+        MKSHLIB='$(CXX) $(DSO_LDOPTS) -o $@'
         ;;
     powerpc)
+        AC_DEFINE(ppc)
+        CPU_ARCH=ppc
         CC=mwcc
         CCC=mwcc
         LD=mwld
@@ -2438,7 +2460,7 @@ AC_ARG_ENABLE(nspr-threads,
 	  fi])
 
 case "$target" in
-*-beos*)
+*-beos*|*-haiku*)
     AC_ARG_WITH(bthreads,
     [  --with-bthreads         Use system bthreads library as thread subsystem
                           (BeOS only)],
