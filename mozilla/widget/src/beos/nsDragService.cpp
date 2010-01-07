@@ -255,7 +255,7 @@ nsDragService::InvokeDragSession (nsIDOMNode *aDOMNode,
     bool noBitmap = true;
 
 //This is the code for image-dragging, currently disabled. See comments in beginning of file.
-# ifdef 0
+#if 0
     do
     {
         PRUint32 dataSize;

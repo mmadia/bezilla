@@ -450,7 +450,7 @@ char *SECU_ErrorStringRaw(int16 err);
 
 void printflags(char *trusts, unsigned int flags);
 
-#if !defined(XP_UNIX) && !defined(XP_OS2)
+#if !defined(XP_UNIX) && !defined(XP_OS2) && !defined(XP_BEOS)
 extern int ffs(unsigned int i);
 #endif
 
