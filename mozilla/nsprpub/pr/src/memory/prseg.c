@@ -37,7 +37,7 @@
 
 #include "primpl.h"
 
-#if defined(_PR_PTHREADS)
+#if defined(_PR_PTHREADS) || defined(_PR_BTHREADS)
 
 /*
 ** The pthreads version doesn't use these functions.
@@ -46,7 +46,7 @@ void _PR_InitSegs(void)
 {
 }
 
-#else /* _PR_PTHREADS */
+#else /* _PR_PTHREADS || defined(_PR_BTHREADS) */
 
 void _PR_InitSegs(void)
 {
@@ -90,4 +90,4 @@ void _PR_DestroySegment(PRSegment *seg)
     PR_DELETE(seg);
 }
 
-#endif /* _PR_PTHREADS */
+#endif /* _PR_PTHREADS || defined(_PR_BTHREADS) */

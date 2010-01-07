@@ -46,9 +46,9 @@
 
 #include "primpl.h"
 
-#ifdef _PR_PTHREADS
+#if defined(_PR_PTHREADS) || defined(_PR_BTHREADS)
 
-#error "This file should not be compiled for the pthreads version"
+#error "This file should not be compiled for the pthreads or bthreads version"
 
 #else
 
@@ -127,4 +127,4 @@ PR_IMPLEMENT(PRStatus) PR_DeleteSemaphore(const char *name)
     return _PR_MD_DELETE_SEMAPHORE(osname);
 }
 
-#endif /* _PR_PTHREADS */
+#endif /* _PR_PTHREADS || _PR_BTHREADS */

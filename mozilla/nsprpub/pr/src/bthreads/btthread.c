@@ -120,11 +120,8 @@ _PR_InitThreads (PRThreadType type, PRThreadPriority priority,
     */
 
     beThreadPriority = _bt_MapNSPRToNativePriority( priority );
-    
     set_thread_priority( find_thread( NULL ), beThreadPriority );
-    
     primordialThread->priority = priority;
-
 
 	/* set the thread's state - note that the thread is not joinable */
     primordialThread->state |= BT_THREAD_PRIMORD;
@@ -219,9 +216,7 @@ void _bt_CleanupThread(void *arg)
 			   allocated a joinSem for us) - let them know we're
 			   ready */
 			delete_sem(me->md.joinSem);
-
 			PR_Unlock(joinSemLock);
-
 		}
 		else
     {
@@ -229,10 +224,8 @@ void _bt_CleanupThread(void *arg)
 			   is our responsibility to allocate the joinSem
 			   and block on it */
 			me->md.joinSem = create_sem(0, "join sem");
-
 			/* we're done accessing our joinSem */
 			PR_Unlock(joinSemLock);
-
 			/* wait for someone to join us */
 			while (acquire_sem(me->md.joinSem) == B_INTERRUPTED);
 	    }
@@ -243,10 +236,8 @@ void _bt_CleanupThread(void *arg)
 	{
 		/* synchronize access to bt_book */
     PR_Lock( bt_book.ml );
-
 		/* decrement the number of currently-alive user threads */
 	bt_book.threadCount--;
-
 		if (bt_book.threadCount == 0 && bt_book.cleanUpSem != B_ERROR) {
 			/* we are the last user thread, and the primordial thread is
 			   blocked in PR_Cleanup() waiting for us to finish - notify
@@ -277,9 +268,7 @@ _bt_root (void* arg)
 
 	/* save our PRThread object into our TLS */
 	tls_set(tls_prThreadSlot, thred);
-
     thred->startFunc(thred->arg);  /* run the dang thing */
-
 	/* clean up */
 	_bt_CleanupThread(NULL);
 
@@ -292,7 +281,6 @@ PR_IMPLEMENT(PRThread*)
                      PRThreadState state, PRUint32 stackSize)
 {
     PRUint32 bePriority;
-
     PRThread* thred;
 
     if (!_pr_initialized) _PR_ImplicitInitialization();
@@ -305,7 +293,6 @@ PR_IMPLEMENT(PRThread*)
     }
 
     thred->md.joinSem = B_ERROR;
-
         thred->arg = arg;
         thred->startFunc = start;
         thred->priority = priority;
@@ -316,7 +303,6 @@ PR_IMPLEMENT(PRThread*)
 	}
 
         /* keep some books */
-
 	PR_Lock( bt_book.ml );
 
 	if (type == PR_USER_THREAD)
@@ -325,9 +311,7 @@ PR_IMPLEMENT(PRThread*)
         }
 
 	PR_Unlock( bt_book.ml );
-
 	bePriority = _bt_MapNSPRToNativePriority( priority );
-
         thred->md.tid = spawn_thread((thread_func)_bt_root, "moz-thread",
                                      bePriority, thred);
         if (thred->md.tid < B_OK) {
@@ -431,6 +415,13 @@ PR_IMPLEMENT(PRThread*)
     PR_ASSERT(NULL != thred);
 
     return thred;
+}
+
+PR_IMPLEMENT(void*)PR_GetSP(PRThread *thred)
+{
+    thread_info tInfo;
+    get_thread_info(thred->md.tid, &tInfo);
+    return tInfo.stack_base;  /* or should it be _end? */
 }
 
 PR_IMPLEMENT(PRThreadScope)

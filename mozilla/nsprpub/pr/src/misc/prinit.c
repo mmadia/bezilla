@@ -196,8 +196,10 @@ static void _PR_InitStuff(void)
     _PR_InitLocks();
     _PR_InitAtomic();
     _PR_InitSegs();
+#if !defined(_PR_BTHREADS)
     _PR_InitStacks();
 	_PR_InitTPD();
+#endif /*!defined(_PR_BTHREADS) */
     _PR_InitEnv();
     _PR_InitLayerCache();
     _PR_InitClock();

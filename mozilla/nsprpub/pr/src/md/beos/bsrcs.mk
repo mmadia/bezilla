@@ -20,6 +20,7 @@
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
+# Fredrik Holmqvist <thesuckiestemail@yahoo.se>
 #
 # Alternatively, the contents of this file may be used under the terms of
 # either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -42,13 +43,6 @@
 
 MDCSRCS =             \
 	beos.c        \
-	beos_errors.c \
-	bfile.c       \
-	bmisc.c       \
-	bnet.c        \
 	bproc.c       \
-	brng.c        \
-	bseg.c        \
-	btime.c       \
 	bmmap.c       \
 	$(NULL)

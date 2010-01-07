@@ -199,7 +199,9 @@ struct PRLibrary {
 
 #ifdef XP_BEOS
     void*                       dlh;
+#ifndef XP_HAIKU
     void*                       stub_dlh;
+#endif
 #endif
 };
 
@@ -863,6 +865,19 @@ pr_LoadLibraryByPathname(const char *name, PRIntn flags)
     result = pr_UnlockedFindLibrary(name);
 #endif
 
+#ifdef XP_BEOS
+    /* Havn't seen this happen so far, but it doesn't slow anything
+       down so let's keep it */
+    for (result = pr_loadmap; result != NULL; result = result->next) {
+        /* hopefully, our caller will always use the same string
+           to refer to the same library */
+        if (strcmp(name, result->name) == 0) {
+            result->refCount++;
+            break;
+        }
+    }
+#endif
+
     if (result != NULL) goto unlock;
 
     lm = PR_NEWZAP(PRLibrary);
@@ -1020,29 +1035,14 @@ pr_LoadLibraryByPathname(const char *name, PRIntn flags)
 #endif /* HAVE_DLL */
 #endif /* XP_UNIX */
 
-    lm->refCount = 1;
-
 #ifdef XP_BEOS
-    {
-        image_info info;
-        int32 cookie = 0;
+    {	/* Code block to allow variable inits. :/ */
+        /* it appears the library isn't yet loaded - load it now */
+#ifdef XP_HAIKU
+        image_id imageid = load_add_on(name);
+#else
         image_id imageid = B_ERROR;
         image_id stubid = B_ERROR;
-        PRLibrary *p;
-
-        for (p = pr_loadmap; p != NULL; p = p->next) {
-            /* hopefully, our caller will always use the same string
-               to refer to the same library */
-            if (strcmp(name, p->name) == 0) {
-                /* we've already loaded this library */
-                imageid = info.id;
-                lm->refCount++;
-                break;
-            }
-        }
-
-        if(imageid == B_ERROR) {
-            /* it appears the library isn't yet loaded - load it now */
             char stubName [B_PATH_NAME_LENGTH + 1];
 
             /* the following is a work-around to a "bug" in the beos -
@@ -1069,36 +1069,37 @@ pr_LoadLibraryByPathname(const char *name, PRIntn flags)
             /* first, attempt to load the stub (thereby loading the
                component as a shared library */
             if ((stubid = load_add_on(stubName)) > B_ERROR) {
+
+            const char *endOfPassedName = strrchr(name, '/');
+            image_info info;
+            int32 cookie = 0;
+
                 /* the stub was loaded successfully. */
                 imageid = B_FILE_NOT_FOUND;
+            if( 0 == endOfPassedName )
+                endOfPassedName = name;
+            else
+                endOfPassedName++;
 
-                cookie = 0;
                 while (get_next_image_info(0, &cookie, &info) == B_OK) {
                     const char *endOfSystemName = strrchr(info.name, '/');
-                    const char *endOfPassedName = strrchr(name, '/');
                     if( 0 == endOfSystemName ) 
                         endOfSystemName = info.name;
                     else
                         endOfSystemName++;
-                    if( 0 == endOfPassedName )
-                        endOfPassedName = name;
-                    else
-                        endOfPassedName++;
                     if (strcmp(endOfSystemName, endOfPassedName) == 0) {
                         /* this is the actual component - remember it */
                         imageid = info.id;
                         break;
                     }
                 }
-
             } else {
                 /* we failed to load the "stub" - try to load the
                    component directly as an add-on */
                 stubid = B_ERROR;
                 imageid = load_add_on(name);
             }
-        }
-
+#endif /* XP_HAIKU */
         if (imageid <= B_ERROR) {
             oserr = imageid;
             PR_DELETE( lm );
@@ -1106,12 +1107,15 @@ pr_LoadLibraryByPathname(const char *name, PRIntn flags)
         }
         lm->name = strdup(name);
         lm->dlh = (void*)imageid;
+#ifndef XP_HAIKU
         lm->stub_dlh = (void*)stubid;
+#endif
         lm->next = pr_loadmap;
         pr_loadmap = lm;
     }
-#endif
+#endif /* XP_BEOS */
 
+    lm->refCount = 1;
     result = lm;    /* success */
     PR_LOG(_pr_linker_lm, PR_LOG_MIN, ("Loaded library %s (load lib)", lm->name));
 
@@ -1272,11 +1276,15 @@ PR_UnloadLibrary(PRLibrary *lib)
     }
 
 #ifdef XP_BEOS
+#ifdef XP_HAIKU
+    unload_add_on( (image_id) lib->dlh );
+#else
     if(((image_id)lib->stub_dlh) == B_ERROR)
         unload_add_on( (image_id) lib->dlh );
     else
         unload_add_on( (image_id) lib->stub_dlh);
-#endif
+#endif /* XP_HAIKU */
+#endif /* XP_BEOS */
 
 #ifdef XP_UNIX
 #ifdef HAVE_DLL

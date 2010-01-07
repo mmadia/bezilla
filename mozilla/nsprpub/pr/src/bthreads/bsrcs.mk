@@ -20,6 +20,7 @@
 # the Initial Developer. All Rights Reserved.
 #
 # Contributor(s):
+# Fredrik Holmqvist <thesuckiestemail@yahoo.se>
 #
 # Alternatively, the contents of this file may be used under the terms of
 # either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -46,4 +47,6 @@ BTCSRCS = \
 	btmon.c \
 	btsem.c \
 	btmisc.c \
+	btfile.c \
+	btio.c \
 	$(NULL)

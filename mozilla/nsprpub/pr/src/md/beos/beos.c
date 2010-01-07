@@ -37,58 +37,87 @@
 
 #include "primpl.h"
 
-#include <signal.h>
-#include <unistd.h>
-#include <memory.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <sys/time.h>
-#include <sys/ioctl.h>
-#include <errno.h>
-
 /*
  * Make sure _PRSockLen_t is 32-bit, because we will cast a PRUint32* or
  * PRInt32* pointer to a _PRSockLen_t* pointer.
  */
 #define _PRSockLen_t int
 
-/*
-** Global lock variable used to bracket calls into rusty libraries that
-** aren't thread safe (like libc, libX, etc).
-*/
-static PRLock *_pr_rename_lock = NULL;
-static PRMonitor *_pr_Xfe_mon = NULL;
 
-/*
- * Variables used by the GC code, initialized in _MD_InitSegs().
- * _pr_zero_fd should be a static variable.  Unfortunately, there is
- * still some Unix-specific code left in function PR_GrowSegment()
- * in file memory/prseg.c that references it, so it needs
- * to be a global variable for now.
- */
-PRInt32 _pr_zero_fd = -1;
-static PRLock *_pr_md_lock = NULL;
+#ifndef BONE_VERSION
+PRLock *_connectLock = NULL;
 
-sigset_t timer_set;
+/* Workaround for nonblocking connects under net_server */
+PRUint32 connectCount = 0;
+ConnectListNode connectList[64];
 
-void _PR_UnixInit()
+void
+_MD_final_init_netserver(void)
 {
-	struct sigaction sigact;
-	int rv;
+    _connectLock = PR_NewLock();
+    PR_ASSERT(NULL != _connectLock); 
+    /* Workaround for nonblocking connects under net_server */
+    connectCount = 0;
+}
+#endif /* !BONE_VERSION */
 
-	sigemptyset(&timer_set);
 
-	sigact.sa_handler = SIG_IGN;
-	sigemptyset(&sigact.sa_mask);
-	sigact.sa_flags = 0;
-	rv = sigaction(SIGPIPE, &sigact, 0);
-	PR_ASSERT(0 == rv);
+#ifdef __powerpc__
+static PRLock *monitor = NULL;
 
-	_pr_rename_lock = PR_NewLock();
-	PR_ASSERT(NULL != _pr_rename_lock);
-	_pr_Xfe_mon = PR_NewMonitor();
-	PR_ASSERT(NULL != _pr_Xfe_mon);
+void
+_MD_AtomicInit(void)
+{
+    if (monitor == NULL) {
+        monitor = PR_NewLock();
+    }
+}
+#endif /* __powerpc__ */
+
+/*
+** This is exceedingly messy.  atomic_add returns the last value, NSPR
+** expects the new value. We just add or subtract 1 from the result.
+** The actual memory update is atomic.
+ */
+
+PRInt32
+_MD_AtomicAdd( PRInt32 *ptr, PRInt32 val )
+{
+    return atomic_add( (long *)ptr, val ) + val;
+}
+
+PRInt32
+_MD_AtomicIncrement( PRInt32 *val )
+{
+    return atomic_add( (long *)val, 1 ) + 1;
+}
+
+PRInt32
+_MD_AtomicDecrement( PRInt32 *val )
+{
+    return atomic_add( (long *)val, -1 ) - 1;
+}
+
+PRInt32
+_MD_AtomicSet( PRInt32 *val, PRInt32 newval )
+{
+    PRInt32 result;
+#ifdef __powerpc__
+    if (!_pr_initialized) {
+        _PR_ImplicitInitialization();
+    }
+    PR_Lock(monitor);
+    result = *val;
+    *val = newval;
+    PR_Unlock(monitor);
+#else
+    asm volatile ("xchgl %0, %1" 
+                : "=r"(result), "=m"(*val)
+                : "0"(newval), "m"(*val));
+
+#endif /* __powerpc__ */
+  return result;
 }
 
 /*
@@ -98,9 +127,7 @@ void _PR_UnixInit()
  *
  *     Returns the current time in microseconds since the epoch.
  *     The epoch is midnight January 1, 1970 GMT.
- *     The implementation is machine dependent.  This is the Unix
- *     implementation.
- *     Cf. time_t time(time_t *tp)
+ *     The implementation is machine dependent.  
  *
  *-----------------------------------------------------------------------
  */
@@ -108,157 +135,75 @@ void _PR_UnixInit()
 PR_IMPLEMENT(PRTime)
 PR_Now(void)
 {
-	struct timeval tv;
-	PRInt64 s, us, s2us;
-
-	GETTIMEOFDAY(&tv);
-	LL_I2L(s2us, PR_USEC_PER_SEC);
-	LL_I2L(s, tv.tv_sec);
-	LL_I2L(us, tv.tv_usec);
-	LL_MUL(s, s, s2us);
-	LL_ADD(s, s, us);
-	return s;
+    return (PRTime) real_time_clock_usecs();
 }
 
 PRIntervalTime
-_PR_UNIX_GetInterval()
+_MD_get_interval(void)
 {
-	struct timeval time;
-	PRIntervalTime ticks;
-
-	(void)GETTIMEOFDAY(&time);  /* fallicy of course */
-	ticks = (PRUint32)time.tv_sec * PR_MSEC_PER_SEC;  /* that's in milliseconds */
-	ticks += (PRUint32)time.tv_usec / PR_USEC_PER_MSEC;  /* so's that */
-	return ticks;
-}  /* _PR_SUNOS_GetInterval */
-
-PRIntervalTime _PR_UNIX_TicksPerSecond()
-{
-	return 1000;  /* this needs some work :) */
+    return (PRIntervalTime) real_time_clock_usecs() / 10;
 }
 
-/************************************************************************/
-
-/*
-** Special hacks for xlib. Xlib/Xt/Xm is not re-entrant nor is it thread
-** safe.  Unfortunately, neither is mozilla. To make these programs work
-** in a pre-emptive threaded environment, we need to use a lock.
-*/
-
-void PR_XLock()
+PRIntervalTime
+_MD_interval_per_sec(void)
 {
-	PR_EnterMonitor(_pr_Xfe_mon);
+    return 100000L;
 }
 
-void PR_XUnlock()
+PRSize
+_PR_MD_GetRandomNoise( void *buf, PRSize size )
 {
-	PR_ExitMonitor(_pr_Xfe_mon);
+    struct timeval tv;
+    int n = 0;
+    int s;
+
+    GETTIMEOFDAY(&tv);
+
+    if ( size >= 0 ) {
+        s = _pr_CopyLowBits((char*)buf+n, size, &tv.tv_usec, sizeof(tv.tv_usec));
+        size -= s;
+        n += s;
+}
+    if ( size >= 0 ) {
+        s = _pr_CopyLowBits((char*)buf+n, size, &tv.tv_sec, sizeof(tv.tv_sec));
+        size -= s;
+        n += s;
+}
+    return n;
+} /* end _PR_MD_GetRandomNoise() */
+
+
+/* Needed by prinit.c:612 */
+void
+_PR_MD_QUERY_FD_INHERITABLE(PRFileDesc *fd)
+{
+    int flags;
+
+    PR_ASSERT(_PR_TRI_UNKNOWN == fd->secret->inheritable);
+    flags = fcntl(fd->secret->md.osfd, F_GETFD, 0);
+    PR_ASSERT(-1 != flags);
+    fd->secret->inheritable = (flags & FD_CLOEXEC) ?
+        _PR_TRI_FALSE : _PR_TRI_TRUE;
 }
 
-PRBool PR_XIsLocked()
+PRStatus
+_MD_gethostname(char *name, PRUint32 namelen)
 {
-	return (PR_InMonitor(_pr_Xfe_mon)) ? PR_TRUE : PR_FALSE;
-}
-
-void PR_XWait(int ms)
-{
-	PR_Wait(_pr_Xfe_mon, PR_MillisecondsToInterval(ms));
-}
-
-void PR_XNotify(void)
-{
-	PR_Notify(_pr_Xfe_mon);
-}
-
-void PR_XNotifyAll(void)
-{
-	PR_NotifyAll(_pr_Xfe_mon);
-}
-
-#if !defined(BEOS)
-#ifdef HAVE_BSD_FLOCK
-
-#include <sys/file.h>
-
-PR_IMPLEMENT(PRStatus)
-_MD_LOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = flock(f, LOCK_EX);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_FLOCK_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-
-PR_IMPLEMENT(PRStatus)
-_MD_TLOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = flock(f, LOCK_EX|LOCK_NB);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_FLOCK_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-
-PR_IMPLEMENT(PRStatus)
-_MD_UNLOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = flock(f, LOCK_UN);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_FLOCK_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-#else
-
-PR_IMPLEMENT(PRStatus)
-_MD_LOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = lockf(f, F_LOCK, 0);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_LOCKF_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-
-PR_IMPLEMENT(PRStatus)
-_MD_TLOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = lockf(f, F_TLOCK, 0);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_LOCKF_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-
-PR_IMPLEMENT(PRStatus)
-_MD_UNLOCKFILE (PRInt32 f)
-{
-	PRInt32 rv;
-	rv = lockf(f, F_ULOCK, 0);
-	if (rv == 0)
-		return PR_SUCCESS;
-	_PR_MD_MAP_LOCKF_ERROR(_MD_ERRNO());
-	return PR_FAILURE;
-}
-#endif
-
-PR_IMPLEMENT(PRStatus)
-  _MD_GETHOSTNAME (char *name, PRUint32 namelen)
-{
-    PRIntn rv;
+    PRInt32 rv, err;
 
     rv = gethostname(name, namelen);
-    if (0 == rv) {
+	if (rv == 0)
+{
+        err = _MD_ERRNO();
+        switch (err) {
+            case EFAULT:
+                PR_SetError(PR_ACCESS_FAULT_ERROR, err);
+                break;
+            default:
+                PR_SetError(PR_UNKNOWN_ERROR, err);
+                break;
+}
+	return PR_FAILURE;
+}
 		return PR_SUCCESS;
     }
-	_PR_MD_MAP_GETHOSTNAME_ERROR(_MD_ERRNO());
-    return PR_FAILURE;
-}
-
-#endif

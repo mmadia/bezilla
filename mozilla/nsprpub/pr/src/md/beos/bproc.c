@@ -36,8 +36,10 @@
  * ***** END LICENSE BLOCK ***** */
 
 #include "primpl.h"
-#include <stdio.h>
+#include <errno.h>
 #include <signal.h>
+#include <stdio.h>
+#include <sys/wait.h>
 
 #define _PR_SIGNALED_EXITSTATUS 256
 

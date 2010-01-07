@@ -98,6 +98,24 @@
 
 #elif defined(XP_BEOS)
 
+/* GCC 3.3 and later support the visibility attribute. */
+#if (__GNUC__ >= 4) || \
+    (__GNUC__ == 3 && __GNUC_MINOR__ >= 3)
+#define PR_VISIBILITY_DEFAULT __attribute__((visibility("default")))
+#define PR_EXPORT(__type) extern PR_VISIBILITY_DEFAULT __type
+#define PR_EXPORT_DATA(__type) extern PR_VISIBILITY_DEFAULT __type
+#define PR_IMPORT(__type) extern PR_VISIBILITY_DEFAULT __type
+#define PR_IMPORT_DATA(__type) extern PR_VISIBILITY_DEFAULT __type
+
+#define PR_EXTERN(__type) extern PR_VISIBILITY_DEFAULT __type
+#define PR_IMPLEMENT(__type) PR_VISIBILITY_DEFAULT __type
+#define PR_EXTERN_DATA(__type) extern PR_VISIBILITY_DEFAULT __type
+#define PR_IMPLEMENT_DATA(__type) PR_VISIBILITY_DEFAULT __type
+#define PR_CALLBACK
+#define PR_CALLBACK_DECL
+#define PR_STATIC_CALLBACK(__x) static __x
+
+#else
 #define PR_EXPORT(__type) extern __declspec(dllexport) __type
 #define PR_EXPORT_DATA(__type) extern __declspec(dllexport) __type
 #define PR_IMPORT(__type) extern __declspec(dllexport) __type
@@ -111,6 +129,7 @@
 #define PR_CALLBACK
 #define PR_CALLBACK_DECL
 #define PR_STATIC_CALLBACK(__x) static __x
+#endif
 
 #elif defined(WIN16)
 

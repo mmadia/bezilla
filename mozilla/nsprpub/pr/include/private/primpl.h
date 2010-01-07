@@ -50,10 +50,6 @@
 #include <pthread.h>
 #endif
 
-#if defined(_PR_BTHREADS)
-#include <kernel/OS.h>
-#endif
-
 #ifdef WINNT
 /* Need to force service-pack 3 extensions to be defined by
 ** setting _WIN32_WINNT to NT 4.0 for winsock.h, winbase.h, winnt.h.
@@ -227,6 +223,20 @@ typedef struct PTDebug
 NSPR_API(void) PT_FPrintStats(PRFileDesc *fd, const char *msg);
 
 #else /* defined(_PR_PTHREADS) */
+
+#ifdef _PR_BTHREADS
+#define _MD_GET_ATTACHED_THREAD()        (_PR_MD_CURRENT_THREAD())
+
+#define _PR_IS_NATIVE_THREAD(thread) 1
+#define _PR_IS_NATIVE_THREAD_SUPPORTED() 1
+/*
+extern PRInt32 _PR_MD_WRITE(PRFileDesc *fd, const void *buf, PRInt32 amount);
+#define    _PR_MD_WRITE _MD_WRITE
+*/
+NSPR_API(PRThread*) _PR_MD_CURRENT_THREAD(void);
+#define    _PR_MD_CURRENT_THREAD _MD_CURRENT_THREAD
+
+#else /* defined(_PR_BTHREADS) */
 
 NSPR_API(void) PT_FPrintStats(PRFileDesc *fd, const char *msg);
 
@@ -1301,6 +1311,7 @@ extern PRStatus _PR_MD_SET_FD_INHERITABLE(PRFileDesc *fd, PRBool inheritable);
 extern void *_PR_MD_GET_SP(PRThread *thread);
 #define    _PR_MD_GET_SP _MD_GET_SP
 
+#endif /* defined(_PR_BTHREADS) */
 #endif /* defined(_PR_PTHREADS) */
 
 /************************************************************************/
@@ -1555,7 +1566,10 @@ struct PRThreadStack {
 
 #if defined(_PR_PTHREADS)
 #else /* defined(_PR_PTHREADS) */
+#if defined(_PR_BTHREADS)
+#else /* defined(_PR_BTHREADS) */
     _MDThreadStack md;
+#endif /* defined(_PR_BTHREADS) */
 #endif /* defined(_PR_PTHREADS) */
 };
 
@@ -1608,9 +1622,6 @@ struct PRThread {
 #elif defined(_PR_BTHREADS)
     PRUint32 flags;
     _MDThread md;
-    PRBool io_pending;
-    PRInt32 io_fd;
-    PRBool io_suspended;
 #else /* not pthreads or Be threads */
     _MDLock threadLock;             /* Lock to protect thread state variables.
                                      * Protects the following fields:
@@ -1694,7 +1705,9 @@ struct PRProcess {
 struct PRFileMap {
     PRFileDesc *fd;
     PRFileMapProtect prot;
+#if !defined(XP_BEOS)
     _MDFileMap md;
+#endif /* !defined(XP_BEOS) */
 };
 
 /************************************************************************/
@@ -1777,8 +1790,10 @@ struct PRDirUTF16 {
 #endif /* MOZ_UNICODE */
 
 extern void _PR_InitSegs(void);
+#if !defined(_PR_BTHREADS)
 extern void _PR_InitStacks(void);
 extern void _PR_InitTPD(void);
+#endif /* !defined(_PR_BTHREADS) */
 extern void _PR_InitMem(void);
 extern void _PR_InitEnv(void);
 extern void _PR_InitCMon(void);
@@ -1830,7 +1845,10 @@ struct PRSegment {
     PRUintn flags;
 #if defined(_PR_PTHREADS)
 #else  /* defined(_PR_PTHREADS) */
+#if defined(_PR_BTHREADS) 
+#else /* defined(_PR_BTHREADS) */
     _MDSegment md;
+#endif /* defined(_PR_BTHREADS) */
 #endif /* defined(_PR_PTHREADS) */
 };
 
@@ -2127,7 +2145,7 @@ extern PRSize _pr_CopyLowBits( void *dest, PRSize dstlen, void *src, PRSize srcl
 
 /* end PR_GetRandomNoise() related */
 
-#ifdef XP_BEOS
+#if defined(XP_BEOS) && !defined(BONE_VERSION)
 
 extern PRLock *_connectLock;
 
@@ -2142,7 +2160,7 @@ extern ConnectListNode connectList[64];
 
 extern PRUint32 connectCount;
 
-#endif /* XP_BEOS */
+#endif /* XP_BEOS && !BONE_VERSION */
 
 PR_END_EXTERN_C
 

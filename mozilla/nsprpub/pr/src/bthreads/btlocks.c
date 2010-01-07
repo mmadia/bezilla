@@ -43,9 +43,6 @@
 
 #include "primpl.h"
 
-#include <string.h>
-#include <sys/time.h>
-
 void
 _PR_InitLocks (void)
 {
@@ -61,16 +58,13 @@ PR_IMPLEMENT(PRLock*)
 
     lock = PR_NEWZAP(PRLock);
     if (lock != NULL) {
-
 	lock->benaphoreCount = 0;
 	lock->semaphoreID = create_sem( 0, "nsprLockSem" );
 	if( lock->semaphoreID < B_NO_ERROR ) {
-
 	    PR_DELETE( lock );
 	    lock = NULL;
 	}
     }
-
     return lock;
 }
 
@@ -88,17 +82,18 @@ PR_IMPLEMENT(void)
 PR_IMPLEMENT(void)
     PR_Lock (PRLock* lock)
 {
+    status_t result;
+
     PR_ASSERT(lock != NULL);
 
-    if( atomic_add( &lock->benaphoreCount, 1 ) > 0 ) {
-
-	if( acquire_sem(lock->semaphoreID ) != B_NO_ERROR ) {
-
-	    atomic_add( &lock->benaphoreCount, -1 );
+    if( _MD_ATOMIC_INCREMENT( &lock->benaphoreCount) > 1 ) {
+        result = acquire_sem(lock->semaphoreID );   
+        PR_ASSERT(result == B_NO_ERROR);
+        if( result != B_NO_ERROR ) {
+            _MD_ATOMIC_DECREMENT( &lock->benaphoreCount);
 	    return;
 	}
     }
-
     lock->owner = find_thread( NULL );
 }
 
@@ -107,8 +102,7 @@ PR_IMPLEMENT(PRStatus)
 {
     PR_ASSERT(lock != NULL);
     lock->owner = NULL;
-    if( atomic_add( &lock->benaphoreCount, -1 ) > 1 ) {
-
+    if( _MD_ATOMIC_DECREMENT( &lock->benaphoreCount ) > 0 ) {
 	release_sem_etc( lock->semaphoreID, 1, B_DO_NOT_RESCHEDULE );
     }
 

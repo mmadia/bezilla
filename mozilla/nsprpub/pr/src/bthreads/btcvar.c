@@ -20,6 +20,7 @@
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
+ * Fredrik Holmqvist <thesuckiestemail@yahoo.se>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -34,8 +35,6 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-
-#include <kernel/OS.h>
 
 #include "primpl.h"
 
@@ -130,16 +129,16 @@ PR_IMPLEMENT(PRStatus)
         return PR_SUCCESS;
     }
 
-    if( atomic_add( &cvar->signalBenCount, 1 ) > 0 ) 
+    if( _MD_ATOMIC_INCREMENT( &cvar->signalBenCount ) > 1 )
     {
         if (acquire_sem(cvar->signalSem) == B_INTERRUPTED) 
         {
-            atomic_add( &cvar->signalBenCount, -1 );
+            _MD_ATOMIC_DECREMENT( &cvar->signalBenCount );
             return PR_FAILURE;
         }
     }
     cvar->nw += 1;
-    if( atomic_add( &cvar->signalBenCount, -1 ) > 1 ) 
+    if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount ) > 0 )
     {
         release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
     }
@@ -154,7 +153,7 @@ PR_IMPLEMENT(PRStatus)
     	err = acquire_sem_etc(cvar->sem, 1, B_RELATIVE_TIMEOUT, PR_IntervalToMicroseconds(timeout) );
     }
 
-    if( atomic_add( &cvar->signalBenCount, 1 ) > 0 ) 
+    if( _MD_ATOMIC_INCREMENT( &cvar->signalBenCount ) > 1 )
     {
         while (acquire_sem(cvar->signalSem) == B_INTERRUPTED);
     }
@@ -165,17 +164,17 @@ PR_IMPLEMENT(PRStatus)
         cvar->ns -= 1;
     }
     cvar->nw -= 1;
-    if( atomic_add( &cvar->signalBenCount, -1 ) > 1 ) 
+    if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount ) > 0 )
     {
         release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
     }
 
     PR_Lock( cvar->lock );
-    if(err!=B_NO_ERROR) 
+    if(err==B_NO_ERROR  || (err == B_TIMED_OUT && timeout!=PR_INTERVAL_NO_TIMEOUT))
     {
-        return PR_FAILURE;
-    }
     return PR_SUCCESS;
+}
+    return PR_FAILURE;
 }
 
 /*
@@ -195,11 +194,11 @@ PR_IMPLEMENT(PRStatus)
     PR_NotifyCondVar (PRCondVar *cvar)
 {
     status_t err ;
-    if( atomic_add( &cvar->signalBenCount, 1 ) > 0 ) 
+    if( _MD_ATOMIC_INCREMENT( &cvar->signalBenCount) > 1 )
     {
         if (acquire_sem(cvar->signalSem) == B_INTERRUPTED) 
         {
-            atomic_add( &cvar->signalBenCount, -1 );
+            _MD_ATOMIC_DECREMENT( &cvar->signalBenCount );
             return PR_FAILURE;
         }
     }
@@ -207,7 +206,7 @@ PR_IMPLEMENT(PRStatus)
     {
         cvar->ns += 1;
         release_sem_etc(cvar->sem, 1, B_DO_NOT_RESCHEDULE);
-        if( atomic_add( &cvar->signalBenCount, -1 ) > 1 ) 
+        if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount) > 0 )
         {
             release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
         }
@@ -219,7 +218,7 @@ PR_IMPLEMENT(PRStatus)
     }
     else
     {
-        if( atomic_add( &cvar->signalBenCount, -1 ) > 1 )
+        if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount ) > 0 )
         {
             release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
         }
@@ -241,11 +240,11 @@ PR_IMPLEMENT(PRStatus)
     int32 handshakes;
     status_t err = B_OK;
 
-    if( atomic_add( &cvar->signalBenCount, 1 ) > 0 ) 
+    if( _MD_ATOMIC_INCREMENT( &cvar->signalBenCount) > 1 )
     {
         if (acquire_sem(cvar->signalSem) == B_INTERRUPTED) 
         {
-            atomic_add( &cvar->signalBenCount, -1 );
+            _MD_ATOMIC_DECREMENT( &cvar->signalBenCount );
             return PR_FAILURE;
         }
     }
@@ -255,7 +254,7 @@ PR_IMPLEMENT(PRStatus)
         handshakes = cvar->nw - cvar->ns;
         cvar->ns = cvar->nw;				
         release_sem_etc(cvar->sem, handshakes, B_DO_NOT_RESCHEDULE);	
-        if( atomic_add( &cvar->signalBenCount, -1 ) > 1 ) 
+        if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount ) > 0 )
         {
             release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
         }
@@ -267,7 +266,7 @@ PR_IMPLEMENT(PRStatus)
     }
     else
     {
-        if( atomic_add( &cvar->signalBenCount, -1 ) > 1 ) 
+        if( _MD_ATOMIC_DECREMENT( &cvar->signalBenCount ) > 0 )
         {
             release_sem_etc(cvar->signalSem, 1, B_DO_NOT_RESCHEDULE);
         }

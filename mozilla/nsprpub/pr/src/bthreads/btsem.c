@@ -38,6 +38,7 @@
 #include <kernel/OS.h>
 
 #include "primpl.h"
+#include "obsolete/prsem.h"
 
 /*
 ** Create a new semaphore object.

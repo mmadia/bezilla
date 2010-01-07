@@ -69,12 +69,14 @@ CSRCS = \
 	$(NULL)
 
 ifndef USE_PTHREADS
+ifndef USE_BTHREADS
     CSRCS += \
 	    prdir.c \
 	    prfile.c \
 	    prio.c \
 	    prsocket.c \
 	    $(NULL)
+endif
 endif
 
 TARGETS	= $(OBJS)

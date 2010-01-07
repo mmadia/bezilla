@@ -71,9 +71,11 @@ CSRCS = \
 	$(NULL)
 
 ifndef USE_PTHREADS
+ifndef USE_BTHREADS
 CSRCS += \
 	pripcsem.c \
 	$(NULL)
+endif
 endif
 
 TARGETS	= $(OBJS)

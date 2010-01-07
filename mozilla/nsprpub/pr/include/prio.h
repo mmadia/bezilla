@@ -174,20 +174,20 @@ typedef struct PRIPv6Addr PRIPv6Addr;
 union PRNetAddr {
     struct {
         PRUint16 family;                /* address family (0x00ff maskable) */
-#ifdef XP_BEOS
-        char data[10];                  /* Be has a smaller structure */
-#else
+#ifndef XP_BEOS
         char data[14];                  /* raw address data */
+#else
+        char data[30];
 #endif
     } raw;
     struct {
         PRUint16 family;                /* address family (AF_INET) */
         PRUint16 port;                  /* port number */
         PRUint32 ip;                    /* The actual 32 bits of address */
-#ifdef XP_BEOS
-        char pad[4];                    /* Be has a smaller structure */
-#else
+#ifndef XP_BEOS
         char pad[8];
+#else
+        char pad[24];
 #endif
     } inet;
     struct {
@@ -196,6 +196,9 @@ union PRNetAddr {
         PRUint32 flowinfo;              /* routing information */
         PRIPv6Addr ip;                  /* the actual 128 bits of address */
         PRUint32 scope_id;              /* set of interfaces for a scope */
+#ifdef XP_BEOS
+        char pad[4];
+#endif
     } ipv6;
 #if defined(XP_UNIX) || defined(XP_OS2_EMX)
     struct {                            /* Unix domain socket address */
