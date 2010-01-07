@@ -128,12 +128,12 @@ NS_IMETHODIMP nsFontMetricsBeOS::Init(const nsFont& aFont, nsIAtom* aLangGroup,
     if (!isgeneric) 
     {
       // non-generic font
-      if (count_font_styles((font_family)family.get()) <= 0) 
+      if (count_font_styles((char *) family.get()) <= 0) 
       {
         // the specified font does not exist on this computer.
         continue;
       }
-      mFontHandle.SetFamilyAndStyle( (font_family)family.get(), NULL );
+      mFontHandle.SetFamilyAndStyle( (char *)family.get(), NULL );
       fontfound = PR_TRUE;
       break;
     } 
@@ -158,9 +158,9 @@ NS_IMETHODIMP nsFontMetricsBeOS::Init(const nsFont& aFont, nsIAtom* aLangGroup,
         prefs->GetBranch("font.name.", getter_AddRefs(branch));
         branch->GetCharPref(prop, getter_Copies(real_family));
 
-        if (!real_family.IsEmpty() && real_family.Length() <= B_FONT_FAMILY_LENGTH  && count_font_styles((font_family)real_family.get()) > 0) 
+        if (!real_family.IsEmpty() && real_family.Length() <= B_FONT_FAMILY_LENGTH  && count_font_styles((char *)real_family.get()) > 0) 
         {
-          mFontHandle.SetFamilyAndStyle( (font_family)real_family.get(), NULL );
+          mFontHandle.SetFamilyAndStyle( (char *)real_family.get(), NULL );
           fontfound = PR_TRUE;
           break;        
         }
@@ -414,8 +414,8 @@ nsresult
 nsFontMetricsBeOS::FamilyExists(const nsString& aName) 
 { 
   NS_ConvertUTF16toUTF8 family(aName);
-  printf("exists? %s", (font_family)family.get()); 
-  return  (count_font_styles((font_family)family.get()) > 0) ? NS_OK : NS_ERROR_FAILURE;
+  printf("exists? %s", (char *)family.get()); 
+  return  (count_font_styles((char *)family.get()) > 0) ? NS_OK : NS_ERROR_FAILURE;
 } 
 
 // useful UTF-8 utility
