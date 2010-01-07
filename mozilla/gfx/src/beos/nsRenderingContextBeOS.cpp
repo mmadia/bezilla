@@ -351,8 +351,11 @@ bool nsRenderingContextBeOS::LockAndUpdateView()
 		if (mCurrentBFont == nsnull)
 		{ 
 			if (mFontMetrics)
-				mFontMetrics->GetFontHandle((nsFontHandle)mCurrentBFont);
-
+			{
+				nsFontHandle fontHandle;
+				mFontMetrics->GetFontHandle(fontHandle);
+				mCurrentBFont = (BFont *) fontHandle;
+			}
 			if (mCurrentBFont)
 				mView->SetFont(mCurrentBFont);
 			else
@@ -1127,7 +1130,7 @@ NS_IMETHODIMP nsRenderingContextBeOS::GetTextDimensions(const PRUnichar *aString
 NS_IMETHODIMP nsRenderingContextBeOS::GetTextDimensions(const PRUnichar* aString,
 	PRInt32 aLength, PRInt32 aAvailWidth, PRInt32* aBreaks, PRInt32 aNumBreaks,
 	nsTextDimensions& aDimensions, PRInt32& aNumCharsFit, nsTextDimensions& aLastWordDimensions,
-	PRInt32* aFontID = nsnull)
+	PRInt32* aFontID)
 {
 	nsresult ret_code = NS_ERROR_FAILURE;	
 	uint8 utf8buf[1024];
@@ -1160,7 +1163,7 @@ NS_IMETHODIMP nsRenderingContextBeOS::GetTextDimensions(const PRUnichar* aString
 
 NS_IMETHODIMP nsRenderingContextBeOS::GetTextDimensions(const char* aString, PRInt32 aLength,
 	PRInt32 aAvailWidth,PRInt32* aBreaks, PRInt32 aNumBreaks, nsTextDimensions& aDimensions,
-	PRInt32& aNumCharsFit, nsTextDimensions& aLastWordDimensions, PRInt32* aFontID = nsnull)
+	PRInt32& aNumCharsFit, nsTextDimensions& aLastWordDimensions, PRInt32* aFontID)
 {
 	// Code is borrowed from win32 implementation including comments.
 	// Minor changes are introduced due multibyte/utf-8 nature of char* strings handling in BeOS.
