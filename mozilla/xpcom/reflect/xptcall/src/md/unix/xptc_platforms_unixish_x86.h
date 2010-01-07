@@ -138,7 +138,12 @@
 #endif
 
 #elif defined(__BEOS__) 
+#if (__GNUC__ == 2) 
 #define CFRONT_STYLE_THIS_ADJUST
+#else
+#define THUNK_BASED_THIS_ADJUST
+#endif
+
 
 #elif defined(__sun__) || defined(__sun)
 #if defined(__GXX_ABI_VERSION) && __GXX_ABI_VERSION >= 100 /* G++ V3 ABI */
