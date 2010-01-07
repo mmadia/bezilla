@@ -1361,9 +1361,10 @@ XRE_GetBinaryPath(const char* argv0, nsILocalFile* *aResult)
 #elif defined(XP_BEOS)
   int32 cookie = 0;
   image_info info;
-
+  do {
   if(get_next_image_info(0, &cookie, &info) != B_OK)
     return NS_ERROR_FAILURE;
+  } while(info.type != B_APP_IMAGE);
 
   rv = NS_NewNativeLocalFile(nsDependentCString(info.name), PR_TRUE,
                              getter_AddRefs(lf));

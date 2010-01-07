@@ -71,6 +71,7 @@ private:
 protected:
     // Thread Id of the "main" Gui thread.
     PRThread    *mGuiThread;
+    thread_id   mGUIThreadID;
 	static void	RunPump(void* arg);
 	void		GetInterface();
 	bool		cached;

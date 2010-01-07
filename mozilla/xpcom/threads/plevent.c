@@ -66,6 +66,8 @@
 
 #if defined(XP_BEOS)
 #include <kernel/OS.h>
+#include <image.h>
+#include <string.h>
 #endif
 
 #if defined(XP_MACOSX)
@@ -908,10 +910,39 @@ failed:
 
     char portname[64];
     char semname[64];
+
+struct _MDThread
+{
+    thread_id   tid;
+    sem_id          joinSem;
+    PRBool  is_joining;
+};
+    struct _MDThread md;
+    
+    
+//#include "private/primpl.h"
+    image_info iinfo;
+    int32 icookie = 0;
+    char *leaf = NULL;
+    do {
+      if (get_next_image_info(0, &icookie, &iinfo) == B_OK &&
+         strlen(iinfo.name) > 0 &&
+         (leaf = strrchr(iinfo.name, '/')) != NULL)
+      {
+        leaf++;
+        PR_snprintf(portname, sizeof(portname), "event%lx",
+                    (long unsigned) find_thread(leaf)); 
+        PR_snprintf(semname, sizeof(semname), "sync%lx", 
+                    (long unsigned) find_thread(leaf));
+      }
+      else
+      {
     PR_snprintf(portname, sizeof(portname), "event%lx", 
-                (long unsigned) self->handlerThread);
+                    (long unsigned) find_thread(0));
     PR_snprintf(semname, sizeof(semname), "sync%lx", 
-                (long unsigned) self->handlerThread);
+                    (long unsigned) find_thread(0));
+      }
+    } while(iinfo.type != B_APP_IMAGE);
 
     self->eventport = find_port(portname);
     while(get_next_sem_info(0, &cookie, &info) == B_OK)
@@ -931,7 +962,7 @@ failed:
     {
       delete_port( self->eventport );
     }
-    self->eventport = create_port(200, portname);
+    self->eventport = create_port(512, portname);
         /* We don't use the sem, but it has to be there
          */
         create_sem(0, semname);
@@ -1264,6 +1295,7 @@ struct ThreadInterfaceData
     thread_id waitingThread;
 };
 
+
 static PRStatus
 _pl_NativeNotify(PLEventQueue* self)
 {
@@ -1274,6 +1306,7 @@ _pl_NativeNotify(PLEventQueue* self)
 
     return PR_SUCCESS;    /* Is this correct? */
 }
+  
 #endif /* XP_BEOS */
 
 #if defined(XP_MACOSX)

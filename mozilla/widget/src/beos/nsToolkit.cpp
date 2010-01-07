@@ -42,6 +42,7 @@
 #include "nsSwitchToUIThread.h"
 #include "plevent.h"
 #include "prprf.h"
+#include <image.h>
 
 // 
 // Static thread local storage index of the Toolkit 
@@ -89,10 +90,26 @@ void nsToolkit::RunPump(void* arg)
   delete info;
 
   // system wide unique names
+  int32 cookie = 0;
+  image_info iinfo;
+  char *leaf = NULL;
+  do {
+    if (get_next_image_info(0, &cookie, &iinfo) == B_OK &&
+        strlen(iinfo.name) > 0 &&
+        (leaf = strrchr(iinfo.name, '/')) != NULL)
+    {
+      leaf++;
+      PR_snprintf(portname, sizeof(portname), "event%lx",
+                  (long unsigned) find_thread(leaf));
+    }
+    else
+    {
   PR_snprintf(portname, sizeof(portname), "event%lx", 
-              (long unsigned) PR_GetCurrentThread());
+                  (long unsigned) find_thread(0));
+    }
+  } while(iinfo.type != B_APP_IMAGE);
 
-  port_id event = create_port(100, portname);
+  port_id event = create_port(200, portname);
 
   while(read_port(event, &code, &id, sizeof(id)) >= 0)
   {
@@ -130,6 +147,7 @@ nsToolkit::nsToolkit()
 {
   localthread = false;
   mGuiThread  = NULL;
+  mGUIThreadID = 0;
 }
 
 
@@ -188,6 +206,22 @@ void nsToolkit::CreateUIThread()
     }
   }
     
+  image_info iinfo;
+  int32 cookie = 0;
+  char *leaf = NULL;
+  do {
+    if (get_next_image_info(0, &cookie, &iinfo) == B_OK &&
+        strlen(iinfo.name) > 0 &&
+        (leaf = strrchr(iinfo.name, '/')) != NULL)
+    {
+      leaf++;
+      mGUIThreadID = find_thread(leaf);
+    }
+    else
+    {
+      mGUIThreadID = find_thread(0);
+    }    
+  } while(iinfo.type != B_APP_IMAGE);
   // at this point the thread is running
   PR_ExitMonitor(monitor);
   PR_DestroyMonitor(monitor);
@@ -218,7 +252,22 @@ NS_METHOD nsToolkit::Init(PRThread *aThread)
   }
 
   cached = false;
-
+  image_info iinfo;
+  int32 cookie = 0;
+  char *leaf = NULL;
+  do {
+    if (get_next_image_info(0, &cookie, &iinfo) == B_OK &&
+        strlen(iinfo.name) > 0 &&
+        (leaf = strrchr(iinfo.name, '/')) != NULL)
+    {
+      leaf++;
+      mGUIThreadID = find_thread(leaf);
+    }
+    else
+    {
+      mGUIThreadID = find_thread(0);
+    } 
+  } while(iinfo.type != B_APP_IMAGE);
   return NS_OK;
 }
 
@@ -227,9 +276,8 @@ void nsToolkit::GetInterface()
   if(! cached)
   {
     char portname[64];
-
     PR_snprintf(portname, sizeof(portname), "event%lx", 
-                (long unsigned) mGuiThread);
+                (long unsigned) mGUIThreadID);
 
     eventport = find_port(portname);
 

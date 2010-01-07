@@ -118,10 +118,28 @@ NS_IMETHODIMP nsAppShell::Create(int* argc, char ** argv)
   // NOTE: this needs to be run from within the main application thread
   char		portname[64];
   char		semname[64];
+  int32 cookie = 0;
+  image_info iinfo;
+  char *leaf = NULL;
+  do {
+    if (get_next_image_info(0, &cookie, &iinfo) == B_OK &&
+        strlen(iinfo.name) > 0 &&
+        (leaf = strrchr(iinfo.name, '/')) != NULL)
+    {
+      leaf++;
+      PR_snprintf(portname, sizeof(portname), "event%lx",
+                  (long unsigned) find_thread(leaf));
+      PR_snprintf(semname, sizeof(semname), "sync%lx", 
+                  (long unsigned) find_thread(leaf));
+    }
+    else
+    {
   PR_snprintf(portname, sizeof(portname), "event%lx", 
-              (long unsigned) PR_GetCurrentThread());
+                  (long unsigned) find_thread(0));
   PR_snprintf(semname, sizeof(semname), "sync%lx", 
-              (long unsigned) PR_GetCurrentThread());
+                  (long unsigned) find_thread(0));
+    }
+  } while(iinfo.type != B_APP_IMAGE);
               
 #ifdef DEBUG              
   printf("nsAppShell::Create portname: %s, semname: %s\n", portname, semname);
@@ -342,8 +360,22 @@ NS_IMETHODIMP nsAppShell::DispatchNativeEvent(PRBool aRealEvent, void *aEvent)
 {
   // should we check for eventport initialization ?
   char  portname[64];
+  int32 cookie = 0;
+  image_info iinfo;
+  char *leaf = NULL;
+  do {
+    if (get_next_image_info(0, &cookie, &iinfo) == B_OK &&
+        strlen(iinfo.name) > 0 &&
+        (leaf = strrchr(iinfo.name, '/')) != NULL)
+    {
+      leaf++;
+      PR_snprintf(portname, sizeof(portname), "event%lx",
+                  (long unsigned) find_thread(leaf));
+    }
+    else
   PR_snprintf(portname, sizeof(portname), "event%lx", 
-              (long unsigned) PR_GetCurrentThread());
+                  (long unsigned) find_thread(0)/*PR_GetCurrentThread()*/);
+  } while(iinfo.type != B_APP_IMAGE);
 
   if((eventport = find_port(portname)) < 0) 
   {
