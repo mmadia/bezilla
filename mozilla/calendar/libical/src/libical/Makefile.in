@@ -89,7 +89,7 @@ endif
 
 DEFINES += -DHAVE_CONFIG_H
 
-ifneq (,$(filter BeOS Darwin OpenVMS NetBSD FreeBSD,$(OS_ARCH)))
+ifneq (,$(filter BeOS Haiku Darwin OpenVMS NetBSD FreeBSD,$(OS_ARCH)))
 DEFINES	+= -D__USE_BSD=1
 endif
 

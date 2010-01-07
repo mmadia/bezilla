@@ -59,7 +59,7 @@ DEFINES += -DAB_CD=$(AB_CD)
 ifeq ($(USE_SHORT_LIBNAME), 1)
 PROGRAM = xulrunner$(BIN_SUFFIX)
 else
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 PROGRAM = xulrunner$(BIN_SUFFIX)
 else
 PROGRAM = xulrunner-bin$(BIN_SUFFIX)
@@ -174,7 +174,7 @@ RCFLAGS += -DDEBUG
 endif
 endif
 
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 OS_LIBS += -ltracker
 endif
 

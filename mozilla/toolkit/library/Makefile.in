@@ -364,7 +364,7 @@ ifdef MOZ_ENABLE_PANGO
 EXTRA_DSO_LDOPTS += $(MOZ_PANGO_LIBS)
 endif
 
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 EXTRA_DSO_LDOPTS += -lbe
 endif
 

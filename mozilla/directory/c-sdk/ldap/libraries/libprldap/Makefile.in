@@ -165,7 +165,7 @@ EXTRA_LIBS = -L$(dist_libdir) -l$(LDAP_LIBNAME)
 EXTRA_LIBS += -L$(dist_libdir) $(DYNAMICNSPR)
 endif
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 EXTRA_LIBS = -L$(dist_libdir) -l$(LDAP_LIBNAME)
 EXTRA_LIBS += -L$(dist_libdir) $(DYNAMICNSPR)
 endif

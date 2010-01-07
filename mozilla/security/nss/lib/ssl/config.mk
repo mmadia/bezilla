@@ -111,7 +111,7 @@ EXTRA_SHARED_LIBS += \
 	-lnspr4 \
 	$(NULL)
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 EXTRA_SHARED_LIBS += -lbe
 endif
 

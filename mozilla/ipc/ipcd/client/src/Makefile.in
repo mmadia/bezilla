@@ -64,7 +64,7 @@ CPPSRCS		= \
 ifeq ($(OS_ARCH),WINNT)
 CPPSRCS +=  ipcConnectionWin.cpp
 else
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 CPPSRCS +=  ipcConnectionStub.cpp
 else
 CPPSRCS +=  ipcConnectionUnix.cpp

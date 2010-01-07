@@ -48,7 +48,7 @@ ifndef MOZ_PKG_FORMAT
 ifneq (,$(filter mac cocoa,$(MOZ_WIDGET_TOOLKIT)))
 MOZ_PKG_FORMAT  = DMG
 else
-ifeq (,$(filter-out OS2 WINNT BeOS, $(OS_ARCH)))
+ifeq (,$(filter-out OS2 WINNT BeOS Haiku, $(OS_ARCH)))
 MOZ_PKG_FORMAT  = ZIP
 ifeq ($(OS_ARCH),OS2)
 INSTALLER_DIR   = os2
@@ -251,7 +251,7 @@ GARBAGE		+= $(DIST)/$(PACKAGE) $(PACKAGE)
 ifeq ($(OS_ARCH),IRIX)
 STRIP_FLAGS	= -f
 endif
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 STRIP_FLAGS	= -g
 PLATFORM_EXCLUDE_LIST = ! -name "*.stub" ! -name "$(MOZ_PKG_APPNAME)-bin"
 endif

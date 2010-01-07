@@ -517,7 +517,7 @@ endif
 #
 # BeOS: add -Bsymbolic flag for components
 # 
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter BeOS Haiku,$(OS_ARCH)))
 ifdef IS_COMPONENT
 EXTRA_DSO_LDOPTS += -Wl,-Bsymbolic
 endif
@@ -827,7 +827,7 @@ endif
 ifdef MOZ_POST_PROGRAM_COMMAND
 	$(MOZ_POST_PROGRAM_COMMAND) $@
 endif
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 ifdef BEOS_PROGRAM_RESOURCE
 	xres -o $@ $(BEOS_PROGRAM_RESOURCE)
 	mimeset $@

@@ -48,7 +48,7 @@ OSPACKAGE	= unix
 ifeq ($(OS_ARCH),IRIX)
 STRIP_FLAGS	= -f
 endif
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 STRIP_FLAGS	= -g
 PLATFORM_EXCLUDE_LIST = ! -name "*.stub" ! -name "$(MOZ_PKG_APPNAME)-bin"
 endif

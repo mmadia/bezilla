@@ -246,7 +246,7 @@ endif
 LDFLAGS		+= $(pathsubst -l%,$(NSPR_STATIC_PATH)/%.a,$(NSPR_LIBS))
 
 # BeOS and HP-UX do not require the extra linking of "-lm"
-ifeq (,$(filter BeOS HP-UX WINNT WINCE OpenVMS,$(OS_ARCH)))
+ifeq (,$(filter BeOS Haiku HP-UX WINNT WINCE OpenVMS,$(OS_ARCH)))
 LDFLAGS		+= -lm
 endif
 

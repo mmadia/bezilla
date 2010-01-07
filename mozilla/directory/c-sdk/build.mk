@@ -442,7 +442,7 @@ ifeq ($(OS_ARCH), OSF1)
 SO_FILES_TO_REMOVE=so_locations
 endif
 
-ifneq (,$(filter BeOS Darwin NetBSD,$(OS_ARCH)))
+ifneq (,$(filter BeOS Haiku Darwin NetBSD,$(OS_ARCH)))
 LINK_DLL	= $(MKSHLIB) $(OBJS)
 endif
 

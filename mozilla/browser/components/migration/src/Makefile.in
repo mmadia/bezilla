@@ -78,7 +78,7 @@ CPPSRCS  = nsProfileMigrator.cpp \
            nsPhoenixProfileMigrator.cpp \
            $(NULL)
 
-ifneq ($(OS_ARCH),BeOS)
+ifneq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 CPPSRCS += nsDogbertProfileMigrator.cpp
 endif
 

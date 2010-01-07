@@ -237,7 +237,7 @@ EXTRA_LIBS = -L$(dist_libdir) -l$(LBER_LIBNAME) $(OS_LIBS)
 SHARED_LIBRARY_LIBS = $(dist_libdir)/lib$(LBER_LIBNAME).a
 endif
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 EXTRA_LIBS = -L$(dist_libdir) -l$(LBER_LIBNAME) -lbe
 endif
 
@@ -302,7 +302,7 @@ $(LIBLDAP): $(OBJS) $(LIBDIR) $(LDAP_EXPORT_DEFS)
 ifdef SO_FILES_TO_REMOVE
 	-$(RM) $(SO_FILES_TO_REMOVE)
 endif
-ifneq (,$(filter AIX Linux HP-UX Darwin BeOS QNX NetBSD OSF1 OpenBSD, $(OS_ARCH)))
+ifneq (,$(filter AIX Linux HP-UX Darwin BeOS Haiku QNX NetBSD OSF1 OpenBSD, $(OS_ARCH)))
 	$(LINK_LIB) ../liblber/$(OBJDIR_NAME)/*.a
 else
 ifeq ($(OS_ARCH),OS2)

@@ -96,7 +96,7 @@ CPPSRCS		= \
 		nsJSNPRuntime.cpp \
 		$(NULL)
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 	CPPSRCS += nsPluginsDirBeOS.cpp
 	CPPSRCS += nsPluginNativeWindow.cpp
 else

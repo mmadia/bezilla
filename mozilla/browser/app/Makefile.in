@@ -151,7 +151,7 @@ RCFLAGS += -DDEBUG
 endif
 endif
 
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 BEOS_PROGRAM_RESOURCE = $(srcdir)/apprunner-beos.rsrc
 ifdef BUILD_STATIC_LIBS
 OS_LIBS += -ltracker -lgame

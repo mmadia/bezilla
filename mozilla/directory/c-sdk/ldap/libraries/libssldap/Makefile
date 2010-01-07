@@ -167,7 +167,7 @@ EXTRA_LIBS += $(DYNAMICNSPR)
 EXTRA_LIBS += $(OS_LIBS)
 endif
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 EXTRA_LIBS = -L$(dist_libdir) -l$(LDAP_LIBNAME) -l$(PRLDAP_LIBNAME)
 ifeq ($(NSS_DYNAMIC_SOFTOKN),1)
 EXTRA_LIBS += -l$(SOFTOKN_LIBNAME)

@@ -69,7 +69,7 @@ ifeq ($(OS_ARCH), IRIX)
     endif
 endif
 
-ifeq ($(OS_ARCH), BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
     CFLAGS += -frtti -fexceptions
 endif
 
@@ -118,7 +118,7 @@ else
     endif
 endif
 
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
     OS_LIBS = -lstdc++.r4
 endif
 

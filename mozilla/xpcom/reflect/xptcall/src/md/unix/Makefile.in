@@ -95,9 +95,10 @@ ASFILES		:= xptcstubs_asm_ipf64.s xptcinvoke_asm_ipf64.s
 endif
 endif
 #
-# BeOS/Intel (uses the same unixish_x86 code)
+# BeOS/Intel (uses the same as Linux, works well. Migrate others!)
 #
-ifeq ($(OS_ARCH)$(OS_TEST),BeOSBePC)
+#ifeq ($(OS_ARCH)$(OS_TEST),BeOSBePC)
+ifeq (,$(filter-out BeOSBePC HaikuBePC, $(OS_ARCH)$(OS_TEST)))
 CPPSRCS		:= xptcinvoke_gcc_x86_unix.cpp xptcstubs_gcc_x86_unix.cpp
 endif
 #

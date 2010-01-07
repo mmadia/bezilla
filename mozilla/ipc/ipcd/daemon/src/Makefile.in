@@ -59,7 +59,7 @@ CPPSRCS		= \
 ifeq ($(OS_ARCH),WINNT)
 CPPSRCS +=  ipcdWin.cpp
 else
-ifeq ($(OS_ARCH),BeOS)
+ifeq (,$(filter-out BeOS Haiku, $(OS_ARCH)))
 CPPSRCS +=  ipcdStub.cpp
 else
 CPPSRCS +=  ipcdUnix.cpp
