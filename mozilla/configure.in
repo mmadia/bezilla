@@ -2793,6 +2793,8 @@ dnl it's not used and not part of the default installation.
 case $target in
 *-darwin*)
 	;;
+*-beos*|*-haiku*)
+	;;
 *)
 	AC_CHECK_LIB(dl, dlopen,
         AC_CHECK_HEADER(dlfcn.h, 

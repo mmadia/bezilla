@@ -2267,10 +2267,12 @@ dnl AC_CHECK_LIB(vms_jackets, main)
 
 dnl We don't want anything to link with libdl even if it's present on OS X, 
 dnl since it's not used and not part of the default installation.
-dnl The same goes for BeOS.
+dnl The same goes for BeOS and Haiku.
 
 case $target in
-*-darwin*|*-beos*)
+*-darwin*)
+    ;;
+*-beos*|*-haiku*)
     ;;
 *)
     AC_CHECK_LIB(dl, dlopen,
