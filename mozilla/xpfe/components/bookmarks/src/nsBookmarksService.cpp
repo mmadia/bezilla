@@ -3629,13 +3629,6 @@ nsBookmarksService::GetSynthesizedType(nsIRDFResource *aNode, nsIRDFNode **aType
         {
             *aType = kNC_Bookmark;
         }
-#ifdef XP_BEOS
-        else
-        {
-            //solution for BeOS - bookmarks are stored as file attributes. 
-            *aType = kNC_URL;
-        }
-#endif
         NS_IF_ADDREF(*aType);
     }
     return NS_OK;
@@ -5190,10 +5183,6 @@ nsBookmarksService::LoadBookmarks()
     // pref. See bug 22642 for details. 
     //
     PRBool useDynamicSystemBookmarks;
-#ifdef XP_BEOS
-    // always dynamic in BeOS
-    useDynamicSystemBookmarks = PR_TRUE;
-#else
     useDynamicSystemBookmarks = PR_FALSE;
     if (bookmarksPrefs)
         bookmarksPrefs->GetBoolPref("import_system_favorites", &useDynamicSystemBookmarks);
@@ -5201,21 +5190,11 @@ nsBookmarksService::LoadBookmarks()
 
     nsCAutoString bookmarksURICString;
 
-#if defined(XP_WIN) || defined(XP_BEOS)
+#if defined(XP_WIN)
     nsCOMPtr<nsIFile> systemBookmarksFolder;
 
 #if defined(XP_WIN)
     rv = NS_GetSpecialDirectory(NS_WIN_FAVORITES_DIR, getter_AddRefs(systemBookmarksFolder));
-#elif defined(XP_BEOS)
-    rv = NS_GetSpecialDirectory(NS_BEOS_SETTINGS_DIR, getter_AddRefs(systemBookmarksFolder));
-
-    if (NS_SUCCEEDED(rv))
-        rv = systemBookmarksFolder->AppendNative(NS_LITERAL_CSTRING("NetPositive"));
-   
-    if (NS_SUCCEEDED(rv))
-        rv = systemBookmarksFolder->AppendNative(NS_LITERAL_CSTRING("Bookmarks"));
-#endif
-
     if (NS_SUCCEEDED(rv))
     {
         nsCOMPtr<nsIURI> bookmarksURI;
@@ -5349,15 +5328,11 @@ nsBookmarksService::LoadBookmarks()
             rv = mInner->Assert(kNC_IEFavoritesRoot, kRDF_type, kNC_IEFavoriteFolder, PR_TRUE);
             if (NS_FAILED(rv)) return rv;
         }
-#elif defined(XP_WIN) || defined(XP_BEOS)
+#elif defined(XP_WIN)
         if (systemFolderResource)
         {
             nsAutoString systemBookmarksFolderTitle;
-#ifdef XP_BEOS
-            getLocaleString("ImportedNetPositiveBookmarks", systemBookmarksFolderTitle);
-#else
             getLocaleString("ImportedIEFavorites", systemBookmarksFolderTitle);
-#endif
 
             nsCOMPtr<nsIRDFLiteral>   systemFolderTitleLiteral;
             rv = gRDF->GetLiteral(systemBookmarksFolderTitle.get(), 

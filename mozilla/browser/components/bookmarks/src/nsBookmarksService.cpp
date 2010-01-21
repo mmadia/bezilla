@@ -3438,13 +3438,6 @@ nsBookmarksService::GetSynthesizedType(nsIRDFResource *aNode, nsIRDFNode **aType
             (void)gRDFC->IsSeq(mInner, aNode, &isContainer);
             *aType = isContainer? kNC_Folder : kNC_Bookmark;
         }
-#ifdef XP_BEOS
-        else
-        {
-            //solution for BeOS - bookmarks are stored as file attributes. 
-            *aType = kNC_URL;
-        }
-#endif
         NS_IF_ADDREF(*aType);
     }
     return NS_OK;
@@ -4802,43 +4795,15 @@ nsBookmarksService::LoadBookmarks()
     // pref. See bug 22642 for details. 
     //
     PRBool useDynamicSystemBookmarks;
-#ifdef XP_BEOS
-    // always dynamic in BeOS
-    useDynamicSystemBookmarks = PR_TRUE;
-#else
     useDynamicSystemBookmarks = PR_FALSE;
     if (mBookmarksPrefs)
         mBookmarksPrefs->GetBoolPref("import_system_favorites", &useDynamicSystemBookmarks);
-#endif
 
-#ifdef XP_BEOS 
-    nsCOMPtr<nsIRDFResource> systemFavoritesFolder;
-    nsCOMPtr<nsIFile> systemBookmarksFolder;
-
-    rv = NS_GetSpecialDirectory(NS_BEOS_SETTINGS_DIR, getter_AddRefs(systemBookmarksFolder));
-    NS_ENSURE_SUCCESS(rv, rv);
-    rv = systemBookmarksFolder->AppendNative(NS_LITERAL_CSTRING("NetPositive"));
-    NS_ENSURE_SUCCESS(rv, rv);
-   
-    rv = systemBookmarksFolder->AppendNative(NS_LITERAL_CSTRING("Bookmarks"));
-    NS_ENSURE_SUCCESS(rv, rv);
-
-    nsCOMPtr<nsIURI> bookmarksURI;
-    rv = NS_NewFileURI(getter_AddRefs(bookmarksURI), systemBookmarksFolder);
-    NS_ENSURE_SUCCESS(rv, rv);
-
-    nsCAutoString bookmarksURICString;
-    rv = bookmarksURI->GetSpec(bookmarksURICString);
-    NS_ENSURE_SUCCESS(rv, rv);
-#endif
     {
         BookmarkParser parser;
         parser.Init(bookmarksFile, mInner);
         if (useDynamicSystemBookmarks)
         {
-#if defined(XP_BEOS)
-            parser.SetIEFavoritesRoot(bookmarksURICString);
-#endif
             parser.ParserFoundIEFavoritesRoot(&foundIERoot);
         }
 
@@ -4882,42 +4847,6 @@ nsBookmarksService::LoadBookmarks()
         }
 
     } // <-- scope the stream to get the open/close automatically.
-
-    // Add the dynamic system bookmarks root if the user has asked for it
-    // by setting the pref. 
-    if (useDynamicSystemBookmarks)
-    {
-#if defined(XP_BEOS)
-        nsCOMPtr<nsIRDFResource> systemFolderResource;
-        rv = gRDF->GetResource(bookmarksURICString,
-                               getter_AddRefs(systemFolderResource));
-        if (NS_SUCCEEDED(rv))
-        {
-            nsAutoString systemBookmarksFolderTitle;
-            getLocaleString("ImportedNetPositiveBookmarks", systemBookmarksFolderTitle);
-
-            nsCOMPtr<nsIRDFLiteral>   systemFolderTitleLiteral;
-            rv = gRDF->GetLiteral(systemBookmarksFolderTitle.get(), 
-                                  getter_AddRefs(systemFolderTitleLiteral));
-            if (NS_SUCCEEDED(rv) && systemFolderTitleLiteral)
-                rv = mInner->Assert(systemFolderResource, kNC_Name, 
-                                    systemFolderTitleLiteral, PR_TRUE);
-    
-            // if the IE Favorites root isn't somewhere in bookmarks.html, add it
-            if (!foundIERoot)
-            {
-                nsCOMPtr<nsIRDFContainer> container(do_CreateInstance(kRDFContainerCID, &rv));
-                if (NS_FAILED(rv)) return rv;
-
-                rv = container->Init(this, kNC_BookmarksRoot);
-                if (NS_FAILED(rv)) return rv;
-
-                rv = container->AppendElement(systemFolderResource);
-                if (NS_FAILED(rv)) return rv;
-            }
-        }
-#endif
-    }
 
 #ifdef DEBUG_varga
     PRTime      now2 = PR_Now();

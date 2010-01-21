@@ -135,11 +135,6 @@ private:
     static char                 *ieFavoritesDir;
 #endif
 
-#ifdef  XP_BEOS
-    static nsIRDFResource       *kNC_NetPositiveObject;
-    static char                 *netPositiveDir;
-#endif
-
     static nsIRDFLiteral        *kLiteralTrue;
     static nsIRDFLiteral        *kLiteralFalse;
 
@@ -170,10 +165,6 @@ public:
 #ifdef  XP_WIN
     static PRBool   isValidFolder(nsIRDFResource *source);
     static nsresult getIEFavoriteURL(nsIRDFResource *source, nsString aFileURL, nsIRDFLiteral **urlLiteral);
-#endif
-
-#ifdef  XP_BEOS
-    static nsresult getNetPositiveURL(nsIRDFResource *source, nsString aFileURL, nsIRDFLiteral **urlLiteral);
 #endif
 
 };
@@ -208,11 +199,6 @@ nsIRDFResource      *FileSystemDataSource::kNC_extension;
 nsIRDFResource      *FileSystemDataSource::kNC_IEFavoriteObject;
 nsIRDFResource      *FileSystemDataSource::kNC_IEFavoriteFolder;
 char                *FileSystemDataSource::ieFavoritesDir;
-#endif
-
-#ifdef  XP_BEOS
-nsIRDFResource      *FileSystemDataSource::kNC_NetPositiveObject;
-char                *FileSystemDataSource::netPositiveDir;
 #endif
 
 
@@ -305,22 +291,6 @@ FileSystemDataSource::FileSystemDataSource(void)
 
 #endif
 
-#ifdef XP_BEOS
-
-        nsCOMPtr<nsIFile> file;
-        NS_GetSpecialDirectory(NS_BEOS_SETTINGS_DIR, getter_AddRefs(file));
-
-        file->AppendNative(NS_LITERAL_CSTRING("NetPositive"));
-        file->AppendNative(NS_LITERAL_CSTRING("Bookmarks"));
-
-        nsCOMPtr<nsIURI> furi;
-        NS_NewFileURI(getter_AddRefs(furi), file); 
-        nsCAutoString favoritesDir;
-        file->GetNativePath(favoritesDir);
-        netPositiveDir = ToNewCString(favoritesDir);
-
-#endif
-
         gRDFService->GetResource(NS_LITERAL_CSTRING("NC:FilesRoot"),
                                  &kNC_FileSystemRoot);
         gRDFService->GetResource(NS_LITERAL_CSTRING(NC_NAMESPACE_URI  "child"),
@@ -391,14 +361,6 @@ FileSystemDataSource::~FileSystemDataSource (void)
         }
 #endif
 
-#ifdef BEOS
-
-        if (netPositiveDir)
-        {
-            nsMemory::Free(netPositiveDir);
-            netPositiveDir = nsnull;
-        }
-#endif
 #ifdef USE_NC_EXTENSION
         NS_RELEASE(kNC_extension);
 #endif
@@ -1606,48 +1568,6 @@ FileSystemDataSource::GetName(nsIRDFResource *source, nsIRDFLiteral **aResult)
     }
 #endif
 
-#ifdef  XP_BEOS
-    // under BEOS, try and get the "META:title" attribute (if its a file)
-    if (strstr(uri, netPositiveDir) != 0)
-    {
-        PRBool value;
-        if ((NS_SUCCEEDED(aFileLocal->IsFile(&value) && value)) ||
-            (NS_SUCCEEDED(aFileLocal->IsDirectory(&value) && value)))
-        {
-            nsXPIDLCString nativePath;
-            aFileLocal->GetNativePath(nativePath);
-
-            rv = NS_ERROR_FAILURE;
-            if (nativePath) 
-            {
-                BFile   bf(nativePath.get(), B_READ_ONLY);
-                if (bf.InitCheck() == B_OK)
-                {
-                    char        beNameAttr[4096];
-                    ssize_t     len;
-
-                    if ((len = bf.ReadAttr("META:title", B_STRING_TYPE,
-                        0, beNameAttr, sizeof(beNameAttr)-1)) > 0)
-                    {
-                        beNameAttr[len] = '\0';
-                        CopyUTF8toUTF16(beNameAttr, name);
-                        rv = NS_OK;
-                    }
-                }
-            }
-            if (NS_OK != rv)
-            {
-                nsCAutoString leafName;
-                rv = aFileLocal->GetNativeLeafName(leafName);
-                if (NS_SUCCEEDED(rv)) {
-                    CopyUTF8toUTF16(leafName, name);
-                    rv = NS_OK;
-                }
-            }
-        }
-    }
-#endif
-
     gRDFService->GetLiteral(name.get(), aResult);
 
     return NS_OK;
@@ -1779,19 +1699,6 @@ FileSystemDataSource::GetURL(nsIRDFResource *source, PRBool *isFavorite, nsIRDFL
     }
 #endif
 
-#ifdef  XP_BEOS
-    // under BEOS, try and get the "META:url" attribute
-    if (netPositiveDir)
-    {
-        if (strstr(uri.get(), netPositiveDir) != 0)
-        {
-            if (isFavorite) *isFavorite = PR_TRUE;
-            rv = getNetPositiveURL(source, url, aResult);
-            return(rv);
-        }
-    }
-#endif
-
     // if we fall through to here, its not any type of bookmark
     // stored in the platform native file system, so just set the URL
 
@@ -1800,50 +1707,3 @@ FileSystemDataSource::GetURL(nsIRDFResource *source, PRBool *isFavorite, nsIRDFL
     return(NS_OK);
 }
 
-
-
-#ifdef  XP_BEOS
-
-nsresult
-FileSystemDataSource::getNetPositiveURL(nsIRDFResource *source, nsString aFileURL, nsIRDFLiteral **urlLiteral)
-{
-    nsresult        rv = NS_RDF_NO_VALUE;
-
-    *urlLiteral = nsnull;
-
-
-    nsCOMPtr<nsIFile> f;
-    NS_GetFileFromURLSpec(NS_ConvertUCS2toUTF8(aFileURL), getter_AddRefs(f)); 
-
-
-
-    nsXPIDLCString nativePath;
-    f->GetNativePath(nativePath);
-
-    PRBool value;
-    if (NS_SUCCEEDED(f->IsFile(&value) && value))
-    {
-        if (nativePath)
-        {
-            BFile   bf(nativePath.get(), B_READ_ONLY);
-            if (bf.InitCheck() == B_OK)
-            {
-                char        beURLattr[4096];
-                ssize_t     len;
-
-                if ((len = bf.ReadAttr("META:url", B_STRING_TYPE,
-                    0, beURLattr, sizeof(beURLattr)-1)) > 0)
-                {
-                    beURLattr[len] = '\0';
-                    nsAutoString    bookmarkURL;
-                    CopyUTF8toUTF16(beURLattr, bookmarkURL);
-                    rv = gRDFService->GetLiteral(bookmarkURL.get(),
-                        urlLiteral);
-                }
-            }
-        }
-    }
-    return(rv);
-}
-
-#endif
