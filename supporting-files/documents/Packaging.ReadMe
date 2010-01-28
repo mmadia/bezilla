@@ -65,7 +65,7 @@ Packaging Instruction Summary :
 					drag and drop lib/libsoftokn3.so into add-ons/
 					Alternatively :
 						cd <app_dir>/add-ons
-						ln -sf ../lib/wget-log
+						ln -sf ../lib/libsoftokn3.so
 
 
 == renaming and deleting files from initial distribution zip ==
@@ -75,9 +75,9 @@ Packaging Instruction Summary :
 	If needed, rename firefox-bin to BeZillaBrowser
 	Delete the following:
 		firefox
-		run-mozilla.sh
-		removed-files
 		readme.txt
+		removed-files
+		run-mozilla.sh
 
 
 == adding additional files ==
