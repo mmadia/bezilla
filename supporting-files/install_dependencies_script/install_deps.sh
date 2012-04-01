@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# 
+#
 CWD=`pwd`
 DOWNLOADS="$CWD/downloads"
 DEPS="$CWD/dependencies"
@@ -23,14 +23,14 @@ AUTOCONF_CMD="/boot/common/bin/autoconf-2.13"
 PREFIX=--prefix=/boot/common
 
 # #################################
-# create_dirs ()  
+# create_dirs ()
 #
 function create_dirs ()
 {
 echo "Creating directory structure ... "
 for dir in ${DIRECTORIES[@]}
-do 
-    if ! [ -d "$dir" ] ; then 
+do
+    if ! [ -d "$dir" ] ; then
         mkdir -p "$dir"
     fi
 done
@@ -45,7 +45,7 @@ function download_deps ()
 echo "Downloading necessary dependency source archives ... "
 
 for url in ${DEP_URLS[@]}
-do 
+do
     filename=${url##*/}
     if ! [ -e "$DOWNLOADS/$filename" ]; then
         echo "  $filename ..."
@@ -69,16 +69,16 @@ ext=${archive##*.}
 file=${archive##*/}
 
 if [ "$ext" = "gz" ]; then
-    cd "$DEPS"  
+    cd "$DEPS"
     if ! [ -f "$file"-expanded ]; then
         tar xvf "$archive"
         touch "$file"-expanded
     fi
-    cd "$CWD"    
-    
+    cd "$CWD"
+
 fi
 done
-} # function unpack_deps () 
+} # function unpack_deps ()
 
 
 # #################################
@@ -123,7 +123,7 @@ cd "$CWD"'/dependencies/autoconf-2.13'
 echo "`pwd`"
 ./configure --prefix=/boot/common/autoconf-2.13 --program-suffix=-2.13 --bindir=/boot/common/bin/
 make
-make install  
+make install
 cd "$CWD"
 } # function build_autoconf213 ()
 
@@ -131,7 +131,7 @@ cd "$CWD"
 
 # #################################
 # build_glib ()
-# 
+#
 # NOTE : TODO : re-do patch, as it does not include configure.in changes
 function build_glib ()
 {
@@ -167,10 +167,10 @@ cd "$CWD"
 
 
 # #################################
-# print_mozconfig_message () 
+# print_mozconfig_message ()
 #
 function print_mozconfig_message ()
-{ 
+{
 cat <<EOF
 ####====--------------------------------------------====####
 ### === ---    THIS MUST GO IN YOUR MOZCONFIG    --- === ###
