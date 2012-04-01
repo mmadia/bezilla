@@ -44,7 +44,7 @@ ac_add_options --disable-canvas
 
 # Utilize Haiku's default shared libraries
 ac_add_options --with-system-jpeg
-ac_add_options --with-system-png
+#ac_add_options --with-system-png
 ac_add_options --with-system-zlib
 
 # Reduce build size and time by omitting IPv6 support (not needed on BeOS)
