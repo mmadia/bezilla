@@ -9,7 +9,7 @@ WGET_CMD='wget --quiet'
 DEP_URLS=( \
 'http://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/config.guess' \
 'http://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=build-aux/config.sub' \
-'http://ports.haiku-files.org/svn/haikuports/trunk/dev-libs/glib/pkgconfig_glib-1.2.10-installable.diff' \
+'http://ports.haiku-files.org/svn/haikuports/trunk/dev-libs/glib/patches/pkgconfig_glib-1.2.10-installable.diff' \
 'http://ftp.gnu.org/gnu/autoconf/autoconf-2.13.tar.gz' \
 'http://pkgconfig.freedesktop.org/releases/pkg-config-0.23.tar.gz' \
 'http://ftp.mozilla.org/pub/mozilla.org/mozilla/libraries/source/libIDL-0.6.8.tar.gz' )
