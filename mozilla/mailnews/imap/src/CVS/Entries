@@ -25,7 +25,6 @@
 /nsImapProxyEvent.h/1.53/Wed Jan 12 15:20:32 2005//TMOZILLA_1_8_BRANCH
 /nsImapSearchResults.cpp/1.11/Sat Apr 17 18:32:51 2004//TMOZILLA_1_8_BRANCH
 /nsImapSearchResults.h/1.6/Sat Apr 17 18:32:51 2004//TMOZILLA_1_8_BRANCH
-/nsImapServerResponseParser.cpp/1.122.8.8/Sat Jan 27 17:14:59 2007//TMOZILLA_1_8_BRANCH
 /nsImapServerResponseParser.h/1.31.8.2/Fri Feb 24 18:12:46 2006//TMOZILLA_1_8_BRANCH
 /nsImapService.cpp/1.309.8.3/Sun Jun 18 15:12:47 2006//TMOZILLA_1_8_BRANCH
 /nsImapService.h/1.66.28.1/Sat Feb  4 22:45:03 2006//TMOZILLA_1_8_BRANCH
@@ -38,4 +37,5 @@
 /nsImapUtils.cpp/1.89.20.1/Thu Sep 13 01:35:53 2007//TMOZILLA_1_8_BRANCH
 /nsImapUtils.h/1.30.28.1/Thu Sep 13 01:35:53 2007//TMOZILLA_1_8_BRANCH
 /nsMsgImapCID.h/1.2/Sat Apr 17 18:32:51 2004//TMOZILLA_1_8_BRANCH
+/nsImapServerResponseParser.cpp/1.122.8.9/Sun Apr  1 23:24:23 2012//TMOZILLA_1_8_BRANCH
 D

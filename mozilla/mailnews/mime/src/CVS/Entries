@@ -40,13 +40,11 @@
 /mimemdig.h/1.4/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
 /mimemmix.cpp/1.6/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
 /mimemmix.h/1.4/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
-/mimemoz2.cpp/1.217.8.1/Sun Jun  8 21:14:06 2008//TMOZILLA_1_8_BRANCH
 /mimemoz2.h/1.48/Tue Feb 15 00:31:07 2005//TMOZILLA_1_8_BRANCH
 /mimempar.cpp/1.6/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
 /mimempar.h/1.4/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
 /mimemrel.cpp/1.38/Tue May 18 08:18:55 2004//TMOZILLA_1_8_BRANCH
 /mimemrel.h/1.8/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
-/mimemsg.cpp/1.55.28.2/Sun Jun  8 21:14:06 2008//TMOZILLA_1_8_BRANCH
 /mimemsg.h/1.7/Thu Jun 10 15:58:10 2004//TMOZILLA_1_8_BRANCH
 /mimemsig.cpp/1.20.28.1/Fri Jan 27 19:47:40 2006//TMOZILLA_1_8_BRANCH
 /mimemsig.h/1.6/Sat Apr 17 18:33:13 2004//TMOZILLA_1_8_BRANCH
@@ -92,4 +90,6 @@
 /nsSimpleMimeConverterStub.h/1.1/Fri Apr 15 18:12:08 2005//TMOZILLA_1_8_BRANCH
 /nsStreamConverter.cpp/1.126.4.2/Fri Jan 27 22:31:44 2006//TMOZILLA_1_8_BRANCH
 /nsStreamConverter.h/1.25.28.1/Fri Jan 27 22:31:44 2006//TMOZILLA_1_8_BRANCH
+/mimemoz2.cpp/1.217.8.2/Sun Apr  1 23:24:24 2012//TMOZILLA_1_8_BRANCH
+/mimemsg.cpp/1.55.28.3/Sun Apr  1 23:24:24 2012//TMOZILLA_1_8_BRANCH
 D

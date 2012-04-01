@@ -45,7 +45,6 @@
 /mantomak.c/3.8/Sun Apr 18 14:17:25 2004//TMOZILLA_1_8_BRANCH
 /mantomak.exe/3.7/Fri Oct 19 07:02:54 2001/-kb/TMOZILLA_1_8_BRANCH
 /milestone.pl/3.6.2.1/Fri Sep 30 19:52:43 2005//TMOZILLA_1_8_BRANCH
-/milestone.txt/3.27.2.33/Thu Aug 13 17:56:22 2009//TMOZILLA_1_8_BRANCH
 /mklinkscript.pl/3.2/Thu Jan 24 23:07:46 2002//TMOZILLA_1_8_BRANCH
 /module2dir.pl/1.33/Fri Aug 15 22:37:20 2003//TMOZILLA_1_8_BRANCH
 /mozBDate.pm/1.7/Tue Dec 14 22:39:26 2004//TMOZILLA_1_8_BRANCH
@@ -80,3 +79,4 @@
 /zipchrome.pl/3.3/Sun Apr 18 14:17:26 2004//TMOZILLA_1_8_BRANCH
 D/Moz////
 D/mkdepend////
+/milestone.txt/3.27.2.34/Sun Apr  1 23:23:53 2012//TMOZILLA_1_8_BRANCH

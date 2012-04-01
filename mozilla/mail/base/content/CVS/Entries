@@ -12,7 +12,6 @@
 /commandglue.js/1.53.2.20/Fri Jan 26 17:43:33 2007//TMOZILLA_1_8_BRANCH
 /contentAreaClick.js/1.10.2.2/Wed Jan 10 21:47:50 2007//TMOZILLA_1_8_BRANCH
 /contextHelp.js/1.1/Sat May  3 02:44:18 2003//TMOZILLA_1_8_BRANCH
-/credits.xhtml/1.4.2.13/Thu Jan  1 03:44:18 2009//TMOZILLA_1_8_BRANCH
 /customizeToolbar.js/1.7.4.4/Wed Nov 29 05:10:13 2006//TMOZILLA_1_8_BRANCH
 /customizeToolbar.xul/1.9.4.1/Tue Jun  3 07:11:42 2008//TMOZILLA_1_8_BRANCH
 /defaultClientDialog.js/1.1.2.1/Mon Oct 23 03:32:46 2006//TMOZILLA_1_8_BRANCH
@@ -62,3 +61,4 @@
 /utilityOverlay.xul/1.7.4.3/Wed Nov  8 06:36:58 2006//TMOZILLA_1_8_BRANCH
 /widgetglue.js/1.15.2.5/Sat Aug 16 01:52:09 2008//TMOZILLA_1_8_BRANCH
 D/unix////
+/credits.xhtml/1.4.2.14/Sun Apr  1 23:24:20 2012//TMOZILLA_1_8_BRANCH

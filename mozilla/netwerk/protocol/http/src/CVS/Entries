@@ -28,7 +28,6 @@
 /nsHttpHandler.h/1.45.8.1/Wed Feb 22 16:20:25 2006//TMOZILLA_1_8_BRANCH
 /nsHttpHeaderArray.cpp/1.14.18.1/Sat Apr  8 00:35:18 2006//TMOZILLA_1_8_BRANCH
 /nsHttpHeaderArray.h/1.10/Sun Apr 18 21:59:17 2004//TMOZILLA_1_8_BRANCH
-/nsHttpNTLMAuth.cpp/1.16/Fri Mar 25 22:25:32 2005//TMOZILLA_1_8_BRANCH
 /nsHttpNTLMAuth.h/1.2/Tue Nov 18 02:20:34 2003//TMOZILLA_1_8_BRANCH
 /nsHttpPipeline.cpp/1.14/Sun Jan  9 20:43:33 2005//TMOZILLA_1_8_BRANCH
 /nsHttpPipeline.h/1.6/Sun Apr 18 21:59:17 2004//TMOZILLA_1_8_BRANCH
@@ -38,4 +37,5 @@
 /nsHttpResponseHead.h/1.25.2.1/Sat Apr  8 00:31:29 2006//TMOZILLA_1_8_BRANCH
 /nsHttpTransaction.cpp/1.92.6.5/Tue Jul 18 17:50:52 2006//TMOZILLA_1_8_BRANCH
 /nsHttpTransaction.h/1.40.12.1/Tue Jul 18 17:50:52 2006//TMOZILLA_1_8_BRANCH
+/nsHttpNTLMAuth.cpp/1.16.8.1/Sun Apr  1 23:24:27 2012//TMOZILLA_1_8_BRANCH
 D

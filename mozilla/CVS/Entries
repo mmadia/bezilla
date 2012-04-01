@@ -1,4 +1,3 @@
-/client.mk/1.245.2.46/Sun Aug  9 18:28:26 2009//TMOZILLA_1_8_BRANCH
 D/build////
 D/browser////
 D/calendar////
@@ -65,3 +64,4 @@ D/themes////
 D/xpfe////
 D/mailnews////
 D/l10n////
+/client.mk/1.245.2.47/Sun Apr  1 23:23:41 2012//TMOZILLA_1_8_BRANCH
