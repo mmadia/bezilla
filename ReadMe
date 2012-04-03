@@ -1,9 +1,9 @@
 This Mercurial repository is a fork of Mozilla's 1.8 CVS code base.
-It was retrieved on 2010-January-02.
+It was retrieved on 2010-March-05.
 
 The purpose of this is to maintain a port for Haiku, http://www.haiku-os.org.
 Firefox 3 and above are on hold due to a non-functional port of Cairo.
-Since this fork uses numerous patches that were not accepted by Mozilla.org, 
+Since this fork uses numerous patches that were not accepted by Mozilla.org,
 their trademarks cannot be used, which includes the Firefox name and logo.
 As such, these builds are called BeZilla.
 
