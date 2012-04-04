@@ -200,7 +200,7 @@ extern "C" void ShowOSAlert(const char* aMessage);
 // to provide these symbols.  MOZ_ENABLE_OLD_ABI_COMPAT_WRAPPERS defaults
 // to true on x86 linux, and false everywhere else.
 //
-// The fact that the new and free operators are mismatched 
+// The fact that the new and free operators are mismatched
 // mirrors the way the original functions in egcs 1.1.2 worked.
 
 #ifdef MOZ_ENABLE_OLD_ABI_COMPAT_WRAPPERS
@@ -488,7 +488,7 @@ class nsXULAppInfo : public nsIXULAppInfo,
                      public nsIWinAppHelper,
 #endif
                      public nsIXULRuntime
-                     
+
 {
 public:
   NS_DECL_ISUPPORTS_INHERITED
@@ -618,11 +618,11 @@ nsXULAppInfo::GetXPCOMABI(nsACString& aResult)
 }
 
 #ifdef XP_WIN
-nsresult 
+nsresult
 nsXULAppInfo::LaunchAppHelperWithArgs(int aArgc, char **aArgv)
 {
   nsresult rv;
-  nsCOMPtr<nsIProperties> directoryService = 
+  nsCOMPtr<nsIProperties> directoryService =
     do_GetService(NS_DIRECTORY_SERVICE_CONTRACTID, &rv);
   NS_ENSURE_SUCCESS(rv, rv);
 
@@ -694,7 +694,7 @@ nsXULAppInfo::PostUpdate(nsILocalFile *aLogFile)
   }
 
   rv = LaunchAppHelperWithArgs(upgradeArgc, upgradeArgv);
-  
+
   if (pathArg)
     PR_smprintf_free(pathArg);
 
@@ -1214,7 +1214,7 @@ RemoteCommandLine()
   rv = client.Init();
   if (NS_FAILED(rv))
     return REMOTE_NOT_FOUND;
- 
+
   nsXPIDLCString response;
   PRBool success = PR_FALSE;
   rv = client.SendCommandLine(program.get(), username, nsnull,
@@ -1482,7 +1482,7 @@ static nsresult LaunchChild(nsINativeAppSupport* aNative,
 
   // Restart this process by exec'ing it into the current process
   // if supported by the platform.  Otherwise, use NSPR.
- 
+
   if (aBlankCommandLine) {
     gRestartArgc = 1;
     gRestartArgv[gRestartArgc] = nsnull;
@@ -1847,7 +1847,7 @@ SelectProfile(nsIProfileLock* *aResult, nsINativeAppSupport* aNative,
         PR_fprintf(PR_STDERR, "Error: profile path not valid.");
         return rv;
       }
-      
+
       // As with -profile, assume that the given path will be used for both the
       // main profile directory and the temp profile directory.
       rv = profileSvc->CreateProfile(lf, lf, nsDependentCSubstring(arg, delim),
@@ -2350,7 +2350,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
     DumpVersion();
     return 0;
   }
-    
+
 #ifdef NS_TRACE_MALLOC
   gArgc = argc = NS_TraceMallocStartupArgs(argc, argv);
 #endif
@@ -2424,7 +2424,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
 // #if defined(MOZ_WIDGET_XLIB)
 // XXXtimeless fix me! How do we get a Display from here to nsAppShell.cpp ?
 // #endif
-    
+
   // Call the code to install our handler
 #ifdef MOZ_JPROF
   setupProfilingStuff();
@@ -2557,7 +2557,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
     NS_NAMED_LITERAL_CSTRING(osABI, OS_TARGET "_UNKNOWN");
 #endif
 
-  // Check for version compatibility with the last version of the app this 
+  // Check for version compatibility with the last version of the app this
   // profile was started with.  The format of the version stamp is defined
   // by the BuildVersion function.
   PRBool versionOK = CheckCompatibility(profD, version, osABI,
@@ -2566,7 +2566,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
 
   // Every time a profile is loaded by a build with a different version,
   // it updates the compatibility.ini file saying what version last wrote
-  // the compreg.dat.  On subsequent launches if the version matches, 
+  // the compreg.dat.  On subsequent launches if the version matches,
   // there is no need for re-registration.  If the user loads the same
   // profile in different builds the component registry must be
   // re-generated to prevent mysterious component loading failures.
@@ -2581,7 +2581,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
       // Remove compreg.dat and xpti.dat, forcing component re-registration,
       // with the new list of additional components directories specified
       // in "components.ini" which we have just discovered changed since the
-      // last time the application was run. 
+      // last time the application was run.
       RemoveComponentRegistries(profD, profLD, PR_FALSE);
     }
     // Nothing need be done for the normal startup case.
@@ -2589,10 +2589,10 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
   else {
     // Remove compreg.dat and xpti.dat, forcing component re-registration
     // with the default set of components (this disables any potentially
-    // troublesome incompatible XPCOM components). 
+    // troublesome incompatible XPCOM components).
     RemoveComponentRegistries(profD, profLD, PR_TRUE);
 
-    // Tell the Extension Manager it should check for incompatible 
+    // Tell the Extension Manager it should check for incompatible
     // Extensions and re-write the Components manifest ("components.ini")
     // with a list of XPCOM components for compatible extensions
     upgraded = PR_TRUE;
@@ -2606,13 +2606,13 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
   PRBool appInitiatedRestart = PR_FALSE;
 
   // Allows the user to forcefully bypass the restart process at their
-  // own risk. Useful for debugging or for tinderboxes where child 
+  // own risk. Useful for debugging or for tinderboxes where child
   // processes can be problematic.
   {
     // Start the real application
     ScopedXPCOMStartup xpcom;
     rv = xpcom.Initialize();
-    NS_ENSURE_SUCCESS(rv, 1); 
+    NS_ENSURE_SUCCESS(rv, 1);
     rv = xpcom.DoAutoreg();
     rv |= xpcom.InitEventQueue();
     rv |= xpcom.SetWindowCreator(nativeApp);
@@ -2745,7 +2745,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
       if (!upgraded && !needsRestart) {
         SaveStateForAppInitiatedRestart();
 
-        // clear out any environment variables which may have been set 
+        // clear out any environment variables which may have been set
         // during the relaunch process now that we know we won't be relaunching.
         PR_SetEnv("XRE_PROFILE_PATH=");
         PR_SetEnv("XRE_PROFILE_LOCAL_PATH=");
@@ -2775,7 +2775,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
         nsCOMPtr<nsIObserverService> obsService
           (do_GetService("@mozilla.org/observer-service;1"));
         if (obsService)
-          obsService->NotifyObservers(nsnull, "final-ui-startup", nsnull);        
+          obsService->NotifyObservers(nsnull, "final-ui-startup", nsnull);
 
         rv = cmdLine->Run();
         NS_ENSURE_SUCCESS_LOG(rv, 1);
@@ -2843,10 +2843,10 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
 #endif
       }
       else {
-        // Upgrade condition (build id changes), but the restart hint was 
+        // Upgrade condition (build id changes), but the restart hint was
         // not set by the Extension Manager. This is because the compatibility
-        // resolution for Extensions is different than for the component 
-        // registry - major milestone vs. build id. 
+        // resolution for Extensions is different than for the component
+        // registry - major milestone vs. build id.
         needsRestart = PR_TRUE;
 
 #ifdef XP_WIN
@@ -2862,7 +2862,7 @@ XRE_main(int argc, char* argv[], const nsXREAppData* aAppData)
     profileLock->Unlock();
   }
 
-  // Restart the app after XPCOM has been shut down cleanly. 
+  // Restart the app after XPCOM has been shut down cleanly.
   if (needsRestart) {
     if (appInitiatedRestart) {
       RestoreStateForAppInitiatedRestart();
