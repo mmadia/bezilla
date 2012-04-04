@@ -1371,7 +1371,7 @@ XRE_GetBinaryPath(const char* argv0, nsILocalFile* *aResult)
   if (NS_FAILED(rv))
     return rv;
 
-#elif
+#else
 #error Oops, you need platform-specific code here
 #endif
 
