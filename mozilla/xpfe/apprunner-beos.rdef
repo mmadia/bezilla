@@ -37,7 +37,7 @@ resource file_types message {
 	/*
 	 * Should BeZillaSuite include these additional filetypes?
 	 * note: MailNews has them	
-		"types" = "applicataion/x-person",
+		"types" = "application/x-person",
 		"types" = "message/rfc822",
 		"types" = "text/E-mail",
 		"types" = "text/x-email"
