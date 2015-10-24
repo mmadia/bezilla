@@ -29,7 +29,7 @@ resource app_version {
 resource file_types message {
 	"types" = "application/x-vnd.Be.URL.mailto",
 	"types" = "application/x-vnd.Be.URL.news",
-	"types" = "applicataion/x-person",
+	"types" = "application/x-person",
 	"types" = "message/rfc822",
 	"types" = "text/E-mail",
 	"types" = "text/x-email",
